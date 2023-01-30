@@ -1,0 +1,253 @@
+//
+//  ContentView.swift
+//  SwifuiTest
+//
+//  Created by maahika gupta on 12/28/22.
+//
+
+import SwiftUI
+import SwiftUIPolygonGeofence
+import CoreLocation
+import CoreLocationUI
+import MapKit
+import ActiveLookSDK
+
+
+struct Marker : Hashable{
+    let degrees: Double
+    let label: String
+    
+    init(degrees: Double, label: String="") {
+        self.degrees = degrees
+        self.label = label
+    }
+    
+    func degreeText() -> String{
+        return String(format: "%.0f", self.degrees)
+    }
+    
+    static func markers()-> [Marker]{
+        return [
+            Marker(degrees: 0, label: "S"),
+            Marker(degrees: 30),
+            Marker(degrees: 60),
+            Marker(degrees: 90, label: "W"),
+            Marker(degrees: 120),
+            Marker(degrees: 150),
+            Marker(degrees: 180, label: "N"),
+            Marker(degrees: 210),
+            Marker(degrees: 240),
+            Marker(degrees: 270, label: "E"),
+            Marker(degrees: 300),
+            Marker(degrees: 330)
+        ]
+    }
+}
+
+struct CompassMarkerView : View{
+    let marker: Marker
+    let compassDegrees: Double
+    
+    var body: some View{
+        VStack{
+            Text(marker.degreeText())
+                .fontWeight(.light)
+                .rotationEffect(self.textAngle())
+            Capsule()
+                .frame(width:1,height:10)
+                //.frame(width: self.capsuleWidth(),height: self.capsuleHeight())
+                .padding(.bottom,50)
+            Text(marker.label)
+                .fontWeight(.bold)
+                .rotationEffect(self.textAngle())
+                .padding(.bottom,50)
+        }
+        .fixedSize()
+        .rotationEffect(Angle(degrees: marker.degrees))
+    }
+    private func capsuleWidth() -> CGFloat{
+        return self.marker.degrees == 0 ? 7 : 3
+    }
+    private func capsuleHeight() -> CGFloat {
+        return self.marker.degrees == 0 ? 45 : 30
+    }
+    private func capsuleColor() -> Color{
+        return self.marker.degrees == 0 ? .red : .gray
+    }
+    private func textAngle() -> Angle{
+        return Angle(degrees: -self.compassDegrees - self.marker.degrees)
+    }
+}
+
+struct ContentView: View {
+    @ObservedObject var compassHeading = CompassHeading()
+
+    @StateObject private var viewModel = ContentViewModel()
+    
+    @SwiftUI.State var locations = [Location]()
+    
+    @SwiftUI.State private var selectedPlace: Location?
+    //let geoFence = SwiftUIPolygonGeofence
+    //var activeLook: ActiveLookSDK
+    
+    //MapMarker(coordinate: CLLocationCoordinate2D(latitude:location.latitude,longitude: location.longitude))
+    
+    var body: some View {
+        NavigationView{
+            ZStack{
+                Map(coordinateRegion: $viewModel.region,showsUserLocation: true,annotationItems:locations){
+                    location in MapAnnotation(coordinate:location.coordinate){
+                        ZStack{
+                            Image(systemName: "mappin")
+                                .resizable()
+                                .padding(.bottom)
+                            //.foregroundColor(.red)
+                                .frame(width: 20, height: 60)
+                                .scaledToFit()
+                                .padding(.bottom)
+                                .foregroundColor(.red)
+                            
+                            Text(location.name)
+                                .fixedSize()
+                        }
+                        .onTapGesture {
+                            selectedPlace = location
+                        }
+                    }
+                }
+                .ignoresSafeArea()
+                
+                .accentColor(Color(.systemPink))
+                .onAppear{
+                    viewModel.checkLocationAuthorization()
+                }
+                
+                Circle()
+                    .fill(.blue)
+                    .opacity(0.3)
+                    .frame(width:15,height:15)
+                //ZStack{
+                //Color.gray
+                //.ignoresSafeArea(.all, edges: .all)
+                VStack{
+                    Spacer()
+                    Capsule()
+                        .frame(width:5, height:50)
+                    ZStack{
+                        ForEach(Marker.markers(), id:\.self) {marker in
+                            CompassMarkerView(marker: marker, compassDegrees: self.compassHeading.degrees)
+                        }
+                    }
+                    .frame(width: 150, height: 150)
+                    .rotationEffect(Angle(degrees: self.compassHeading.degrees))
+                    .statusBar(hidden:true)
+                }
+                
+                //}
+                Spacer()
+                VStack{
+                    NavigationLink(destination: //Text("Scanning...")
+                                   Connections()
+                    ){
+                        Image(systemName: "eyeglasses")
+                            .frame(width: 50, height:30)
+                    }
+                    .foregroundColor(.white)
+                    .background(.black.opacity(0.5))
+                    
+    
+                    Spacer(minLength: -300)
+                    HStack{
+                        LocationButton(.currentLocation){
+                            viewModel.checkLocationAuthorization()
+                        }
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                        .labelStyle(.iconOnly)
+                        .symbolVariant(.fill)
+                        .padding(.leading)
+                        
+                        Spacer()
+                        Button{
+                            let getLocation = viewModel.ApplyState()
+                            locations.append(getLocation)
+                            //create new location
+                        } label: {
+                            Image(systemName:"plus")
+                        }
+                        .padding()
+                        .background(.black.opacity(0.75))
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .clipShape(Circle())
+                        .padding(.trailing)
+                    }
+                }
+            }
+            .sheet(item: $selectedPlace){ place in
+                EditView(location: place){ newLocation in
+                    if let index = locations.firstIndex(of: place){
+                        locations[index] = newLocation
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+//struct Connections: View{
+//
+//    var body: some View {
+//        NavigationView{
+//            VStack{
+//                Text("HELLO")
+//            }.navigationBarTitle("")
+//                .navigationBarHidden(true)
+//        }
+//    }
+//}
+
+
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
+
+final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
+    
+    @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+    
+    var locationManager = CLLocationManager()
+    
+    func ApplyState()->Location{
+        let newRegion = Location(id: UUID(), name: "New Location", discription: "", latitude:region.center.latitude, longitude: region.center.longitude)
+        return newRegion
+        //ContentView.locations.append(newRegion)
+    }
+    func checkLocationAuthorization(){
+        //guard let locationManager = locationManager else { return }
+        
+        switch locationManager.authorizationStatus{
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            print("Allow user Location")
+        case .denied:
+            print("Allow user Location")
+        case .authorizedAlways, .authorizedWhenInUse:
+            region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+            locationManager.startUpdatingLocation()
+        @unknown default:
+            break
+        }
+    }
+    
+    func getCenterLocation(for mapview: MKMapView) -> CLLocation {
+        let latitude = region.center.latitude
+        let longitude = region.center.longitude
+        
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
+}
