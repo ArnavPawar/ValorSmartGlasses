@@ -55,15 +55,15 @@ class GlassesTableViewController: UITableViewController {
                     })
         }()
     
-    activeLook.startScanning(
-        onGlassesDiscovered: { [weak self] (discoveredGlasses: DiscoveredGlasses) in
-            print("discovered glasses: \(discoveredGlasses.name)")
-            self?.addDiscoveredGlasses(discoveredGlasses)
-
-        }, onScanError: { (error: Error) in
-            print("error while scanning: \(error.localizedDescription)")
-        }
-    )
+//    activeLook.startScanning(
+//        onGlassesDiscovered: { [weak self] (discoveredGlasses: DiscoveredGlasses) in
+//            print("discovered glasses: \(discoveredGlasses.name)")
+//            self?.addDiscoveredGlasses(discoveredGlasses)
+//
+//        }, onScanError: { (error: Error) in
+//            print("error while scanning: \(error.localizedDescription)")
+//        }
+//    )
     
     private var discoveredGlassesArray: [DiscoveredGlasses] = []
     private var connecting: Bool = false
