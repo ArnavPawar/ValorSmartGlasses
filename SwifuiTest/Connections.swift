@@ -13,7 +13,7 @@ struct Connections: View{
     
     @SwiftUI.State private var viewModel = GlassesTableViewController()
     
-    var body: some View {//FIX THIS SHIT
+    var body: some View {//FIX THIS
         NavigationView{
             VStack{
                 Text("Scanning...")
