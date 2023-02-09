@@ -25,7 +25,7 @@ struct Connections: View{
 }
 
 class GlassesTableViewController: UITableViewController {
-    private let glassesName: String = "Proto 0144829"
+    private let glassesName: String = "ENGO 2 090756"
     private var glassesConnected: Glasses?    
 
     private let scanDuration: TimeInterval = 10.0
@@ -113,6 +113,7 @@ class GlassesTableViewController: UITableViewController {
     }
     func runScan(){
         activeLook.isScanning() ? stopScanning() : startScanning()
+        generateImageFromMap()
     }
     
     private func generateImageFromMap() {
