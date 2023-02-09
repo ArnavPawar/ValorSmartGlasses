@@ -196,25 +196,6 @@ struct ContentView: View {
 }
 
 
-//struct Connections: View{
-//
-//    var body: some View {
-//        NavigationView{
-//            VStack{
-//                Text("HELLO")
-//            }.navigationBarTitle("")
-//                .navigationBarHidden(true)
-//        }
-//    }
-//}
-
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
-
 final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))

@@ -8,9 +8,10 @@
 import Foundation
 import ActiveLookSDK
 import SwiftUI
+import MapKit
 
 struct Connections: View{
-    @ObservedObject var Glasses = GlassesTableViewController()
+    @SwiftUI.State var Glasses = GlassesTableViewController()
     //@SwiftUI.State private var viewModel = GlassesTableViewController()
     
     var body: some View {//FIX THIS
@@ -101,6 +102,8 @@ class GlassesTableViewController: UITableViewController {
         )
         
         scanTimer = Timer.scheduledTimer(withTimeInterval: scanDuration, repeats: false) { timer in
+            self.generateImageFromMap()
+
             self.stopScanning()
         }
     }
@@ -117,7 +120,11 @@ class GlassesTableViewController: UITableViewController {
     }
     
     private func generateImageFromMap() {
-        let mapSnapshotterOptions = MKMapSnapshotter.Options()
+        
+        self.glassesConnected?.clear()
+        self.glassesConnected?.line(x0: 102, x1: 202, y0: 128, y1: 128)
+        
+        /*let mapSnapshotterOptions = MKMapSnapshotter.Options()
         mapSnapshotterOptions.region = self.mapView.region
         mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
         mapSnapshotterOptions.mapType = MKMapType.mutedStandard
@@ -131,7 +138,7 @@ class GlassesTableViewController: UITableViewController {
             }else{
                 print("Missing snapshot")
             }
-        }
+        }*/
     
     }
 //     private var discoveredGlassesArray: [DiscoveredGlasses] = []
