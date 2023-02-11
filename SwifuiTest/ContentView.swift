@@ -145,9 +145,11 @@ struct ContentView: View {
                 
                 //}
                 Spacer()
-                VStack{
+                VStack{//FIX THIS FROM NOT GOING TO DIFFERNET CLASS, INSTEAD GOING TO DIFFERENT FUNCTION 
                     NavigationLink(destination: //Text("Scanning...")
-                                   Connections()
+                                   
+                                   //Connections()
+                                   connectGlasses()
                     ){
                         Image(systemName: "eyeglasses")
                             .frame(width: 50, height:30)
@@ -192,6 +194,44 @@ struct ContentView: View {
                 }
             }
         }
+    }
+    
+    let locationManager = CLLocationManager()
+    let regionInMeters: Double = 10000
+    var previousLocation: CLLocation?
+    
+    private let glassesName: String = "ENGO 2 090756"
+    private var glassesConnected: Glasses?
+    private let scanDuration: TimeInterval = 10.0
+    private let connectionTimeoutDuration: TimeInterval = 5.0
+    
+    private var scanTimer: Timer?
+    private var connectionTimer: Timer?
+    
+    private lazy var alookSDKToken: String = {
+        guard let infoDictionary: [String: Any] = Bundle.main.infoDictionary else { return "" }
+        guard let activelookSDKToken: String = infoDictionary["ACTIVELOOK_SDK_TOKEN"] as? String else { return "" }
+        return activelookSDKToken
+    }()
+    
+    private lazy var activeLook: ActiveLookSDK = {
+        try! ActiveLookSDK.shared(
+            token: alookSDKToken,
+            onUpdateStartCallback: { SdkGlassesUpdate in
+                print("onUpdateStartCallback")
+            }, onUpdateAvailableCallback: { (SdkGlassesUpdate, _: () -> Void) in
+                print("onUpdateAvailableCallback")
+            }, onUpdateProgressCallback: { SdkGlassesUpdate in
+                print("onUpdateProgressCallback")
+            }, onUpdateSuccessCallback: { SdkGlassesUpdate in
+                print("onUpdateSuccessCallback")
+            }, onUpdateFailureCallback: { SdkGlassesUpdate in
+                print("onUpdateFailureCallback")
+            })
+    }()
+    
+    func connectGlasses(){
+        
     }
 }
 
