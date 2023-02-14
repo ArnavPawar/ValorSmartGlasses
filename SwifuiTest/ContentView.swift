@@ -151,7 +151,10 @@ struct ContentView: View {
                     }
                     .foregroundColor(.white)
                     .background(.black.opacity(0.5))
-    
+                    Button(action: sendDisplay) {
+                        Image(systemName: "display")
+                        .frame(width: 50, height:30)
+                    }
                     Spacer(minLength: -300)
                     HStack{
                         LocationButton(.currentLocation){
@@ -190,9 +193,11 @@ struct ContentView: View {
         }
     }
     func connectGlasses(){
-        Glasses.startScanning()
+        Glasses.runScan()
     }
-   
+    func sendDisplay(){
+        viewModel.generateImageFromMap()
+    }
 }
 
 
@@ -339,6 +344,9 @@ class MapScreen: UIViewController {
     private func stopScanning() {
         activeLook.stopScanning()
         scanTimer?.invalidate()
+    }
+    func runScan(){
+        activeLook.isScanning() ? stopScanning() : startScanning()
     }
     
     //Mark: - init
