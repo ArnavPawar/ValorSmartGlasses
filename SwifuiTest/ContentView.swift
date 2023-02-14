@@ -162,6 +162,8 @@ struct ContentView: View {
                         Image(systemName: "eyeglasses")
                         .frame(width: 50, height:30)
                     }
+                    .foregroundColor(.white)
+                    .background(.black.opacity(0.5))
     
                     Spacer(minLength: -300)
                     HStack{
