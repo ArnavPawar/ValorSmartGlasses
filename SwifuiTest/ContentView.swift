@@ -84,6 +84,8 @@ struct ContentView: View {
 
     @StateObject private var viewModel = ContentViewModel()
     
+    @SwiftUI.State var Glasses = MapScreen()
+    
     @SwiftUI.State var locations = [Location]()
     
     @SwiftUI.State private var selectedPlace: Location?
@@ -126,9 +128,6 @@ struct ContentView: View {
                     .fill(.blue)
                     .opacity(0.3)
                     .frame(width:15,height:15)
-                //ZStack{
-                //Color.gray
-                //.ignoresSafeArea(.all, edges: .all)
                 VStack{
                     Spacer()
                     Capsule()
@@ -145,19 +144,7 @@ struct ContentView: View {
                 
                 //}
                 Spacer()
-                VStack{//FIX THIS FROM NOT GOING TO DIFFERNET CLASS, INSTEAD GOING TO DIFFERENT FUNCTION 
-                    
-                    
-//                    NavigationLink(destination: //Text("Scanning...")
-//
-//                                   //Connections()
-//                                   connectGlasses()
-//                    ){
-//                        Image(systemName: "eyeglasses")
-//                            .frame(width: 50, height:30)
-//                    }
-//                    .foregroundColor(.white)
-//                    .background(.black.opacity(0.5))
+                VStack{
                     Button(action: connectGlasses) {
                         Image(systemName: "eyeglasses")
                         .frame(width: 50, height:30)
@@ -202,7 +189,9 @@ struct ContentView: View {
             }
         }
     }
-    
+    func connectGlasses(){
+        Glasses.startScanning()
+    }
    
 }
 
@@ -242,7 +231,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-    private func generateImageFromMap() {
+    public func generateImageFromMap() {
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
         mapSnapshotterOptions.region = self.region
         mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
@@ -307,7 +296,7 @@ class MapScreen: UIViewController {
     }()
     
     
-    private func startScanning() {
+    func startScanning() {
         activeLook.startScanning(
             onGlassesDiscovered: { [weak self] (discoveredGlasses: DiscoveredGlasses) in
                 if discoveredGlasses.name == self!.glassesName{
@@ -353,9 +342,5 @@ class MapScreen: UIViewController {
     }
     
     //Mark: - init
-
-    @IBAction func goButtonTapped(_ sender: UIButton) {
-        generateImageFromMap()
-    }
 }
 
