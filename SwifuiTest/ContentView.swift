@@ -239,6 +239,23 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         
         return CLLocation(latitude: latitude, longitude: longitude)
     }
+    
+    func startInterrupterLoop(isRunning: Bool) {
+        // Create a timer that will fire every 1 second
+        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+            if isRunning == true {
+                // Call the function
+                self.generateImageFromMap()
+            } else {
+                // Stop the timer if the interrupter loop is no longer running
+                timer.invalidate()
+            }
+        }
+
+        // Add the timer to the run loop
+        RunLoop.current.add(timer, forMode: .common)
+    }
+    
     public func generateImageFromMap() {
         print("Generating Image")
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
