@@ -203,6 +203,8 @@ struct ContentView: View {
         }
     }
     
+    //viewModel is the variable that provides the mkmap
+    
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
     var previousLocation: CLLocation?
@@ -236,7 +238,132 @@ struct ContentView: View {
                 print("onUpdateFailureCallback")
             })
     }()
+    private func startScanning() {
+        activeLook.startScanning(
+            onGlassesDiscovered: { [weak self] (discoveredGlasses: DiscoveredGlasses) in
+                if discoveredGlasses.name == self!.glassesName{
+                    discoveredGlasses.connect(
+                        onGlassesConnected: { [weak self] (glasses: Glasses) in
+                            guard let self = self else { return }
+                            self.connectionTimer?.invalidate()
+                            self.stopScanning()
+                            self.glassesConnected = glasses
+                            self.glassesConnected?.clear()
+                        }, onGlassesDisconnected: { [weak self] in
+                            guard let self = self else { return }
+                            
+                            let alert = UIAlertController(title: "Glasses disconnected", message: "Connection to glasses lost", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                                self.navigationController?.popToRootViewController(animated: true)
+                            }))
+                            
+                            self.navigationController?.present(alert, animated: true)
+                            
+                        }, onConnectionError: { [weak self] (error: Error) in
+                            guard let self = self else { return }
+                            self.connectionTimer?.invalidate()
+                            
+                            let alert = UIAlertController(title: "Error", message: "Connection to glasses failed: \(error.localizedDescription)", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            self.present(alert, animated: true)
+                        })
+                }
+            }, onScanError: { [weak self] (error: Error) in
+                self?.stopScanning()
+            }
+        )
+        
+        scanTimer = Timer.scheduledTimer(withTimeInterval: scanDuration, repeats: false) { timer in
+            self.stopScanning()
+        }
+    }
+    private func stopScanning() {
+        activeLook.stopScanning()
+        scanTimer?.invalidate()
+    }
     
+    //Mark: - init
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.startScanning()
+        goButton.layer.cornerRadius = goButton.frame.size.height/2
+        checkLocationServices()
+    }
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    
+    func centerViewOnUserLocation() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+            setupLocationManager()
+            checkLocationAuthorization()
+        } else {
+            // Show alert letting the user know they have to turn this on.
+        }
+    }
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            startTackingUserLocation()
+        case .denied:
+            // Show alert instructing them how to turn on permissions
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            // Show an alert letting them know what's up
+            break
+        case .authorizedAlways:
+            break
+        @unknown default:
+            break
+        }
+    }
+    
+    
+    func startTackingUserLocation() {
+        mapView.showsUserLocation = true
+        centerViewOnUserLocation()
+        locationManager.startUpdatingLocation()
+        previousLocation = getCenterLocation(for: mapView)
+    }
+    
+    
+    func getCenterLocation(for mapView: MKMapView) -> CLLocation {
+        let latitude = mapView.centerCoordinate.latitude
+        let longitude = mapView.centerCoordinate.longitude
+        
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
+    private func generateImageFromMap() {
+        let mapSnapshotterOptions = MKMapSnapshotter.Options()
+        mapSnapshotterOptions.region = self.mapView.region
+        mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
+        mapSnapshotterOptions.mapType = MKMapType.mutedStandard
+        mapSnapshotterOptions.showsBuildings = false
+        mapSnapshotterOptions.showsPointsOfInterest = false
+
+
+        let snapShotter = MKMapSnapshotter(options: mapSnapshotterOptions)
+        
+        
+        snapShotter.start() { snapshot, error in
+            if let image = snapshot?.image{
+                self.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+            }else{
+                print("Missing snapshot")
+            }
+        }
+    
+    }
     func connectGlasses(){
         
     }
