@@ -283,66 +283,66 @@ struct ContentView: View {
     }
     
     //Mark: - init
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.startScanning()
-        goButton.layer.cornerRadius = goButton.frame.size.height/2
-        checkLocationServices()
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        self.startScanning()
+//        goButton.layer.cornerRadius = goButton.frame.size.height/2
+//        checkLocationServices()
+//    }
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     
-    func centerViewOnUserLocation() {
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            mapView.setRegion(region, animated: true)
-        }
+//    func centerViewOnUserLocation() {
+//        if let location = locationManager.location?.coordinate {
+//            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+//            mapView.setRegion(region, animated: true)
+//        }
+//    }
+//    func checkLocationServices() {
+//        if CLLocationManager.locationServicesEnabled() {
+//            setupLocationManager()
+//            checkLocationAuthorization()
+//        } else {
+//            // Show alert letting the user know they have to turn this on.
+//        }
     }
-    func checkLocationServices() {
-        if CLLocationManager.locationServicesEnabled() {
-            setupLocationManager()
-            checkLocationAuthorization()
-        } else {
-            // Show alert letting the user know they have to turn this on.
-        }
-    }
-    func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse:
-            startTackingUserLocation()
-        case .denied:
-            // Show alert instructing them how to turn on permissions
-            break
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            // Show an alert letting them know what's up
-            break
-        case .authorizedAlways:
-            break
-        @unknown default:
-            break
-        }
-    }
+//    func checkLocationAuthorization() {
+//        switch CLLocationManager.authorizationStatus() {
+//        case .authorizedWhenInUse:
+//            //startTackingUserLocation()
+//        case .denied:
+//            // Show alert instructing them how to turn on permissions
+//            break
+//        case .notDetermined:
+//            locationManager.requestWhenInUseAuthorization()
+//        case .restricted:
+//            // Show an alert letting them know what's up
+//            break
+//        case .authorizedAlways:
+//            break
+//        @unknown default:
+//            break
+//        }
+//    }
     
     
-    func startTackingUserLocation() {
-        mapView.showsUserLocation = true
-        centerViewOnUserLocation()
-        locationManager.startUpdatingLocation()
-        previousLocation = getCenterLocation(for: mapView)
-    }
+//    func startTackingUserLocation() {
+//        mapView.showsUserLocation = true
+//        centerViewOnUserLocation()
+//        locationManager.startUpdatingLocation()
+//        previousLocation = getCenterLocation(for: mapView)
+//    }
     
     
-    func getCenterLocation(for mapView: MKMapView) -> CLLocation {
-        let latitude = mapView.centerCoordinate.latitude
-        let longitude = mapView.centerCoordinate.longitude
-        
-        return CLLocation(latitude: latitude, longitude: longitude)
-    }
+//    func getCenterLocation(for mapView: MKMapView) -> CLLocation {
+//        let latitude = mapView.centerCoordinate.latitude
+//        let longitude = mapView.centerCoordinate.longitude
+//
+//        return CLLocation(latitude: latitude, longitude: longitude)
+//    }
     private func generateImageFromMap() {
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
         mapSnapshotterOptions.region = self.mapView.region
