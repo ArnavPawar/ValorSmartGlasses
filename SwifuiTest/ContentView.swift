@@ -146,17 +146,22 @@ struct ContentView: View {
                 //}
                 Spacer()
                 VStack{//FIX THIS FROM NOT GOING TO DIFFERNET CLASS, INSTEAD GOING TO DIFFERENT FUNCTION 
-                    NavigationLink(destination: //Text("Scanning...")
-                                   
-                                   //Connections()
-                                   connectGlasses()
-                    ){
-                        Image(systemName: "eyeglasses")
-                            .frame(width: 50, height:30)
-                    }
-                    .foregroundColor(.white)
-                    .background(.black.opacity(0.5))
                     
+                    
+//                    NavigationLink(destination: //Text("Scanning...")
+//
+//                                   //Connections()
+//                                   connectGlasses()
+//                    ){
+//                        Image(systemName: "eyeglasses")
+//                            .frame(width: 50, height:30)
+//                    }
+//                    .foregroundColor(.white)
+//                    .background(.black.opacity(0.5))
+                    Button(action: connectGlasses) {
+                        Image(systemName: "eyeglasses")
+                        .frame(width: 50, height:30)
+                    }
     
                     Spacer(minLength: -300)
                     HStack{
