@@ -203,6 +203,9 @@ struct ContentView: View {
 
 final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     
+    
+    @SwiftUI.State var Glasses = MapScreen()
+    
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
     
     var locationManager = CLLocationManager()
@@ -237,6 +240,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     public func generateImageFromMap() {
+        print("Generating Image")
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
         mapSnapshotterOptions.region = self.region
         mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
@@ -244,18 +248,15 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         mapSnapshotterOptions.showsBuildings = false
         mapSnapshotterOptions.showsPointsOfInterest = false
 
-
         let snapShotter = MKMapSnapshotter(options: mapSnapshotterOptions)
-        
         
         snapShotter.start() { snapshot, error in
             if let image = snapshot?.image{
-                self.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+                self.Glasses.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
             }else{
                 print("Missing snapshot")
             }
         }
-    
     }
 }
 
@@ -271,7 +272,7 @@ class MapScreen: UIViewController {
     
     // MARK: - Activelook init
     private let glassesName: String = "ENGO 2 090756"
-    private var glassesConnected: Glasses?
+    public var glassesConnected: Glasses?
     private let scanDuration: TimeInterval = 10.0
     private let connectionTimeoutDuration: TimeInterval = 5.0
     
@@ -349,6 +350,5 @@ class MapScreen: UIViewController {
         activeLook.isScanning() ? stopScanning() : startScanning()
     }
     
-    //Mark: - init
 }
 
