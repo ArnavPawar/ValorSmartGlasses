@@ -12,73 +12,6 @@ import CoreLocationUI
 import MapKit
 import ActiveLookSDK
 
-
-struct Marker : Hashable{
-    let degrees: Double
-    let label: String
-    
-    init(degrees: Double, label: String="") {
-        self.degrees = degrees
-        self.label = label
-    }
-    
-    func degreeText() -> String{
-        return String(format: "%.0f", self.degrees)
-    }
-    
-    static func markers()-> [Marker]{
-        return [
-            Marker(degrees: 0, label: "S"),
-            Marker(degrees: 30),
-            Marker(degrees: 60),
-            Marker(degrees: 90, label: "W"),
-            Marker(degrees: 120),
-            Marker(degrees: 150),
-            Marker(degrees: 180, label: "N"),
-            Marker(degrees: 210),
-            Marker(degrees: 240),
-            Marker(degrees: 270, label: "E"),
-            Marker(degrees: 300),
-            Marker(degrees: 330)
-        ]
-    }
-}
-
-struct CompassMarkerView : View{
-    let marker: Marker
-    let compassDegrees: Double
-    
-    var body: some View{
-        VStack{
-            Text(marker.degreeText())
-                .fontWeight(.light)
-                .rotationEffect(self.textAngle())
-            Capsule()
-                .frame(width:1,height:10)
-                //.frame(width: self.capsuleWidth(),height: self.capsuleHeight())
-                .padding(.bottom,50)
-            Text(marker.label)
-                .fontWeight(.bold)
-                .rotationEffect(self.textAngle())
-                .padding(.bottom,50)
-        }
-        .fixedSize()
-        .rotationEffect(Angle(degrees: marker.degrees))
-    }
-    private func capsuleWidth() -> CGFloat{
-        return self.marker.degrees == 0 ? 7 : 3
-    }
-    private func capsuleHeight() -> CGFloat {
-        return self.marker.degrees == 0 ? 45 : 30
-    }
-    private func capsuleColor() -> Color{
-        return self.marker.degrees == 0 ? .red : .gray
-    }
-    private func textAngle() -> Angle{
-        return Angle(degrees: -self.compassDegrees - self.marker.degrees)
-    }
-}
-
 struct ContentView: View {
     @ObservedObject var compassHeading = CompassHeading()
 
@@ -344,11 +277,13 @@ class MapScreen: UIViewController {
         glassesPair?.line(x0: 102, x1: 202, y0: 128, y1: 128)
     }
 }
+
 extension MapScreen: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
     }
 }
+
 extension MapScreen: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
@@ -396,21 +331,69 @@ extension MapScreen: MKMapViewDelegate {
     }
 }
 
-public func generateImageFromMap() {
-    let mapSnapshotterOptions = MKMapSnapshotter.Options()
-    mapSnapshotterOptions.region = self.region
-    mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
-    mapSnapshotterOptions.mapType = MKMapType.mutedStandard
-    mapSnapshotterOptions.showsBuildings = false
-    mapSnapshotterOptions.showsPointsOfInterest = false
 
-    let snapShotter = MKMapSnapshotter(options: mapSnapshotterOptions)
+struct Marker : Hashable{
+    let degrees: Double
+    let label: String
     
-    snapShotter.start() { snapshot, error in
-        if let image = snapshot?.image{
-            self.Glasses.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
-        }else{
-            print("Missing snapshot")
+    init(degrees: Double, label: String="") {
+        self.degrees = degrees
+        self.label = label
+    }
+    
+    func degreeText() -> String{
+        return String(format: "%.0f", self.degrees)
+    }
+    
+    static func markers()-> [Marker]{
+        return [
+            Marker(degrees: 0, label: "S"),
+            Marker(degrees: 30),
+            Marker(degrees: 60),
+            Marker(degrees: 90, label: "W"),
+            Marker(degrees: 120),
+            Marker(degrees: 150),
+            Marker(degrees: 180, label: "N"),
+            Marker(degrees: 210),
+            Marker(degrees: 240),
+            Marker(degrees: 270, label: "E"),
+            Marker(degrees: 300),
+            Marker(degrees: 330)
+        ]
+    }
+}
+
+struct CompassMarkerView : View{
+    let marker: Marker
+    let compassDegrees: Double
+    
+    var body: some View{
+        VStack{
+            Text(marker.degreeText())
+                .fontWeight(.light)
+                .rotationEffect(self.textAngle())
+            Capsule()
+                .frame(width:1,height:10)
+                //.frame(width: self.capsuleWidth(),height: self.capsuleHeight())
+                .padding(.bottom,50)
+            Text(marker.label)
+                .fontWeight(.bold)
+                .rotationEffect(self.textAngle())
+                .padding(.bottom,50)
         }
+        .fixedSize()
+        .rotationEffect(Angle(degrees: marker.degrees))
+    }
+    private func capsuleWidth() -> CGFloat{
+        return self.marker.degrees == 0 ? 7 : 3
+    }
+    private func capsuleHeight() -> CGFloat {
+        return self.marker.degrees == 0 ? 45 : 30
+    }
+    private func capsuleColor() -> Color{
+        return self.marker.degrees == 0 ? .red : .gray
+    }
+    private func textAngle() -> Angle{
+        return Angle(degrees: -self.compassDegrees - self.marker.degrees)
     }
 }
