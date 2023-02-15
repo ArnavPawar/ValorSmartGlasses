@@ -243,44 +243,10 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     func getCenterLocation(for mapview: MKMapView) -> CLLocation {
         let latitude = region.center.latitude
         let longitude = region.center.longitude
-        
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     
-    func startInterrupterLoop(isRunning: Bool) {
-        // Create a timer that will fire every 1 second
-        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            if isRunning == true {
-                // Call the function
-                self.generateImageFromMap()
-            } else {
-                // Stop the timer if the interrupter loop is no longer running
-                timer.invalidate()
-            }
-        }
-
-        // Add the timer to the run loop
-        RunLoop.current.add(timer, forMode: .common)
-    }
     
-    public func generateImageFromMap() {
-        let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.region = self.region
-        mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
-        mapSnapshotterOptions.mapType = MKMapType.mutedStandard
-        mapSnapshotterOptions.showsBuildings = false
-        mapSnapshotterOptions.showsPointsOfInterest = false
-
-        let snapShotter = MKMapSnapshotter(options: mapSnapshotterOptions)
-        
-        snapShotter.start() { snapshot, error in
-            if let image = snapshot?.image{
-                self.Glasses.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
-            }else{
-                print("Missing snapshot")
-            }
-        }
-    }
 }
 
 
@@ -378,4 +344,73 @@ class MapScreen: UIViewController {
         glassesPair?.line(x0: 102, x1: 202, y0: 128, y1: 128)
     }
 }
+extension MapScreen: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorization()
+    }
+}
+extension MapScreen: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+        renderer.strokeColor = .blue
+        return renderer
+    }
+    
+    // Start the interrupter loop
+    func startInterrupterLoop(isRunning: Bool) {
+        // Create a timer that will fire every 5 second
+        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+            if isRunning == true {
+                // Call the function
+                self.generateImageFromMap()
+            } else {
+                // Stop the timer if the interrupter loop is no longer running
+                timer.invalidate()
+            }
+        }
 
+        // Add the timer to the run loop
+        RunLoop.current.add(timer, forMode: .common)
+    }
+    
+    private func generateImageFromMap() {
+        let mapSnapshotterOptions = MKMapSnapshotter.Options()
+        mapSnapshotterOptions.region = self.mapView.region
+        mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
+        mapSnapshotterOptions.mapType = MKMapType.mutedStandard
+        mapSnapshotterOptions.showsBuildings = false
+        mapSnapshotterOptions.showsPointsOfInterest = false
+
+
+        let snapShotter = MKMapSnapshotter(options: mapSnapshotterOptions)
+        
+        
+        snapShotter.start() { snapshot, error in
+            if let image = snapshot?.image{
+                self.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+            }else{
+                print("Missing snapshot")
+            }
+        }
+    
+    }
+}
+
+public func generateImageFromMap() {
+    let mapSnapshotterOptions = MKMapSnapshotter.Options()
+    mapSnapshotterOptions.region = self.region
+    mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
+    mapSnapshotterOptions.mapType = MKMapType.mutedStandard
+    mapSnapshotterOptions.showsBuildings = false
+    mapSnapshotterOptions.showsPointsOfInterest = false
+
+    let snapShotter = MKMapSnapshotter(options: mapSnapshotterOptions)
+    
+    snapShotter.start() { snapshot, error in
+        if let image = snapshot?.image{
+            self.Glasses.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+        }else{
+            print("Missing snapshot")
+        }
+    }
+}
