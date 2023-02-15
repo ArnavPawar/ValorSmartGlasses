@@ -131,7 +131,7 @@ struct ContentView: View {
         Glasses.runScan()
     }
     func sendDisplay(){
-        Glasses.generateImageFrom()
+        Glasses.generateImageFromMap()
     }
     func stopTry(){
         Glasses.stopScanning()
@@ -140,7 +140,6 @@ struct ContentView: View {
 
 
 final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
-    
     
     @SwiftUI.State var Glasses = MapScreen()
     
@@ -176,17 +175,16 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         let longitude = region.center.longitude
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-    
-    
 }
 
 
 class MapScreen: UIViewController {
     
+    @StateObject private var viewModel = ContentViewModel()
+    
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
     var previousLocation: CLLocation?
-    
     
     // MARK: - Activelook init
     private let glassesName: String = "ENGO 2 090756"
@@ -276,11 +274,6 @@ class MapScreen: UIViewController {
     }
 }
 
-extension MapScreen: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkLocationAuthorization()
-    }
-}
 
 extension MapScreen: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -306,9 +299,9 @@ extension MapScreen: MKMapViewDelegate {
         RunLoop.current.add(timer, forMode: .common)
     }
     
-    private func generateImageFromMap() {
+    func generateImageFromMap() {
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.region = self.mapView.region
+        mapSnapshotterOptions.region = self.viewModel.region
         mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
         mapSnapshotterOptions.mapType = MKMapType.mutedStandard
         mapSnapshotterOptions.showsBuildings = false
