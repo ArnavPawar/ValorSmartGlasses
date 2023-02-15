@@ -265,6 +265,9 @@ class MapScreen: UIViewController {
         activeLook.stopScanning()
         scanTimer?.invalidate()
     }
+    func disconect(){
+        //activeLook.s
+    }
     func runScan(){
         activeLook.isScanning() ? stopScanning() : startScanning()
     }
