@@ -155,6 +155,10 @@ struct ContentView: View {
                         Image(systemName: "display")
                         .frame(width: 50, height:30)
                     }
+                    Button(action: stopTry) {
+                        Image(systemName: "stop")
+                        .frame(width: 50, height:30)
+                    }
                     Spacer(minLength: -300)
                     HStack{
                         LocationButton(.currentLocation){
@@ -196,7 +200,10 @@ struct ContentView: View {
         Glasses.runScan()
     }
     func sendDisplay(){
-        viewModel.generateImageFromMap()
+        Glasses.generateImageFrom()
+    }
+    func stopTry(){
+        Glasses.stopScanning()
     }
 }
 
@@ -257,7 +264,6 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     }
     
     public func generateImageFromMap() {
-        print("Generating Image")
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
         mapSnapshotterOptions.region = self.region
         mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
@@ -284,8 +290,6 @@ class MapScreen: UIViewController {
     let regionInMeters: Double = 10000
     var previousLocation: CLLocation?
     
-    let geoCoder = CLGeocoder()
-    var directionsArray: [MKDirections] = []
     
     // MARK: - Activelook init
     private let glassesName: String = "ENGO 2 090756"
@@ -301,6 +305,8 @@ class MapScreen: UIViewController {
         guard let activelookSDKToken: String = infoDictionary["ACTIVELOOK_SDK_TOKEN"] as? String else { return "" }
         return activelookSDKToken
     }()
+    
+    var glassesPair: Glasses!
     
     private lazy var activeLook: ActiveLookSDK = {
         try! ActiveLookSDK.shared(
@@ -329,6 +335,7 @@ class MapScreen: UIViewController {
                             self.connectionTimer?.invalidate()
                             self.stopScanning()
                             self.glassesConnected = glasses
+                            self.glassesPair = glasses
                             self.glassesConnected?.clear()
                         }, onGlassesDisconnected: { [weak self] in
                             guard let self = self else { return }
@@ -359,13 +366,16 @@ class MapScreen: UIViewController {
         }
     }
     
-    private func stopScanning() {
+    func stopScanning() {
         activeLook.stopScanning()
         scanTimer?.invalidate()
     }
     func runScan(){
         activeLook.isScanning() ? stopScanning() : startScanning()
     }
-    
+    public func generateImageFrom(){
+        glassesPair?.clear()
+        glassesPair?.line(x0: 102, x1: 202, y0: 128, y1: 128)
+    }
 }
 
