@@ -130,7 +130,6 @@ struct ContentView: View {
 
 final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     
-    @SwiftUI.State var Glasses = MapScreen()
     
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
     
@@ -261,7 +260,6 @@ class MapScreen: UIViewController {
         super.viewDidLoad()
         self.startScanning()
         //goButton.layer.cornerRadius = goButton.frame.size.height/2
-        checkLocationServices()
     }
     
     
@@ -270,54 +268,8 @@ class MapScreen: UIViewController {
 }
 
 
-extension MapScreen: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkLocationAuthorization()
-    }
-}
-
-
 extension MapScreen: MKMapViewDelegate {
     
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        let center = getCenterLocation(for: mapView)
-        
-        guard let previousLocation = self.previousLocation else { return }
-        
-        guard center.distance(from: previousLocation) > 50 else { return }
-        self.previousLocation = center
-        
-        geoCoder.cancelGeocode()
-        
-        geoCoder.reverseGeocodeLocation(center) { [weak self] (placemarks, error) in
-            guard let self = self else { return }
-            
-            if let _ = error {
-                //TODO: Show alert informing the user
-                return
-            }
-            
-            guard let placemark = placemarks?.first else {
-                //TODO: Show alert informing the user
-                return
-            }
-            
-            let streetNumber = placemark.subThoroughfare ?? ""
-            let streetName = placemark.thoroughfare ?? ""
-            
-            DispatchQueue.main.async {
-                self.addressLabel.text = "\(streetNumber) \(streetName)"
-            }
-        }
-    }
-    
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
-        renderer.strokeColor = .blue
-        return renderer
-    }
     
     // Start the interrupter loop
     /*func startInterrupterLoop(isRunning: Bool) {
@@ -338,7 +290,7 @@ extension MapScreen: MKMapViewDelegate {
     
     private func generateImageFromMap() {
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.region = self.mapView.region
+        mapSnapshotterOptions.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
         mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
         mapSnapshotterOptions.mapType = MKMapType.mutedStandard
         mapSnapshotterOptions.showsBuildings = false
