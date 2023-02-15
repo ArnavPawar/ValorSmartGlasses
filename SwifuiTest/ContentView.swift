@@ -14,13 +14,11 @@ import ActiveLookSDK
 
 struct ContentView: View {
     @ObservedObject var compassHeading = CompassHeading()
-
     @StateObject private var viewModel = ContentViewModel()
-    
+
     @SwiftUI.State var Glasses = MapScreen()
-    
     @SwiftUI.State var locations = [Location]()
-    
+
     @SwiftUI.State private var selectedPlace: Location?
     //let geoFence = SwiftUIPolygonGeofence
     //var activeLook: ActiveLookSDK
@@ -330,6 +328,9 @@ extension MapScreen: MKMapViewDelegate {
     
     }
 }
+
+
+
 
 
 struct Marker : Hashable{
