@@ -15,9 +15,7 @@ struct ContentView: View {
     @SwiftUI.State private var selectedPlace: Location?
     //let geoFence = SwiftUIPolygonGeofence
     //var activeLook: ActiveLookSDK
-    
-    //MapMarker(coordinate: CLLocationCoordinate2D(latitude:location.latitude,longitude: location.longitude))
-    
+        
     var body: some View {
         NavigationView{
             ZStack{
@@ -292,11 +290,12 @@ extension MapScreen: MKMapViewDelegate {
     
     func generateImageFromMap() {
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
-        mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
-        mapSnapshotterOptions.mapType = MKMapType.mutedStandard
+        //mapSnapshotterOptions.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        mapSnapshotterOptions.size = CGSize(width: 304, height: 256)
+        mapSnapshotterOptions.mapType = MKMapType.standard
         mapSnapshotterOptions.showsBuildings = false
-        mapSnapshotterOptions.showsPointsOfInterest = false
+        //mapSnapshotterOptions.showP = false
 
 
         let snapShotter = MKMapSnapshotter(options: mapSnapshotterOptions)
