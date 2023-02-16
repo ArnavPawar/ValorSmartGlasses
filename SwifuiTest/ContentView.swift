@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  SwifuiTest
-//
-//  Created by maahika gupta on 12/28/22.
-//
-
 import SwiftUI
 import SwiftUIPolygonGeofence
 import CoreLocation
@@ -14,7 +7,7 @@ import ActiveLookSDK
 
 struct ContentView: View {
     @ObservedObject var compassHeading = CompassHeading()
-    @StateObject private var viewModel = ContentViewModel()
+    @StateObject public var viewModel = ContentViewModel()
 
     @SwiftUI.State var Glasses = MapScreen()
     @SwiftUI.State var locations = [Location]()
@@ -22,9 +15,7 @@ struct ContentView: View {
     @SwiftUI.State private var selectedPlace: Location?
     //let geoFence = SwiftUIPolygonGeofence
     //var activeLook: ActiveLookSDK
-    
-    //MapMarker(coordinate: CLLocationCoordinate2D(latitude:location.latitude,longitude: location.longitude))
-    
+        
     var body: some View {
         NavigationView{
             ZStack{
@@ -86,10 +77,6 @@ struct ContentView: View {
                         Image(systemName: "display")
                         .frame(width: 50, height:30)
                     }
-                    Button(action: stopTry) {
-                        Image(systemName: "stop")
-                        .frame(width: 50, height:30)
-                    }
                     Spacer(minLength: -300)
                     HStack{
                         LocationButton(.currentLocation){
@@ -128,24 +115,23 @@ struct ContentView: View {
         }
     }
     func connectGlasses(){
-        Glasses.runScan()
+        Glasses.startScanning()
     }
     func sendDisplay(){
         Glasses.generateImageFromMap()
-    }
+    }/*
     func stopTry(){
         Glasses.stopScanning()
-    }
+    }*/
 }
 
 
 final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     
-    @SwiftUI.State var Glasses = MapScreen()
+    var locationManager = CLLocationManager()
     
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
     
-    var locationManager = CLLocationManager()
     
     func ApplyState()->Location{
         let newRegion = Location(id: UUID(), name: "New Location", discription: "", latitude:region.center.latitude, longitude: region.center.longitude)
@@ -180,15 +166,19 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
 
 class MapScreen: UIViewController {
     
-    @StateObject private var viewModel = ContentViewModel()
+    var viewModel = CLLocationManager()
+
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
     var previousLocation: CLLocation?
     
+    let geoCoder = CLGeocoder()
+    var directionsArray: [MKDirections] = []
+    
     // MARK: - Activelook init
     private let glassesName: String = "ENGO 2 090756"
-    public var glassesConnected: Glasses?
+    private var glassesConnected: Glasses?
     private let scanDuration: TimeInterval = 10.0
     private let connectionTimeoutDuration: TimeInterval = 5.0
     
@@ -200,8 +190,6 @@ class MapScreen: UIViewController {
         guard let activelookSDKToken: String = infoDictionary["ACTIVELOOK_SDK_TOKEN"] as? String else { return "" }
         return activelookSDKToken
     }()
-    
-    var glassesPair: Glasses!
     
     private lazy var activeLook: ActiveLookSDK = {
         try! ActiveLookSDK.shared(
@@ -230,8 +218,9 @@ class MapScreen: UIViewController {
                             self.connectionTimer?.invalidate()
                             self.stopScanning()
                             self.glassesConnected = glasses
-                            self.glassesPair = glasses
                             self.glassesConnected?.clear()
+                            //try to display to glasses from here?
+                            //glasses.line(x0: 102, x1: 202, y0: 128, y1: 128)
                         }, onGlassesDisconnected: { [weak self] in
                             guard let self = self else { return }
                             
@@ -261,30 +250,30 @@ class MapScreen: UIViewController {
         }
     }
     
-    func stopScanning() {
+    private func stopScanning() {
         activeLook.stopScanning()
         scanTimer?.invalidate()
     }
-    func runScan(){
-        activeLook.isScanning() ? stopScanning() : startScanning()
+    
+    //Mark: - init
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.startScanning()
+        //goButton.layer.cornerRadius = goButton.frame.size.height/2
     }
-    public func generateImageFrom(){
-        glassesPair?.clear()
-        glassesPair?.line(x0: 102, x1: 202, y0: 128, y1: 128)
-    }
+    
+    
+  
+    
 }
 
 
 extension MapScreen: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
-        renderer.strokeColor = .blue
-        return renderer
-    }
+    
     
     // Start the interrupter loop
-    func startInterrupterLoop(isRunning: Bool) {
-        // Create a timer that will fire every 5 second
+    /*func startInterrupterLoop(isRunning: Bool) {
+        // Create a timer that will fire every 1 second
         let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
             if isRunning == true {
                 // Call the function
@@ -297,15 +286,16 @@ extension MapScreen: MKMapViewDelegate {
 
         // Add the timer to the run loop
         RunLoop.current.add(timer, forMode: .common)
-    }
+    }*/
     
     func generateImageFromMap() {
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.region = self.viewModel.region
-        mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
-        mapSnapshotterOptions.mapType = MKMapType.mutedStandard
+        //mapSnapshotterOptions.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        mapSnapshotterOptions.size = CGSize(width: 304, height: 256)
+        mapSnapshotterOptions.mapType = MKMapType.standard
         mapSnapshotterOptions.showsBuildings = false
-        mapSnapshotterOptions.showsPointsOfInterest = false
+        //mapSnapshotterOptions.showP = false
 
 
         let snapShotter = MKMapSnapshotter(options: mapSnapshotterOptions)
@@ -321,7 +311,6 @@ extension MapScreen: MKMapViewDelegate {
     
     }
 }
-
 
 
 
