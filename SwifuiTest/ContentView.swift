@@ -120,7 +120,7 @@ struct ContentView: View {
         Glasses.startScanning()
     }
     func sendDisplay(){
-        //Glasses.generateImageFromMap()
+        Glasses.generateImageFromMap()
     }/*
     func stopTry(){
         Glasses.stopScanning()
@@ -130,10 +130,10 @@ struct ContentView: View {
 
 final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     
+    var locationManager = CLLocationManager()
     
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
     
-    var locationManager = CLLocationManager()
     
     func ApplyState()->Location{
         let newRegion = Location(id: UUID(), name: "New Location", discription: "", latitude:region.center.latitude, longitude: region.center.longitude)
@@ -221,6 +221,8 @@ class MapScreen: UIViewController {
                             self.stopScanning()
                             self.glassesConnected = glasses
                             self.glassesConnected?.clear()
+                            //try to display to glasses from here?
+                            //glasses.line(x0: 102, x1: 202, y0: 128, y1: 128)
                         }, onGlassesDisconnected: { [weak self] in
                             guard let self = self else { return }
                             
@@ -288,7 +290,7 @@ extension MapScreen: MKMapViewDelegate {
         RunLoop.current.add(timer, forMode: .common)
     }*/
     
-    private func generateImageFromMap() {
+    func generateImageFromMap() {
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
         mapSnapshotterOptions.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
         mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
