@@ -166,6 +166,8 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
 
 class MapScreen: UIViewController {
     
+    @SwiftUI.State var capture: UIImage?
+    
     var viewModel = CLLocationManager()
 
     
@@ -262,15 +264,18 @@ class MapScreen: UIViewController {
         //goButton.layer.cornerRadius = goButton.frame.size.height/2
     }
     
-    
+    func sendCompass(){
+        let marker: Marker
+        let compassDegrees: Double
+        capture = ImageRenderer(content: CompassMarkerView(marker: Marker, compassDegrees: Double)).uiImage
+        self.glassesConnected?.imgStream(image: capture ?? default value, image: UIImage, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+    }
   
     
 }
 
 
 extension MapScreen: MKMapViewDelegate {
-    
-    
     // Start the interrupter loop
     /*func startInterrupterLoop(isRunning: Bool) {
         // Create a timer that will fire every 1 second
