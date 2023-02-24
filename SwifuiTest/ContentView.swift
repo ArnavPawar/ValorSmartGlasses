@@ -136,7 +136,8 @@ struct ContentView: View {
         Glasses.startScanning()
     }
     func sendDisplay(){
-        Glasses.generateImageFromMap()
+        //Glasses.generateImageFromMap()
+        Glasses.sendCompass()
     }/*
     func stopTry(){
         Glasses.stopScanning()
@@ -288,6 +289,7 @@ class MapScreen: UIViewController {
 //        capture = ImageRenderer(content: CompassMarkerView(marker: Marker, compassDegrees: Double)).uiImage
 //        self.glassesConnected?.imgStream(image: capture ?? default value, image: UIImage, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
         capture = ImageRenderer(content:TestView() ).uiImage
+        //capture = ImageRenderer(content:ContentView() ).uiImage
         self.glassesConnected?.imgStream(image: capture!, x:0, y:0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
     }
   
