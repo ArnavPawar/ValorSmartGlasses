@@ -5,6 +5,24 @@ import CoreLocationUI
 import MapKit
 import ActiveLookSDK
 
+struct TestView: View{
+    var textView: some View {
+            Text("Hello, SwiftUI")
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .clipShape(Capsule())
+        }
+    var body: some View {
+            ZStack {
+                VStack(spacing: 100) {
+                    textView
+                }
+            }
+        }
+}
+
+
 struct ContentView: View {
     @ObservedObject var compassHeading = CompassHeading()
     @StateObject public var viewModel = ContentViewModel()
@@ -265,10 +283,12 @@ class MapScreen: UIViewController {
     }
     
     func sendCompass(){
-        let marker: Marker
-        let compassDegrees: Double
-        capture = ImageRenderer(content: CompassMarkerView(marker: Marker, compassDegrees: Double)).uiImage
-        self.glassesConnected?.imgStream(image: capture ?? default value, image: UIImage, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+//        let marker: Marker
+//        let compassDegrees: Double
+//        capture = ImageRenderer(content: CompassMarkerView(marker: Marker, compassDegrees: Double)).uiImage
+//        self.glassesConnected?.imgStream(image: capture ?? default value, image: UIImage, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+        capture = ImageRenderer(content:TestView() ).uiImage
+        self.glassesConnected?.imgStream(image: capture!, x:0, y:0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
     }
   
     
