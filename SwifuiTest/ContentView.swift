@@ -21,6 +21,18 @@ struct TestView: View{
             }
         }
 }
+struct TestingView: View{
+    @StateObject public var viewModel = ContentViewModel()
+    var locationManager = CLLocationManager()
+
+
+    var body: some View{
+        ZStack{
+            Map(coordinateRegion:.constant(MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))))
+                .frame(width:200,height:200)
+        }
+    }
+}
 
 
 struct ContentView: View {
@@ -288,9 +300,16 @@ class MapScreen: UIViewController {
 //        let compassDegrees: Double
 //        capture = ImageRenderer(content: CompassMarkerView(marker: Marker, compassDegrees: Double)).uiImage
 //        self.glassesConnected?.imgStream(image: capture ?? default value, image: UIImage, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
-        capture = ImageRenderer(content:TestView() ).uiImage
-        //capture = ImageRenderer(content:ContentView() ).uiImage
-        self.glassesConnected?.imgStream(image: capture!, x:0, y:0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+        let imageRenderer = ImageRenderer(content: TestingView())
+        if let capture = imageRenderer.uiImage{
+            //capture = ImageRenderer(content:TestView() ).uiImage
+            //capture = ImageRenderer(content:ContentView() ).uiImage
+            print("sending image")
+            self.glassesConnected?.imgStream(image: capture, x:0, y:0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+        }
+        else {
+            print("error with snapshot")
+        }
     }
   
     
