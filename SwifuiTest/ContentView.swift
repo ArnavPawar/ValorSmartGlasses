@@ -302,7 +302,7 @@ class MapScreen: UIViewController {
 //        let compassDegrees: Double
 //        capture = ImageRenderer(content: CompassMarkerView(marker: Marker, compassDegrees: Double)).uiImage
 //        self.glassesConnected?.imgStream(image: capture ?? default value, image: UIImage, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
-        let imageRenderer = ImageRenderer(content: CompassView())
+        let imageRenderer = ImageRenderer(content: TestView())
         if let capture = imageRenderer.uiImage{
             print("sending image")
             self.glassesConnected?.imgStream(image: capture, x:0, y:0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
@@ -374,8 +374,8 @@ extension MapScreen: MKMapViewDelegate {
     
     func generateImageFromMap() {
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        //mapSnapshotterOptions.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
-        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        mapSnapshotterOptions.showsUserLocation = true
+        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
         mapSnapshotterOptions.size = CGSize(width: 304, height: 256)
         mapSnapshotterOptions.mapType = MKMapType.standard
         mapSnapshotterOptions.showsBuildings = false
