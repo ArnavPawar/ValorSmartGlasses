@@ -21,15 +21,19 @@ struct TestView: View{
             }
         }
 }
+
 struct TestingView: View{    var locationManager = CLLocationManager()
 
 
     var body: some View{
         ZStack{
-            Map(coordinateRegion:.constant(MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))))
-                .frame(width:200,height:200)
+            ForEach(Marker.markers(), id:\.self) {marker in
+                CompassMarkerView(marker: marker, compassDegrees: self.compassHeading.degrees)
+            }
         }
-    }
+        .frame(width: 150, height: 150)
+        .rotationEffect(Angle(degrees: self.compassHeading.degrees))
+        .statusBar(hidden:true)    }
 }
 
 
@@ -300,7 +304,7 @@ class MapScreen: UIViewController {
 //        let compassDegrees: Double
 //        capture = ImageRenderer(content: CompassMarkerView(marker: Marker, compassDegrees: Double)).uiImage
 //        self.glassesConnected?.imgStream(image: capture ?? default value, image: UIImage, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
-        let imageRenderer = ImageRenderer(content: TestingView())
+        let imageRenderer = ImageRenderer(content: CompassView())
         if let capture = imageRenderer.uiImage{
             print("sending image")
             self.glassesConnected?.imgStream(image: capture, x:0, y:0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
@@ -331,43 +335,43 @@ extension MapScreen: MKMapViewDelegate {
         // Add the timer to the run loop
         RunLoop.current.add(timer, forMode: .common)
     }*/
-    func genearateImageFromMapWithUser(){
-        // Add the user's location annotation to the map
-        let userAnnotation = MKPointAnnotation()
-        userAnnotation.coordinate = map.userLocation.coordinate
-        mapView.addAnnotation(userAnnotation)
-
-        // Add any custom annotations to the map
-        let customAnnotation = MKPointAnnotation()
-        customAnnotation.coordinate = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194) // example coordinates
-        mapView.addAnnotation(customAnnotation)
-
-        // Create a new MKMapSnapshotOptions object
-        let options = MKMapSnapshotter.Options()
-
-        // Set the region to include the user's location and any custom annotations
-        var annotationRect = mapView.annotationVisibleRect
-        annotationRect.size.width = max(annotationRect.size.width, 400)
-        annotationRect.size.height = max(annotationRect.size.height, 400)
-        options.region = mapView.regionThatFits(annotationRect)
-
-        // Set other snapshot options
-        options.scale = UIScreen.main.scale
-        options.size = mapView.frame.size
-
-        // Create a new MKMapSnapshotter object
-        let snapshotter = MKMapSnapshotter(options: options)
-
-        // Start the snapshotting process
-        snapshotter.start { snapshot, error in
-            if let snapshot = snapshot {
-                let image = snapshot.image
-                // Do something with the image
-            } else if let error = error {
-                print("Error generating snapshot: \(error.localizedDescription)")
-            }
-        }
-    }
+//    func genearateImageFromMapWithUser(){
+//        // Add the user's location annotation to the map
+//        let userAnnotation = MKPointAnnotation()
+//        userAnnotation.coordinate = map.userLocation.coordinate
+//        mapView.addAnnotation(userAnnotation)
+//
+//        // Add any custom annotations to the map
+//        let customAnnotation = MKPointAnnotation()
+//        customAnnotation.coordinate = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194) // example coordinates
+//        mapView.addAnnotation(customAnnotation)
+//
+//        // Create a new MKMapSnapshotOptions object
+//        let options = MKMapSnapshotter.Options()
+//
+//        // Set the region to include the user's location and any custom annotations
+//        var annotationRect = mapView.annotationVisibleRect
+//        annotationRect.size.width = max(annotationRect.size.width, 400)
+//        annotationRect.size.height = max(annotationRect.size.height, 400)
+//        options.region = mapView.regionThatFits(annotationRect)
+//
+//        // Set other snapshot options
+//        options.scale = UIScreen.main.scale
+//        options.size = mapView.frame.size
+//
+//        // Create a new MKMapSnapshotter object
+//        let snapshotter = MKMapSnapshotter(options: options)
+//
+//        // Start the snapshotting process
+//        snapshotter.start { snapshot, error in
+//            if let snapshot = snapshot {
+//                let image = snapshot.image
+//                // Do something with the image
+//            } else if let error = error {
+//                print("Error generating snapshot: \(error.localizedDescription)")
+//            }
+//        }
+    //}
     
     
     func generateImageFromMap() {
