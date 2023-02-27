@@ -373,26 +373,47 @@ extension MapScreen: MKMapViewDelegate {
     
     
     func generateImageFromMap() {
+        
+        var imageWithMarker: UIImage?
+
+        
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.showsUserLocation = true
         mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
         mapSnapshotterOptions.size = CGSize(width: 304, height: 256)
-        mapSnapshotterOptions.mapType = MKMapType.standard
+        //mapSnapshotterOptions.mapType = MKMapType.standard
         mapSnapshotterOptions.showsBuildings = false
         //mapSnapshotterOptions.showP = false
 
 
         let snapShotter = MKMapSnapshotter(options: mapSnapshotterOptions)
         
-        
-        snapShotter.start() { snapshot, error in
+        snapShotter.start() { [self] snapshot, error in
             if let image = snapshot?.image{
+                print("took screenshot")
+                
+                let markerImage = UIImage(named: "marker") // Replace with your marker image
+                let markerPoint = snapshot?.point(for: locationManager.location!.coordinate)
+                imageWithMarker = addMarkerImage(markerImage, to: image, at: markerPoint!)
+                
                 self.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
             }else{
                 print("Missing snapshot")
             }
         }
+        //image is just map now draw ...
+        
     
+    }
+    func addMarkerImage(_ markerImage: UIImage?, to image: UIImage?, at point: CGPoint) -> UIImage? {
+        guard let image = image, let markerImage = markerImage else {
+            return nil
+        }
+        UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
+        image.draw(at: .zero)
+        markerImage.draw(at: CGPoint(x: point.x - markerImage.size.width / 2, y: point.y - markerImage.size.height))
+        let imageWithMarker = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return imageWithMarker
     }
 }
 
