@@ -6,7 +6,7 @@ import MapKit
 import ActiveLookSDK
 
 struct TestView: View{
-    var textView: some View {
+    var textView1: some View {
             Text("Hello, SwiftUI")
                 .padding()
                 .background(Color.blue)
@@ -20,12 +20,8 @@ struct TestView: View{
                 }
             }
         }
-}
-
-struct TestingView: View{    var locationManager = CLLocationManager()
-
-
-    var body: some View{
+    @ObservedObject var compassHeading = CompassHeading()
+    var textView: some View{
         ZStack{
             ForEach(Marker.markers(), id:\.self) {marker in
                 CompassMarkerView(marker: marker, compassDegrees: self.compassHeading.degrees)
@@ -35,6 +31,7 @@ struct TestingView: View{    var locationManager = CLLocationManager()
         .rotationEffect(Angle(degrees: self.compassHeading.degrees))
         .statusBar(hidden:true)    }
 }
+
 
 
 
