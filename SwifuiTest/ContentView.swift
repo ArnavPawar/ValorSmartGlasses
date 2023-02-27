@@ -6,6 +6,8 @@ import MapKit
 import ActiveLookSDK
 
 struct TestView: View{
+    @ObservedObject var compassHeading = CompassHeading()
+
     var textView1: some View {
             Text("Hello, SwiftUI")
                 .padding()
@@ -20,7 +22,6 @@ struct TestView: View{
                 }
             }
         }
-    @ObservedObject var compassHeading = CompassHeading()
     var textView: some View{
         ZStack{
             ForEach(Marker.markers(), id:\.self) {marker in
