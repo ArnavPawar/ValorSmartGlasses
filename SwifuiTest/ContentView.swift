@@ -150,8 +150,8 @@ struct ContentView: View {
         Glasses.startScanning()
     }
     func sendDisplay(){
-        //Glasses.generateImageFromMap()
-        Glasses.sendCompass()
+        Glasses.generateImageFromMap()
+        //Glasses.sendCompass()
     }/*
     func stopTry(){
         Glasses.stopScanning()
@@ -375,7 +375,7 @@ extension MapScreen: MKMapViewDelegate {
     func generateImageFromMap() {
         
         var imageWithMarker: UIImage?
-
+        
         
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
         mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
@@ -383,8 +383,8 @@ extension MapScreen: MKMapViewDelegate {
         //mapSnapshotterOptions.mapType = MKMapType.standard
         mapSnapshotterOptions.showsBuildings = false
         //mapSnapshotterOptions.showP = false
-
-
+        
+        
         let snapShotter = MKMapSnapshotter(options: mapSnapshotterOptions)
         
         snapShotter.start() { [self] snapshot, error in
@@ -395,7 +395,7 @@ extension MapScreen: MKMapViewDelegate {
                 let markerPoint = snapshot?.point(for: locationManager.location!.coordinate)
                 imageWithMarker = addMarkerImage(markerImage, to: image, at: markerPoint!)
                 
-                self.glassesConnected?.imgStream(image: imageWithMarker!, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+                self.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
             }else{
                 print("Missing snapshot")
             }
@@ -404,16 +404,22 @@ extension MapScreen: MKMapViewDelegate {
         
     
     }
-    func addMarkerImage(_ markerImage: UIImage?, to image: UIImage?, at point: CGPoint) -> UIImage? {
-        guard let image = image, let markerImage = markerImage else {
-            return nil
-        }
+    func addMarkerImage(_ markerImage: UIImage?, to image: UIImage, at point: CGPoint) -> UIImage? {
+        guard let markerImage = markerImage else { return nil }
+
         UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
-        image.draw(at: .zero)
-        markerImage.draw(at: CGPoint(x: point.x - markerImage.size.width / 2, y: point.y - markerImage.size.height))
-        let imageWithMarker = UIGraphicsGetImageFromCurrentImageContext()
+        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+
+        let markerSize = CGSize(width: 30, height: 30)
+        let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height)
+        let markerRect = CGRect(origin: markerOrigin, size: markerSize)
+
+        markerImage.draw(in: markerRect)
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return imageWithMarker
+
+        return newImage
     }
 }
 
