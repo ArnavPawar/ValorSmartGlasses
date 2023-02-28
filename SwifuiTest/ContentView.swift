@@ -395,7 +395,7 @@ extension MapScreen: MKMapViewDelegate {
                 let markerPoint = snapshot?.point(for: locationManager.location!.coordinate)
                 imageWithMarker = addMarkerImage(markerImage, to: image, at: markerPoint!)
                 
-                self.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+                self.glassesConnected?.imgStream(image: imageWithMarker!, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
             }else{
                 print("Missing snapshot")
             }
