@@ -391,7 +391,7 @@ extension MapScreen: MKMapViewDelegate {
             if let image = snapshot?.image{
                 print("took screenshot")
                 
-                let markerImage = UIImage(systemName: "marker") // Replace with your marker image
+                let markerImage = UIImage(systemName: "eyeglasses") // Replace with your marker image
                 let markerPoint = snapshot?.point(for: locationManager.location!.coordinate)
                 imageWithMarker = addMarkerImage(markerImage, to: image, at: markerPoint!)
                 
@@ -437,7 +437,14 @@ extension MapScreen: MKMapViewDelegate {
             print("Failed to get image context")
             return nil
         }
+        // Adjust the coordinate system to match UIKit's coordinate system
+        context.translateBy(x: 0, y: imageSize.height)
+        context.scaleBy(x: 1, y: -1)
+
         context.draw(cgImage, in: CGRect(origin: .zero, size: imageSize))
+        context.draw(cgImage, in: CGRect(origin: .zero, size: imageSize))
+        
+        let orig = UIGraphicsGetImageFromCurrentImageContext()
 
         let markerSize = CGSize(width: 30, height: 30)
         let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height)
