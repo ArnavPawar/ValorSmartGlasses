@@ -391,7 +391,7 @@ extension MapScreen: MKMapViewDelegate {
             if let image = snapshot?.image{
                 print("took screenshot")
                 
-                let markerImage = UIImage(named: "marker") // Replace with your marker image
+                let markerImage = UIImage(systemName: "marker") // Replace with your marker image
                 let markerPoint = snapshot?.point(for: locationManager.location!.coordinate)
                 imageWithMarker = addMarkerImage(markerImage, to: image, at: markerPoint!)
                 
@@ -404,11 +404,40 @@ extension MapScreen: MKMapViewDelegate {
         
     
     }
+//    func addMarkerImage(_ markerImage: UIImage?, to image: UIImage, at point: CGPoint) -> UIImage? {
+//        guard let markerImage = markerImage else { return nil }
+//
+//        UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
+//        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+//
+//        let markerSize = CGSize(width: 30, height: 30)
+//        let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height)
+//        let markerRect = CGRect(origin: markerOrigin, size: markerSize)
+//
+//        markerImage.draw(in: markerRect)
+//
+//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//
+//        return newImage
+//    }
     func addMarkerImage(_ markerImage: UIImage?, to image: UIImage, at point: CGPoint) -> UIImage? {
-        guard let markerImage = markerImage else { return nil }
+        guard let markerImage = markerImage else {
+            print("markerImage is nil")
+            return nil
+        }
+        guard let cgImage = image.cgImage else {
+            print("Failed to get cgImage from image")
+            return nil
+        }
 
-        UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
-        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+        let imageSize = CGSize(width: cgImage.width, height: cgImage.height)
+        UIGraphicsBeginImageContextWithOptions(imageSize, false, 0.0)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            print("Failed to get image context")
+            return nil
+        }
+        context.draw(cgImage, in: CGRect(origin: .zero, size: imageSize))
 
         let markerSize = CGSize(width: 30, height: 30)
         let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height)
