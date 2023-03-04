@@ -442,7 +442,6 @@ extension MapScreen: MKMapViewDelegate {
         context.scaleBy(x: 1, y: -1)
 
         context.draw(cgImage, in: CGRect(origin: .zero, size: imageSize))
-        context.draw(cgImage, in: CGRect(origin: .zero, size: imageSize))
         
         let orig = UIGraphicsGetImageFromCurrentImageContext()
 
