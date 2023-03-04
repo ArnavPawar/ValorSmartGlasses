@@ -317,60 +317,6 @@ class MapScreen: UIViewController {
 
 
 extension MapScreen: MKMapViewDelegate {
-    // Start the interrupter loop
-    /*func startInterrupterLoop(isRunning: Bool) {
-        // Create a timer that will fire every 1 second
-        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            if isRunning == true {
-                // Call the function
-                self.generateImageFromMap()
-            } else {
-                // Stop the timer if the interrupter loop is no longer running
-                timer.invalidate()
-            }
-        }
-
-        // Add the timer to the run loop
-        RunLoop.current.add(timer, forMode: .common)
-    }*/
-//    func genearateImageFromMapWithUser(){
-//        // Add the user's location annotation to the map
-//        let userAnnotation = MKPointAnnotation()
-//        userAnnotation.coordinate = map.userLocation.coordinate
-//        mapView.addAnnotation(userAnnotation)
-//
-//        // Add any custom annotations to the map
-//        let customAnnotation = MKPointAnnotation()
-//        customAnnotation.coordinate = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194) // example coordinates
-//        mapView.addAnnotation(customAnnotation)
-//
-//        // Create a new MKMapSnapshotOptions object
-//        let options = MKMapSnapshotter.Options()
-//
-//        // Set the region to include the user's location and any custom annotations
-//        var annotationRect = mapView.annotationVisibleRect
-//        annotationRect.size.width = max(annotationRect.size.width, 400)
-//        annotationRect.size.height = max(annotationRect.size.height, 400)
-//        options.region = mapView.regionThatFits(annotationRect)
-//
-//        // Set other snapshot options
-//        options.scale = UIScreen.main.scale
-//        options.size = mapView.frame.size
-//
-//        // Create a new MKMapSnapshotter object
-//        let snapshotter = MKMapSnapshotter(options: options)
-//
-//        // Start the snapshotting process
-//        snapshotter.start { snapshot, error in
-//            if let snapshot = snapshot {
-//                let image = snapshot.image
-//                // Do something with the image
-//            } else if let error = error {
-//                print("Error generating snapshot: \(error.localizedDescription)")
-//            }
-//        }
-    //}
-    
     
     func generateImageFromMap() {
         
