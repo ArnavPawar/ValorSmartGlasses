@@ -324,7 +324,7 @@ extension MapScreen: MKMapViewDelegate {
         
         
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009))
         mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
         //mapSnapshotterOptions.mapType = MKMapType.standard
         mapSnapshotterOptions.showsBuildings = false
@@ -337,11 +337,12 @@ extension MapScreen: MKMapViewDelegate {
             if let image = snapshot?.image{
                 print("took screenshot")
                 
-                let markerImage = UIImage(systemName: "eyeglasses") // Replace with your marker image
+                let markerImage = UIImage(systemName: "location.fill") // Replace with your marker image
                 let markerPoint = snapshot?.point(for: locationManager.location!.coordinate)
                 imageWithMarker = addMarkerImage(markerImage, to: image, at: markerPoint!)
                 
                 self.glassesConnected?.imgStream(image: imageWithMarker!, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+                
             }else{
                 print("Missing snapshot")
             }
@@ -375,8 +376,9 @@ extension MapScreen: MKMapViewDelegate {
         
         let orig = UIGraphicsGetImageFromCurrentImageContext()
 
-        let markerSize = CGSize(width: 30, height: 30)
-        let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height)
+        let markerSize = CGSize(width: 20, height: 20)
+        //let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height / 2)
+        let markerOrigin = CGPoint(x: 200 , y: 200 )
         let markerRect = CGRect(origin: markerOrigin, size: markerSize)
 
         markerImage.draw(in: markerRect)
