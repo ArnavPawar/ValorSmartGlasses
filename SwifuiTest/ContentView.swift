@@ -378,8 +378,8 @@ extension MapScreen: MKMapViewDelegate {
         
         
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-        mapSnapshotterOptions.size = CGSize(width: 304, height: 256)
+        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
         //mapSnapshotterOptions.mapType = MKMapType.standard
         mapSnapshotterOptions.showsBuildings = false
         //mapSnapshotterOptions.showP = false
@@ -404,23 +404,7 @@ extension MapScreen: MKMapViewDelegate {
         
     
     }
-//    func addMarkerImage(_ markerImage: UIImage?, to image: UIImage, at point: CGPoint) -> UIImage? {
-//        guard let markerImage = markerImage else { return nil }
-//
-//        UIGraphicsBeginImageContextWithOptions(image.size, false, 0.0)
-//        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
-//
-//        let markerSize = CGSize(width: 30, height: 30)
-//        let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height)
-//        let markerRect = CGRect(origin: markerOrigin, size: markerSize)
-//
-//        markerImage.draw(in: markerRect)
-//
-//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//
-//        return newImage
-//    }
+
     func addMarkerImage(_ markerImage: UIImage?, to image: UIImage, at point: CGPoint) -> UIImage? {
         guard let markerImage = markerImage else {
             print("markerImage is nil")
