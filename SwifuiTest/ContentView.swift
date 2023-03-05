@@ -334,7 +334,7 @@ extension MapScreen: MKMapViewDelegate {
         
         
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.size = CGSize(width: 75, height: 75)
+        mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
         mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
         //mapSnapshotterOptions.mapType = MKMapType.standard
         mapSnapshotterOptions.showsBuildings = false
@@ -393,7 +393,7 @@ extension MapScreen: MKMapViewDelegate {
 
         let markerSize = CGSize(width: 30, height: 30)
         //let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height / 2)
-        let markerOrigin = CGPoint(x: 200 , y: 200 )
+        let markerOrigin = CGPoint(x: 200-30 , y: 200-30 )
         let markerRect = CGRect(origin: markerOrigin, size: markerSize)
 
         markerImage.draw(in: markerRect)
