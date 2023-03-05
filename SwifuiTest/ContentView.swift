@@ -109,6 +109,11 @@ struct ContentView: View {
                         Image(systemName: "display")
                         .frame(width: 50, height:30)
                     }
+                    Button(action: returnDegree){
+                        Image(systemName: "pencil.circle.fill")
+                        .frame(width: 50, height:30)
+                    }
+                    
                     Spacer(minLength: -300)
                     HStack{
                         LocationButton(.currentLocation){
@@ -152,7 +157,12 @@ struct ContentView: View {
     func sendDisplay(){
         Glasses.generateImageFromMap()
         //Glasses.sendCompass()
-    }/*
+    }
+    func returnDegree(){
+        let compassDeg = Int(-1*self.compassHeading.degrees)
+        Glasses.sendCompass(deg: compassDeg)
+    }
+    /*
     func stopTry(){
         Glasses.stopScanning()
     }*/
@@ -182,7 +192,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         case .denied:
             print("Allow user Location")
         case .authorizedAlways, .authorizedWhenInUse:
-            region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+            region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
             locationManager.startUpdatingLocation()
         @unknown default:
             break
@@ -351,6 +361,11 @@ extension MapScreen: MKMapViewDelegate {
         
     
     }
+    
+    func sendCompass(deg: Int){
+        let hello = String(deg)
+        self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: hello)
+    }
 
     func addMarkerImage(_ markerImage: UIImage?, to image: UIImage, at point: CGPoint) -> UIImage? {
         guard let markerImage = markerImage else {
@@ -376,7 +391,7 @@ extension MapScreen: MKMapViewDelegate {
         
         let orig = UIGraphicsGetImageFromCurrentImageContext()
 
-        let markerSize = CGSize(width: 20, height: 20)
+        let markerSize = CGSize(width: 30, height: 30)
         //let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height / 2)
         let markerOrigin = CGPoint(x: 200 , y: 200 )
         let markerRect = CGRect(origin: markerOrigin, size: markerSize)
@@ -402,8 +417,13 @@ struct Marker : Hashable{
         self.label = label
     }
     
+    public func getDegree() -> Double{
+        return degrees
+    }
+    
     func degreeText() -> String{
         return String(format: "%.0f", self.degrees)
+        
     }
     
     static func markers()-> [Marker]{
