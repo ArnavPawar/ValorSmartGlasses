@@ -334,8 +334,8 @@ extension MapScreen: MKMapViewDelegate {
         
         
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.009))
-        mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
+        mapSnapshotterOptions.size = CGSize(width: 75, height: 75)
+        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
         //mapSnapshotterOptions.mapType = MKMapType.standard
         mapSnapshotterOptions.showsBuildings = false
         //mapSnapshotterOptions.showP = false

@@ -7,8 +7,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B58B2D9A-7D99-471C-9D47-C0BED2AA8A01"
-            shouldBeEnabled = "Yes"
+            uuid = "B2327954-A3FF-48E6-AC0E-9EAA2759F0B5"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwifuiTest/ContentView.swift"
