@@ -149,12 +149,13 @@ struct ContentView: View {
         Glasses.startScanning()
     }
     func sendDisplay(){
-        Glasses.generateImageFromMap()
+        Glasses.threeTimer()
+        //Glasses.generateImageFromMap()
         //Glasses.sendCompass()
     }
     func returnDegree(){
         let compassDeg = Int(-1*self.compassHeading.degrees)
-        Glasses.sendCompass(deg: compassDeg)
+        Glasses.oneTimer(deg: compassDeg)
     }
     /*
     func stopTry(){
@@ -205,6 +206,8 @@ class MapScreen: UIViewController {
     
     @SwiftUI.State var capture: UIImage?
     
+    var timer: Timer?
+
     var viewModel = CLLocationManager()
 
     let locationManager = CLLocationManager()
@@ -303,15 +306,27 @@ class MapScreen: UIViewController {
 
 extension MapScreen: MKMapViewDelegate {
     
+    func oneTimer(deg: Int){
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            let compass = String(deg)
+            self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: compass)
+        })
+    }
+    
+    func threeTimer(){
+        generateImageFromMap()
+    }
+    
     func generateImageFromMap() {
         
         var imageWithMarker: UIImage?
         
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
         mapSnapshotterOptions.size = CGSize(width: 150, height: 125)
-        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
-        mapSnapshotterOptions.mapType = MKMapType.standard
-        mapSnapshotterOptions.showsBuildings = false
+        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008))
+        mapSnapshotterOptions.mapType = .mutedStandard
+        mapSnapshotterOptions.showsBuildings = true
+
         //mapSnapshotterOptions.showP = false
         
         
@@ -326,7 +341,7 @@ extension MapScreen: MKMapViewDelegate {
                 let markerPoint = snapshot?.point(for: locationManager.location!.coordinate)
                 imageWithMarker = addMarkerImage(markerImage, to: image, at: markerPoint!)
                 
-                self.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+                self.glassesConnected?.imgStream(image: imageWithMarker!, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
                 
             }else{
                 print("Missing snapshot")
@@ -334,10 +349,6 @@ extension MapScreen: MKMapViewDelegate {
         }
     }
     
-    func sendCompass(deg: Int){
-        let compass = String(deg)
-        self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: compass)
-    }
 
     func addMarkerImage(_ markerImage: UIImage?, to image: UIImage, at point: CGPoint) -> UIImage? {
         guard let markerImage = markerImage else {
@@ -361,8 +372,6 @@ extension MapScreen: MKMapViewDelegate {
 
         context.draw(cgImage, in: CGRect(origin: .zero, size: imageSize))
         
-        let orig = UIGraphicsGetImageFromCurrentImageContext()
-
         let markerSize = CGSize(width: 15, height: 15)
         //let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height / 2)
         let markerOrigin = CGPoint(x: (150/2)-15 , y: (150/2)-15 )
@@ -390,7 +399,7 @@ struct Marker : Hashable{
     }
     
     public func getDegree() -> Double{
-        return degrees
+        return self.degrees
     }
     
     func degreeText() -> String{

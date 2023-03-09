@@ -14,8 +14,8 @@
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
             landmarkName = "addMarkerImage(_:to:at:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "MapScreen"
             landmarkType = "21">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "generateImageFromMap()"
             landmarkType = "7">
          </BreakpointContent>
@@ -56,14 +56,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6D2DDAF6-1CDF-45A4-8636-F4155CA00281"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "generateImageFromMap()"
             landmarkType = "7">
          </BreakpointContent>
