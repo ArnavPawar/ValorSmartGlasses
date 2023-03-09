@@ -14,9 +14,9 @@
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
-            landmarkName = "generateImageFromMap()"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
+            landmarkName = "addMarkerImage(_:to:at:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -24,63 +24,48 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "5D76DD43-892F-4BBD-B5AA-15F5DF37A065"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwifuiTest/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "336"
+            endingLineNumber = "336"
+            landmarkName = "MapScreen"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "990A9C95-6BAF-4753-8F87-E651ADB922C3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwifuiTest/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
+            landmarkName = "generateImageFromMap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D2DDAF6-1CDF-45A4-8636-F4155CA00281"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "generateImageFromMap()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5D76DD43-892F-4BBD-B5AA-15F5DF37A065 - c5305ef3a9228eff"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SwifuiTest.MapScreen.generateImageFromMap() -&gt; ()"
-                  moduleName = "SwifuiTest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maahikagupta/Documents/GitHub/ValorSmartGlasses/SwifuiTest/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "349"
-                  endingLineNumber = "349"
-                  offsetFromSymbolStart = "640">
-               </Location>
-               <Location
-                  uuid = "5D76DD43-892F-4BBD-B5AA-15F5DF37A065 - c5305ef3a9228eff"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SwifuiTest.MapScreen.generateImageFromMap() -&gt; ()"
-                  moduleName = "SwifuiTest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maahikagupta/Documents/GitHub/ValorSmartGlasses/SwifuiTest/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "349"
-                  endingLineNumber = "349"
-                  offsetFromSymbolStart = "732">
-               </Location>
-               <Location
-                  uuid = "5D76DD43-892F-4BBD-B5AA-15F5DF37A065 - a7023f98e4b641c0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.MKMapSnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SwifuiTest.MapScreen.generateImageFromMap() -&gt; ()"
-                  moduleName = "SwifuiTest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maahikagupta/Documents/GitHub/ValorSmartGlasses/SwifuiTest/ContentView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "333"
-                  endingLineNumber = "333"
-                  offsetFromSymbolStart = "128">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

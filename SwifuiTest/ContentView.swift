@@ -33,10 +33,6 @@ struct TestView: View{
         .statusBar(hidden:true)    }
 }
 
-
-
-
-
 struct ContentView: View {
     @ObservedObject var compassHeading = CompassHeading()
     @StateObject public var viewModel = ContentViewModel()
@@ -95,8 +91,6 @@ struct ContentView: View {
                     .rotationEffect(Angle(degrees: self.compassHeading.degrees))
                     .statusBar(hidden:true)
                 }
-                
-                //}
                 Spacer()
                 VStack{
                     Button(action: connectGlasses) {
@@ -213,7 +207,6 @@ class MapScreen: UIViewController {
     
     var viewModel = CLLocationManager()
 
-    
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
     var previousLocation: CLLocation?
@@ -251,7 +244,6 @@ class MapScreen: UIViewController {
                 print("onUpdateFailureCallback")
             })
     }()
-    
     
     func startScanning() {
         activeLook.startScanning(
@@ -306,23 +298,6 @@ class MapScreen: UIViewController {
         self.startScanning()
         //goButton.layer.cornerRadius = goButton.frame.size.height/2
     }
-    
-    func sendCompass(){
-//        let marker: Marker
-//        let compassDegrees: Double
-//        capture = ImageRenderer(content: CompassMarkerView(marker: Marker, compassDegrees: Double)).uiImage
-//        self.glassesConnected?.imgStream(image: capture ?? default value, image: UIImage, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
-        let imageRenderer = ImageRenderer(content: TestView())
-        if let capture = imageRenderer.uiImage{
-            print("sending image")
-            self.glassesConnected?.imgStream(image: capture, x:0, y:0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
-        }
-        else {
-            print("error with snapshot")
-        }
-    }
-  
-    
 }
 
 
@@ -332,11 +307,10 @@ extension MapScreen: MKMapViewDelegate {
         
         var imageWithMarker: UIImage?
         
-        
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.size = CGSize(width: 200, height: 200)
-        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
-        //mapSnapshotterOptions.mapType = MKMapType.standard
+        mapSnapshotterOptions.size = CGSize(width: 150, height: 125)
+        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
+        mapSnapshotterOptions.mapType = MKMapType.standard
         mapSnapshotterOptions.showsBuildings = false
         //mapSnapshotterOptions.showP = false
         
@@ -347,24 +321,22 @@ extension MapScreen: MKMapViewDelegate {
             if let image = snapshot?.image{
                 print("took screenshot")
                 
+                
                 let markerImage = UIImage(systemName: "location.fill") // Replace with your marker image
                 let markerPoint = snapshot?.point(for: locationManager.location!.coordinate)
                 imageWithMarker = addMarkerImage(markerImage, to: image, at: markerPoint!)
                 
-                self.glassesConnected?.imgStream(image: imageWithMarker!, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+                self.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
                 
             }else{
                 print("Missing snapshot")
             }
         }
-        //image is just map now draw ...
-        
-    
     }
     
     func sendCompass(deg: Int){
-        let hello = String(deg)
-        self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: hello)
+        let compass = String(deg)
+        self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: compass)
     }
 
     func addMarkerImage(_ markerImage: UIImage?, to image: UIImage, at point: CGPoint) -> UIImage? {
@@ -377,7 +349,7 @@ extension MapScreen: MKMapViewDelegate {
             return nil
         }
 
-        let imageSize = CGSize(width: cgImage.width, height: cgImage.height)
+        let imageSize = CGSize(width: 150, height: 125)
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0.0)
         guard let context = UIGraphicsGetCurrentContext() else {
             print("Failed to get image context")
@@ -391,9 +363,9 @@ extension MapScreen: MKMapViewDelegate {
         
         let orig = UIGraphicsGetImageFromCurrentImageContext()
 
-        let markerSize = CGSize(width: 30, height: 30)
+        let markerSize = CGSize(width: 15, height: 15)
         //let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height / 2)
-        let markerOrigin = CGPoint(x: 200-30 , y: 200-30 )
+        let markerOrigin = CGPoint(x: (150/2)-15 , y: (150/2)-15 )
         let markerRect = CGRect(origin: markerOrigin, size: markerSize)
 
         markerImage.draw(in: markerRect)
