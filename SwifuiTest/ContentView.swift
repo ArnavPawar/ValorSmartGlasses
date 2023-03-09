@@ -5,6 +5,34 @@ import CoreLocationUI
 import MapKit
 import ActiveLookSDK
 
+struct TestView: View{
+    @ObservedObject var compassHeading = CompassHeading()
+
+    var textView1: some View {
+            Text("Hello, SwiftUI")
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .clipShape(Capsule())
+        }
+    var body: some View {
+            ZStack {
+                VStack(spacing: 100) {
+                    textView
+                }
+            }
+        }
+    var textView: some View{
+        ZStack{
+            ForEach(Marker.markers(), id:\.self) {marker in
+                CompassMarkerView(marker: marker, compassDegrees: self.compassHeading.degrees)
+            }
+        }
+        .frame(width: 150, height: 150)
+        .rotationEffect(Angle(degrees: self.compassHeading.degrees))
+        .statusBar(hidden:true)    }
+}
+
 struct ContentView: View {
     @ObservedObject var compassHeading = CompassHeading()
     @StateObject public var viewModel = ContentViewModel()
@@ -63,8 +91,6 @@ struct ContentView: View {
                     .rotationEffect(Angle(degrees: self.compassHeading.degrees))
                     .statusBar(hidden:true)
                 }
-                
-                //}
                 Spacer()
                 VStack{
                     Button(action: connectGlasses) {
@@ -77,6 +103,11 @@ struct ContentView: View {
                         Image(systemName: "display")
                         .frame(width: 50, height:30)
                     }
+                    Button(action: returnDegree){
+                        Image(systemName: "pencil.circle.fill")
+                        .frame(width: 50, height:30)
+                    }
+                    
                     Spacer(minLength: -300)
                     HStack{
                         LocationButton(.currentLocation){
@@ -118,8 +149,15 @@ struct ContentView: View {
         Glasses.startScanning()
     }
     func sendDisplay(){
-        Glasses.generateImageFromMap()
-    }/*
+        Glasses.threeTimer()
+        //Glasses.generateImageFromMap()
+        //Glasses.sendCompass()
+    }
+    func returnDegree(){
+        let compassDeg = Int(-1*self.compassHeading.degrees)
+        Glasses.oneTimer(deg: compassDeg)
+    }
+    /*
     func stopTry(){
         Glasses.stopScanning()
     }*/
@@ -149,7 +187,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         case .denied:
             print("Allow user Location")
         case .authorizedAlways, .authorizedWhenInUse:
-            region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+            region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
             locationManager.startUpdatingLocation()
         @unknown default:
             break
@@ -166,9 +204,12 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
 
 class MapScreen: UIViewController {
     
+    @SwiftUI.State var capture: UIImage?
+    
+    var timer: Timer?
+
     var viewModel = CLLocationManager()
 
-    
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
     var previousLocation: CLLocation?
@@ -206,7 +247,6 @@ class MapScreen: UIViewController {
                 print("onUpdateFailureCallback")
             })
     }()
-    
     
     func startScanning() {
         activeLook.startScanning(
@@ -261,54 +301,88 @@ class MapScreen: UIViewController {
         self.startScanning()
         //goButton.layer.cornerRadius = goButton.frame.size.height/2
     }
-    
-    
-  
-    
 }
 
 
 extension MapScreen: MKMapViewDelegate {
     
+    func oneTimer(deg: Int){
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            let compass = String(deg)
+            self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: compass)
+        })
+    }
     
-    // Start the interrupter loop
-    /*func startInterrupterLoop(isRunning: Bool) {
-        // Create a timer that will fire every 1 second
-        let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
-            if isRunning == true {
-                // Call the function
-                self.generateImageFromMap()
-            } else {
-                // Stop the timer if the interrupter loop is no longer running
-                timer.invalidate()
-            }
-        }
-
-        // Add the timer to the run loop
-        RunLoop.current.add(timer, forMode: .common)
-    }*/
+    func threeTimer(){
+        generateImageFromMap()
+    }
     
     func generateImageFromMap() {
+        
+        var imageWithMarker: UIImage?
+        
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        //mapSnapshotterOptions.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
-        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
-        mapSnapshotterOptions.size = CGSize(width: 304, height: 256)
-        mapSnapshotterOptions.mapType = MKMapType.standard
-        mapSnapshotterOptions.showsBuildings = false
+        mapSnapshotterOptions.size = CGSize(width: 150, height: 125)
+        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008))
+        mapSnapshotterOptions.mapType = .mutedStandard
+        mapSnapshotterOptions.showsBuildings = true
+
         //mapSnapshotterOptions.showP = false
-
-
+        
+        
         let snapShotter = MKMapSnapshotter(options: mapSnapshotterOptions)
         
-        
-        snapShotter.start() { snapshot, error in
+        snapShotter.start() { [self] snapshot, error in
             if let image = snapshot?.image{
-                self.glassesConnected?.imgStream(image: image, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+                print("took screenshot")
+                
+                
+                let markerImage = UIImage(systemName: "location.fill") // Replace with your marker image
+                let markerPoint = snapshot?.point(for: locationManager.location!.coordinate)
+                imageWithMarker = addMarkerImage(markerImage, to: image, at: markerPoint!)
+                
+                self.glassesConnected?.imgStream(image: imageWithMarker!, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+                
             }else{
                 print("Missing snapshot")
             }
         }
+    }
     
+
+    func addMarkerImage(_ markerImage: UIImage?, to image: UIImage, at point: CGPoint) -> UIImage? {
+        guard let markerImage = markerImage else {
+            print("markerImage is nil")
+            return nil
+        }
+        guard let cgImage = image.cgImage else {
+            print("Failed to get cgImage from image")
+            return nil
+        }
+
+        let imageSize = CGSize(width: 150, height: 125)
+        UIGraphicsBeginImageContextWithOptions(imageSize, false, 0.0)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            print("Failed to get image context")
+            return nil
+        }
+        // Adjust the coordinate system to match UIKit's coordinate system
+        context.translateBy(x: 0, y: imageSize.height)
+        context.scaleBy(x: 1, y: -1)
+
+        context.draw(cgImage, in: CGRect(origin: .zero, size: imageSize))
+        
+        let markerSize = CGSize(width: 15, height: 15)
+        //let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height / 2)
+        let markerOrigin = CGPoint(x: (150/2)-15 , y: (150/2)-15 )
+        let markerRect = CGRect(origin: markerOrigin, size: markerSize)
+
+        markerImage.draw(in: markerRect)
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage
     }
 }
 
@@ -324,8 +398,13 @@ struct Marker : Hashable{
         self.label = label
     }
     
+    public func getDegree() -> Double{
+        return self.degrees
+    }
+    
     func degreeText() -> String{
         return String(format: "%.0f", self.degrees)
+        
     }
     
     static func markers()-> [Marker]{
