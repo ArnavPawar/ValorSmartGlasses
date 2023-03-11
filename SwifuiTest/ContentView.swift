@@ -307,10 +307,13 @@ class MapScreen: UIViewController {
 extension MapScreen: MKMapViewDelegate {
     
     func oneTimer(deg: Int){
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-            let compass = String(deg)
-            self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: compass)
-        })
+        self.glassesConnected?.clear()
+        let compass = String(deg)
+        self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: compass)
+//        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+//            let compass = String(deg)
+//            self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: compass)
+//        })
     }
     
     func threeTimer(){
