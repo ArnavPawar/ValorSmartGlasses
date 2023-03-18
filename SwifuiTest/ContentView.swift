@@ -41,6 +41,7 @@ struct ContentView: View {
     @SwiftUI.State var locations = [Location]()
 
     @SwiftUI.State private var selectedPlace: Location?
+    @SwiftUI.State var timer: Timer?
     //let geoFence = SwiftUIPolygonGeofence
     //var activeLook: ActiveLookSDK
         
@@ -149,13 +150,18 @@ struct ContentView: View {
         Glasses.startScanning()
     }
     func sendDisplay(){
-        Glasses.threeTimer()
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            Glasses.threeTimer()
+        }
+        //Glasses.threeTimer()
         //Glasses.generateImageFromMap()
         //Glasses.sendCompass()
     }
     func returnDegree(){
-        let compassDeg = Int(-1*self.compassHeading.degrees)
-        Glasses.oneTimer(deg: compassDeg)
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            let compassDeg = Int(-1*self.compassHeading.degrees)
+            Glasses.oneTimer(deg: compassDeg)
+        }
     }
     /*
     func stopTry(){
