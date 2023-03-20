@@ -42,6 +42,7 @@ struct ContentView: View {
 
     @SwiftUI.State private var selectedPlace: Location?
     @SwiftUI.State var timer: Timer?
+    var zoomForMap = 0.008
     //let geoFence = SwiftUIPolygonGeofence
     //var activeLook: ActiveLookSDK
         
@@ -101,11 +102,23 @@ struct ContentView: View {
                     .foregroundColor(.white)
                     .background(.black.opacity(0.5))
                     Button(action: sendDisplay) {
-                        Image(systemName: "display")
+                        Image(systemName: "mappin.circle.fill")
                         .frame(width: 50, height:30)
                     }
                     Button(action: returnDegree){
-                        Image(systemName: "pencil.circle.fill")
+                        Image(systemName: "location.north.circle")
+                        .frame(width: 50, height:30)
+                    }
+                    Button(action: stopTimer){
+                        Image(systemName: "stop.circle")
+                        .frame(width: 50, height:30)
+                    }
+                    Button(action: plus){
+                        Image(systemName: "plus.app.fill")
+                        .frame(width: 50, height:30)
+                    }
+                    Button(action: minus){
+                        Image(systemName: "minus.square.fill")
                         .frame(width: 50, height:30)
                     }
                     
@@ -150,8 +163,9 @@ struct ContentView: View {
         Glasses.startScanning()
     }
     func sendDisplay(){
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            Glasses.threeTimer()
+        self.timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+            print("rep")
+            Glasses.threeTimer(zoom: zoomForMap)
         }
         //Glasses.threeTimer()
         //Glasses.generateImageFromMap()
@@ -159,9 +173,20 @@ struct ContentView: View {
     }
     func returnDegree(){
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            print("repeat")
             let compassDeg = Int(-1*self.compassHeading.degrees)
             Glasses.oneTimer(deg: compassDeg)
         }
+    }
+    func stopTimer(){
+        self.timer?.invalidate()
+        self.timer = nil
+    }
+    func plus(){
+        //zoomForMap = 0.02+zoomForMap
+    }
+    func minus(){
+        //zoomForMap = zoomForMap - 0.02
     }
     /*
     func stopTry(){
@@ -320,16 +345,16 @@ extension MapScreen: MKMapViewDelegate {
         
         if (counter==1){
             let ncompass="00"+compass
-            self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: ncompass)
+            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topRL, font: 2, color: 15, string: ncompass)
 
         }
         else if(counter==2){
             let ncompass = "0"+compass
-            self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: ncompass)
+            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topRL, font: 2, color: 15, string: ncompass)
 
         }
         else if(counter==3){
-            self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: compass)
+            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topRL, font: 2, color: 15, string: compass)
         }
         else {
             print("size error")
@@ -341,17 +366,17 @@ extension MapScreen: MKMapViewDelegate {
 //        })
     }
     
-    func threeTimer(){
-        generateImageFromMap()
+    func threeTimer(zoom: Double){
+        generateImageFromMap(zoom: zoom)
     }
     
-    func generateImageFromMap() {
+    func generateImageFromMap(zoom: Double) {
         
         var imageWithMarker: UIImage?
         
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.size = CGSize(width: 150, height: 125)
-        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008))
+        mapSnapshotterOptions.size = CGSize(width: 140, height: 140)
+        mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: zoom, longitudeDelta: zoom))
         mapSnapshotterOptions.mapType = .mutedStandard
         mapSnapshotterOptions.showsBuildings = true
 
@@ -365,7 +390,7 @@ extension MapScreen: MKMapViewDelegate {
                 print("took screenshot")
                 
                 
-                let markerImage = UIImage(systemName: "location.fill") // Replace with your marker image
+                let markerImage = UIImage(systemName: "dot.circle") // Replace with your marker image
                 let markerPoint = snapshot?.point(for: locationManager.location!.coordinate)
                 imageWithMarker = addMarkerImage(markerImage, to: image, at: markerPoint!)
                 
@@ -388,7 +413,7 @@ extension MapScreen: MKMapViewDelegate {
             return nil
         }
 
-        let imageSize = CGSize(width: 150, height: 125)
+        let imageSize = CGSize(width: 140, height: 140)
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0.0)
         guard let context = UIGraphicsGetCurrentContext() else {
             print("Failed to get image context")
@@ -400,9 +425,9 @@ extension MapScreen: MKMapViewDelegate {
 
         context.draw(cgImage, in: CGRect(origin: .zero, size: imageSize))
         
-        let markerSize = CGSize(width: 15, height: 15)
+        let markerSize = CGSize(width: 10, height: 10)
         //let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height / 2)
-        let markerOrigin = CGPoint(x: (150/2)-15 , y: (150/2)-15 )
+        let markerOrigin = CGPoint(x: (140/2)-5 , y: (140/2)-5 )
         let markerRect = CGRect(origin: markerOrigin, size: markerSize)
 
         markerImage.draw(in: markerRect)
