@@ -42,7 +42,9 @@ struct ContentView: View {
 
     @SwiftUI.State private var selectedPlace: Location?
     @SwiftUI.State var timer: Timer?
-    var zoomForMap = 0.008
+    
+    @SwiftUI.State var zoomForMap: Double = 0.002
+    //var zoomForMap = 0.002
     //let geoFence = SwiftUIPolygonGeofence
     //var activeLook: ActiveLookSDK
         
@@ -109,6 +111,10 @@ struct ContentView: View {
                         Image(systemName: "location.north.circle")
                         .frame(width: 50, height:30)
                     }
+                    Button(action: both){
+                        Image(systemName: "person.2.circle.fill")
+                        .frame(width: 50, height:30)
+                    }
                     Button(action: stopTimer){
                         Image(systemName: "stop.circle")
                         .frame(width: 50, height:30)
@@ -167,9 +173,6 @@ struct ContentView: View {
             print("rep")
             Glasses.threeTimer(zoom: zoomForMap)
         }
-        //Glasses.threeTimer()
-        //Glasses.generateImageFromMap()
-        //Glasses.sendCompass()
     }
     func returnDegree(){
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
@@ -178,15 +181,22 @@ struct ContentView: View {
             Glasses.oneTimer(deg: compassDeg)
         }
     }
+    func both(){
+        self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
+            print("repBof")
+            let compassDeg = Int(-1*self.compassHeading.degrees)
+            Glasses.bothRuns(zoom: zoomForMap, deg: compassDeg)
+        }
+    }
     func stopTimer(){
         self.timer?.invalidate()
         self.timer = nil
     }
     func plus(){
-        //zoomForMap = 0.02+zoomForMap
+        zoomForMap = zoomForMap - 0.001
     }
     func minus(){
-        //zoomForMap = zoomForMap - 0.02
+        zoomForMap = zoomForMap + 0.001
     }
     /*
     func stopTry(){
@@ -345,16 +355,16 @@ extension MapScreen: MKMapViewDelegate {
         
         if (counter==1){
             let ncompass="00"+compass
-            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topRL, font: 2, color: 15, string: ncompass)
+            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topLR, font: 2, color: 15, string: ncompass)
 
         }
         else if(counter==2){
             let ncompass = "0"+compass
-            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topRL, font: 2, color: 15, string: ncompass)
+            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topLR, font: 2, color: 15, string: ncompass)
 
         }
         else if(counter==3){
-            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topRL, font: 2, color: 15, string: compass)
+            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topLR, font: 2, color: 15, string: compass)
         }
         else {
             print("size error")
@@ -368,6 +378,10 @@ extension MapScreen: MKMapViewDelegate {
     
     func threeTimer(zoom: Double){
         generateImageFromMap(zoom: zoom)
+    }
+    func bothRuns(zoom: Double, deg: Int){
+        generateImageFromMap(zoom: zoom)
+        oneTimer(deg: deg)
     }
     
     func generateImageFromMap(zoom: Double) {
