@@ -127,6 +127,11 @@ struct ContentView: View {
                         Image(systemName: "minus.square.fill")
                         .frame(width: 50, height:30)
                     }
+                    Button(action: Clear){
+                        Image(systemName: "clear.fill")
+                        .frame(width: 50, height:30)
+                    }
+                    
                     
                     Spacer(minLength: -300)
                     HStack{
@@ -168,13 +173,21 @@ struct ContentView: View {
     func connectGlasses(){
         Glasses.startScanning()
     }
+    func Clear(){
+        Glasses.clearMap()
+    }
+    func disconnect(){
+        //Glasses.glassesConnected?.disconnect()
+    }
     func sendDisplay(){
+        Glasses.clearMap()
         self.timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
             print("rep")
             Glasses.threeTimer(zoom: zoomForMap)
         }
     }
     func returnDegree(){
+        Glasses.clearMap()
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             print("repeat")
             let compassDeg = Int(-1*self.compassHeading.degrees)
@@ -182,6 +195,7 @@ struct ContentView: View {
         }
     }
     func both(){
+        Glasses.clearMap()
         self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
             print("repBof")
             let compassDeg = Int(-1*self.compassHeading.degrees)
@@ -374,6 +388,10 @@ extension MapScreen: MKMapViewDelegate {
 //            let compass = String(deg)
 //            self.glassesConnected?.txt(x: 102, y: 128, rotation: .bottomRL, font: 2, color: 15, string: compass)
 //        })
+    }
+    
+    func clearMap(){
+        self.glassesConnected?.clear()
     }
     
     func threeTimer(zoom: Double){
