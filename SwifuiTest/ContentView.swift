@@ -180,6 +180,7 @@ struct ContentView: View {
         //Glasses.glassesConnected?.disconnect()
     }
     func sendDisplay(){
+        stopTimer()
         Glasses.clearMap()
         self.timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
             print("rep")
@@ -187,14 +188,16 @@ struct ContentView: View {
         }
     }
     func returnDegree(){
+        stopTimer()
         Glasses.clearMap()
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
             print("repeat")
             let compassDeg = Int(-1*self.compassHeading.degrees)
             Glasses.oneTimer(deg: compassDeg)
         }
     }
     func both(){
+        stopTimer()
         Glasses.clearMap()
         self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
             print("repBof")
@@ -470,8 +473,6 @@ extension MapScreen: MKMapViewDelegate {
         return newImage
     }
 }
-
-
 
 
 struct Marker : Hashable{
