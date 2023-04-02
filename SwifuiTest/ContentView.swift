@@ -78,6 +78,7 @@ struct ContentView: View {
                 .accentColor(Color(.systemPink))
                 .onAppear{
                     viewModel.checkLocationAuthorization()
+                    //add function call here
                 }
                 
                 Circle()
@@ -110,9 +111,13 @@ struct ContentView: View {
                         Button("Stop Timer", action: stopTimer)
                     }
                     label: {
-                        Image(systemName: "")
+                        Image(systemName: "eyeglasses")
+                            .resizable()
+                            .aspectRatio(contentMode:.fit)
+                            .frame(width:60,height:40)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    Spacer()
 //                    Button(action: connectGlasses) {
 //                        Image(systemName: "eyeglasses")
 //                        .frame(width: 50, height:30)
@@ -193,7 +198,10 @@ struct ContentView: View {
         Glasses.startScanning()
     }
     func Clear(){
-        Glasses.getAddressFromLocation()
+        Glasses.clearMap()
+        let compassDeg = Int(-1*self.compassHeading.degrees)
+        
+        Glasses.getAddressFromLocation(deg: compassDeg)
         //Glasses.updateGlassesTextDisplay()
         //viewModel.getAddressFromLocation(location: cLoc)
         //Glasses.clearMap()
@@ -255,8 +263,19 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     
     var locationManager = CLLocationManager()
     
-    @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+    //@Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:37, longitude:-121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+    //@Published var region = MKCoordinateRegion(center:locationManager.location!.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+    @Published var region: MKCoordinateRegion
+        
+    override init() {
+        region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37, longitude: -121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+        super.init()
+        initializeRegion()
+    }
     
+    func initializeRegion() {
+        region = MKCoordinateRegion(center: locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 37, longitude: -121), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
+    }
     
     func ApplyState()->Location{
         let newRegion = Location(id: UUID(), name: "New Location", discription: "", latitude:region.center.latitude, longitude: region.center.longitude)
@@ -265,7 +284,9 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     }
     func checkLocationAuthorization(){
         //guard let locationManager = locationManager else { return }
-        
+        region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        locationManager.startUpdatingLocation()
+
         switch locationManager.authorizationStatus{
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -402,11 +423,15 @@ class MapScreen: UIViewController {
         }
     }*/
     
-    func getAddressFromLocation() {
+    func getAddressFromLocation(deg: Int) {
         CLGeocoder().reverseGeocodeLocation(locationManager.location!) { placemarks, error in
             guard let placemark = placemarks?.first else { return }
             let currentAddress = placemark.thoroughfare ?? ""
-            print(currentAddress)
+            let direction = self.convertDegtoDirec(deg: deg)
+            let text = "\(direction)on \(currentAddress)"
+            print(text)
+            
+            self.glassesConnected?.txt(x: 50, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
         }
     }
 }
@@ -415,13 +440,17 @@ class MapScreen: UIViewController {
 extension MapScreen: MKMapViewDelegate {
     
     
-    func oneTimer(deg: Int){
-        //self.glassesConnected?.clear()
-        
+    func convertDegtoDirec(deg:Int) -> String {
         let labels = ["  N  ", " NE  ", "  E  ", "  SE ", "  S  ", "  SW ", "  W  ", "  NW "]
         let index = Int((Double(deg) / 45.0).rounded()) % 8
            
         let label = labels[index]
+        return label
+    }
+    
+    func oneTimer(deg: Int){
+        //self.glassesConnected?.clear()
+        let label = convertDegtoDirec(deg: deg)
         self.glassesConnected?.txt(x: 102, y: 128, rotation: .topLR, font: 2, color: 15, string: label)
         
 //        let compass = String(deg)

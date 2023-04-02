@@ -14,8 +14,8 @@
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "496"
-            endingLineNumber = "496"
+            startingLineNumber = "525"
+            endingLineNumber = "525"
             landmarkName = "addMarkerImage(_:to:at:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "493"
-            endingLineNumber = "493"
+            startingLineNumber = "522"
+            endingLineNumber = "522"
             landmarkName = "MapScreen"
             landmarkType = "21">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "521"
+            endingLineNumber = "521"
             landmarkName = "generateImageFromMap(zoom:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "485"
-            endingLineNumber = "485"
+            startingLineNumber = "514"
+            endingLineNumber = "514"
             landmarkName = "generateImageFromMap(zoom:)"
             landmarkType = "7">
          </BreakpointContent>
