@@ -284,12 +284,13 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     }
     func checkLocationAuthorization(){
         //guard let locationManager = locationManager else { return }
-        region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
-        locationManager.startUpdatingLocation()
+        //region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        //locationManager.startUpdatingLocation()
 
         switch locationManager.authorizationStatus{
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            //locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
         case .restricted:
             print("Allow user Location")
         case .denied:
