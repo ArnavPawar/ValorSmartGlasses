@@ -42,6 +42,7 @@ struct ContentView: View {
 
     @SwiftUI.State private var selectedPlace: Location?
     @SwiftUI.State var timer: Timer?
+    @SwiftUI.State var timer1: Timer?
     
     @SwiftUI.State var zoomForMap: Double = 0.002
     //var zoomForMap = 0.002
@@ -170,11 +171,15 @@ struct ContentView: View {
             }
         }
     }
+    
+    let cLoc = CLLocation()
+    
     func connectGlasses(){
         Glasses.startScanning()
     }
     func Clear(){
-        Glasses.clearMap()
+        viewModel.getAddressFromLocation(location: cLoc)
+        //Glasses.clearMap()
     }
     func disconnect(){
         //Glasses.glassesConnected?.disconnect()
@@ -182,7 +187,7 @@ struct ContentView: View {
     func sendDisplay(){
         stopTimer()
         Glasses.clearMap()
-        self.timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
             print("rep")
             Glasses.threeTimer(zoom: zoomForMap)
         }
@@ -190,7 +195,7 @@ struct ContentView: View {
     func returnDegree(){
         stopTimer()
         Glasses.clearMap()
-        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { _ in
             print("repeat")
             let compassDeg = Int(-1*self.compassHeading.degrees)
             Glasses.oneTimer(deg: compassDeg)
@@ -199,15 +204,22 @@ struct ContentView: View {
     func both(){
         stopTimer()
         Glasses.clearMap()
-        self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
             print("repBof")
             let compassDeg = Int(-1*self.compassHeading.degrees)
-            Glasses.bothRuns(zoom: zoomForMap, deg: compassDeg)
+            Glasses.oneTimer(deg: compassDeg)
+            //Glasses.bothRuns(zoom: zoomForMap, deg: compassDeg)
+        }
+        self.timer1 = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
+            Glasses.threeTimer(zoom: zoomForMap)
+            //Glasses.oneTimer(deg:compassDeg)
         }
     }
     func stopTimer(){
         self.timer?.invalidate()
         self.timer = nil
+        self.timer1?.invalidate()
+        self.timer1 = nil
     }
     func plus(){
         zoomForMap = zoomForMap - 0.001
@@ -257,6 +269,14 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         let longitude = region.center.longitude
         return CLLocation(latitude: latitude, longitude: longitude)
     }
+    func getAddressFromLocation(location: CLLocation) {
+        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+            guard let placemark = placemarks?.first else { return }
+            let currentAddress = placemark.thoroughfare ?? ""
+            print(currentAddress)
+        }
+    }
+    
 }
 
 
@@ -367,7 +387,7 @@ extension MapScreen: MKMapViewDelegate {
     func oneTimer(deg: Int){
         //self.glassesConnected?.clear()
         
-        let labels = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+        let labels = ["  N  ", " NE  ", "  E  ", "  SE ", "  S  ", "  SW ", "  W  ", "  NW "]
         let index = Int((Double(deg) / 45.0).rounded()) % 8
            
         let label = labels[index]
@@ -430,8 +450,9 @@ extension MapScreen: MKMapViewDelegate {
                 let markerImage = UIImage(systemName: "dot.circle") // Replace with your marker image
                 let markerPoint = snapshot?.point(for: locationManager.location!.coordinate)
                 imageWithMarker = addMarkerImage(markerImage, to: image, at: markerPoint!)
-                
+                                
                 self.glassesConnected?.imgStream(image: imageWithMarker!, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
+                self.glassesConnected?.luma(level: 15)
                 
             }else{
                 print("Missing snapshot")
