@@ -5,6 +5,7 @@ import CoreLocationUI
 import MapKit
 import ActiveLookSDK
 
+
 struct TestView: View{
     @ObservedObject var compassHeading = CompassHeading()
 
@@ -98,40 +99,54 @@ struct ContentView: View {
                 }
                 Spacer()
                 VStack{
-                    Button(action: connectGlasses) {
-                        Image(systemName: "eyeglasses")
-                        .frame(width: 50, height:30)
+                    Menu{
+                        Button("Connect Glasses", action: connectGlasses)
+                        Button("Map Only", action: sendDisplay)
+                        Button("Compass Only", action: returnDegree)
+                        Button("Both", action:both)
+                        Button("Zoom In", action: plus)
+                        Button("Zoom Out", action: minus)
+                        Button("Street Name", action: Clear)
+                        Button("Stop Timer", action: stopTimer)
                     }
-                    .foregroundColor(.white)
-                    .background(.black.opacity(0.5))
-                    Button(action: sendDisplay) {
-                        Image(systemName: "mappin.circle.fill")
-                        .frame(width: 50, height:30)
+                    label: {
+                        Image(systemName: "")
                     }
-                    Button(action: returnDegree){
-                        Image(systemName: "location.north.circle")
-                        .frame(width: 50, height:30)
-                    }
-                    Button(action: both){
-                        Image(systemName: "person.2.circle.fill")
-                        .frame(width: 50, height:30)
-                    }
-                    Button(action: stopTimer){
-                        Image(systemName: "stop.circle")
-                        .frame(width: 50, height:30)
-                    }
-                    Button(action: plus){
-                        Image(systemName: "plus.app.fill")
-                        .frame(width: 50, height:30)
-                    }
-                    Button(action: minus){
-                        Image(systemName: "minus.square.fill")
-                        .frame(width: 50, height:30)
-                    }
-                    Button(action: Clear){
-                        Image(systemName: "clear.fill")
-                        .frame(width: 50, height:30)
-                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+//                    Button(action: connectGlasses) {
+//                        Image(systemName: "eyeglasses")
+//                        .frame(width: 50, height:30)
+//                    }
+//                    .foregroundColor(.white)
+//                    .background(.black.opacity(0.5))
+//                    Button(action: sendDisplay) {
+//                        Image(systemName: "mappin.circle.fill")
+//                        .frame(width: 50, height:30)
+//                    }
+//                    Button(action: returnDegree){
+//                        Image(systemName: "location.north.circle")
+//                        .frame(width: 50, height:30)
+//                    }
+//                    Button(action: both){
+//                        Image(systemName: "person.2.circle.fill")
+//                        .frame(width: 50, height:30)
+//                    }
+//                    Button(action: stopTimer){
+//                        Image(systemName: "stop.circle")
+//                        .frame(width: 50, height:30)
+//                    }
+//                    Button(action: plus){
+//                        Image(systemName: "plus.app.fill")
+//                        .frame(width: 50, height:30)
+//                    }
+//                    Button(action: minus){
+//                        Image(systemName: "minus.square.fill")
+//                        .frame(width: 50, height:30)
+//                    }
+//                    Button(action: Clear){
+//                        Image(systemName: "clear.fill")
+//                        .frame(width: 50, height:30)
+//                    }
                     
                     
                     Spacer(minLength: -300)
@@ -178,7 +193,9 @@ struct ContentView: View {
         Glasses.startScanning()
     }
     func Clear(){
-        viewModel.getAddressFromLocation(location: cLoc)
+        Glasses.getAddressFromLocation()
+        //Glasses.updateGlassesTextDisplay()
+        //viewModel.getAddressFromLocation(location: cLoc)
         //Glasses.clearMap()
     }
     func disconnect(){
@@ -268,13 +285,6 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         let latitude = region.center.latitude
         let longitude = region.center.longitude
         return CLLocation(latitude: latitude, longitude: longitude)
-    }
-    func getAddressFromLocation(location: CLLocation) {
-        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
-            guard let placemark = placemarks?.first else { return }
-            let currentAddress = placemark.thoroughfare ?? ""
-            print(currentAddress)
-        }
     }
     
 }
@@ -377,12 +387,33 @@ class MapScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.startScanning()
+        //locationManager.delegate = self
         //goButton.layer.cornerRadius = goButton.frame.size.height/2
+    }
+    /*func updateGlassesTextDisplay() {
+        print("HELLO")
+        geoCoder.reverseGeocodeLocation(locationManager.location!) { placemarks, error in
+            guard let placemark = placemarks?.first,
+                  let street = placemark.thoroughfare,
+                  let direction = self.locationManager.heading?.direction else { return }
+            let text = "(direction) on (street)"
+            print(text)
+            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
+        }
+    }*/
+    
+    func getAddressFromLocation() {
+        CLGeocoder().reverseGeocodeLocation(locationManager.location!) { placemarks, error in
+            guard let placemark = placemarks?.first else { return }
+            let currentAddress = placemark.thoroughfare ?? ""
+            print(currentAddress)
+        }
     }
 }
 
 
 extension MapScreen: MKMapViewDelegate {
+    
     
     func oneTimer(deg: Int){
         //self.glassesConnected?.clear()
@@ -496,7 +527,31 @@ extension MapScreen: MKMapViewDelegate {
         return newImage
     }
 }
-
+extension CLHeading {
+    var direction: String? {
+        switch true {
+        case 0..<22.5 ~= magneticHeading,
+             337.5..<360 ~= magneticHeading:
+            return "N"
+        case 22.5..<67.5 ~= magneticHeading:
+            return "NE"
+        case 67.5..<112.5 ~= magneticHeading:
+            return "E"
+        case 112.5..<157.5 ~= magneticHeading:
+            return "SE"
+        case 157.5..<202.5 ~= magneticHeading:
+            return "S"
+        case 202.5..<247.5 ~= magneticHeading:
+            return "SW"
+        case 247.5..<292.5 ~= magneticHeading:
+            return "W"
+        case 292.5..<337.5 ~= magneticHeading:
+            return "NW"
+        default:
+            return nil
+        }
+    }
+}
 
 struct Marker : Hashable{
     let degrees: Double
@@ -568,3 +623,5 @@ struct CompassMarkerView : View{
         return Angle(degrees: -self.compassDegrees - self.marker.degrees)
     }
 }
+
+
