@@ -432,7 +432,8 @@ class MapScreen: UIViewController {
             let text = "\(direction)on \(currentAddress)"
             print(text)
             
-            self.glassesConnected?.txt(x: 50, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
+            //self.glassesConnected?.txt(x: 304, y: 128, rotation: .topLR, font: 2, color: 15, string: "  SE on Sixth Ave")
+            self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
         }
     }
 }
@@ -453,27 +454,6 @@ extension MapScreen: MKMapViewDelegate {
         //self.glassesConnected?.clear()
         let label = convertDegtoDirec(deg: deg)
         self.glassesConnected?.txt(x: 102, y: 128, rotation: .topLR, font: 2, color: 15, string: label)
-        
-//        let compass = String(deg)
-//
-//        let counter = compass.count
-//
-//        if (counter==1){
-//            let ncompass="00"+compass
-//            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topLR, font: 2, color: 15, string: ncompass)
-//
-//        }
-//        else if(counter==2){
-//            let ncompass = "0"+compass
-//            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topLR, font: 2, color: 15, string: ncompass)
-//
-//        }
-//        else if(counter==3){
-//            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topLR, font: 2, color: 15, string: compass)
-//        }
-//        else {
-//            print("size error")
-//        }
     }
     
     func clearMap(){
@@ -512,6 +492,85 @@ extension MapScreen: MKMapViewDelegate {
                 let markerPoint = snapshot?.point(for: locationManager.location!.coordinate)
                 imageWithMarker = addMarkerImage(markerImage, to: image, at: markerPoint!)
                                 
+                //Here we add directiom
+                /*
+                 // Create a new snapshot options object
+                 let options = MKMapSnapshotter.Options()
+
+                 // Set the region to the desired address
+                 let address = "1600 Amphitheatre Parkway, Mountain View, CA"
+                 let geocoder = CLGeocoder()
+                 geocoder.geocodeAddressString(address) { placemarks, error in
+                     guard let placemark = placemarks?.first else { return }
+                     let region = MKCoordinateRegion(center: placemark.location!.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+                     options.region = region
+
+                     // Set the size of the snapshot image
+                     let size = CGSize(width: 200, height: 200)
+                     options.size = size
+
+                     // Create a new snapshotter object with the options
+                     let snapshotter = MKMapSnapshotter(options: options)
+
+                     // Start the snapshot request
+                     snapshotter.start() { snapshot, error in
+                         guard let snapshot = snapshot else { return }
+
+                         // Create a new image context with the same size as the snapshot image
+                         UIGraphicsBeginImageContextWithOptions(snapshotImage.size, false, 0.0)
+
+                         // Draw the snapshot image onto the context
+                         snapshot.image.draw(at: CGPoint.zero)
+
+                         // Get the starting point and destination coordinates
+                         let startPoint = CLLocationCoordinate2D(latitude: 37.331789, longitude: -122.029620)
+                         let endPoint = placemark.location!.coordinate
+
+                         // Create a MKDirectionsRequest with the starting and destination coordinates
+                         let request = MKDirections.Request()
+                         request.source = MKMapItem(placemark: MKPlacemark(coordinate: startPoint))
+                         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: endPoint))
+                         request.transportType = .walking
+
+                         // Create a MKDirections object and calculate the route
+                         let directions = MKDirections(request: request)
+                         directions.calculate { response, error in
+                             guard let route = response?.routes.first else { return }
+
+                             // Draw the route onto the image context
+                             let routePath = UIBezierPath()
+                             routePath.lineWidth = 5.0
+                             routePath.lineCapStyle = .round
+                             routePath.lineJoinStyle = .round
+
+                             // Loop through the route's steps and add the path for each step
+                             for step in route.steps {
+                                 let stepPath = UIBezierPath()
+                                 stepPath.move(to: snapshot.point(for: step.polyline.points()[0]))
+                                 for i in 1..<step.polyline.pointCount {
+                                     stepPath.addLine(to: snapshot.point(for: step.polyline.points()[i]))
+                                 }
+                                 routePath.append(stepPath)
+                             }
+
+                             // Set the stroke color and draw the route path
+                             UIColor.blue.setStroke()
+                             routePath.stroke()
+
+                             // Get the new image from the context
+                             let newImage = UIGraphicsGetImageFromCurrentImageContext()
+
+                             // End the image context
+                             UIGraphicsEndImageContext()
+
+                             // Use the new image with the highlighted route
+                             // ...
+                         }
+                     }
+                 }
+                 
+                 */
+                
                 self.glassesConnected?.imgStream(image: imageWithMarker!, x: 0, y: 0, imgStreamFmt: .MONO_4BPP_HEATSHRINK)
                 self.glassesConnected?.luma(level: 15)
                 
