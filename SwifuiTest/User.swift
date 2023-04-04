@@ -13,7 +13,7 @@ import MapKit
 class User: Entity {
     //for database
     var id: Id = 0
-    let store = try Store(directoryPath: "/Users/jenna/Documents/mydatabase/")
+    //let store = try Store(directoryPath: "/Users/maahikagupta/Documents/ValorSmartGlasses/")
     
     required init() {
         // no properties, so nothing to do here, ObjectBox calls this
@@ -25,10 +25,10 @@ class User: Entity {
     var policeID: Int = 0 //username for app
     var locX: Float = 0.0
     var locY: Float = 0.0
-    var curLocationL: MKCoordinateRegion?? = nil
+    //var curLocationL: MKCoordinateRegion?? = nil
     
     
-    static func allUsers() -> [User] {
+    /*static func allUsers() -> [User] {
         let box = try! store.box(for: User.self)
         return try! box.all()
     }
@@ -54,6 +54,6 @@ class User: Entity {
         set {
             _lastName = newValue
         }
-    }
+    }*/
     
 }

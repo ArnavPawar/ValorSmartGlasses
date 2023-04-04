@@ -51,6 +51,7 @@ struct ContentView: View {
     //var activeLook: ActiveLookSDK
         
     var body: some View {
+        LaunchView()
         NavigationView{
             ZStack{
                 Map(coordinateRegion: $viewModel.region,showsUserLocation: true,annotationItems:locations){
@@ -432,8 +433,21 @@ class MapScreen: UIViewController {
             let text = "\(direction)on \(currentAddress)"
             print(text)
             
-            //self.glassesConnected?.txt(x: 304, y: 128, rotation: .topLR, font: 2, color: 15, string: "  SE on Sixth Ave")
-            self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
+            if(text.count > 21){
+                if(text.count > 42){
+                    self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: "character overload")
+                }
+                else{
+                    let firsthalf=String(text.prefix(21))
+                    self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: firsthalf)
+                    self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
+                }
+            }
+            else{
+                self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
+            }
+            self.glassesConnected?.txt(x: 316, y: 128, rotation: .topLR, font: 2, color: 15, string: " SE on Sixth Ave12345")
+            //self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
         }
     }
 }
@@ -442,8 +456,8 @@ class MapScreen: UIViewController {
 extension MapScreen: MKMapViewDelegate {
     
     
-    func convertDegtoDirec(deg:Int) -> String {
-        let labels = ["  N  ", " NE  ", "  E  ", "  SE ", "  S  ", "  SW ", "  W  ", "  NW "]
+    func convertDegtoDirec(deg:Int) -> String {//Should add 2 funcs one w spaces and one w out
+        let labels = [" N  ", " NE  ", " E  ", " SE ", " S  ", " SW ", " W  ", " NW "]
         let index = Int((Double(deg) / 45.0).rounded()) % 8
            
         let label = labels[index]

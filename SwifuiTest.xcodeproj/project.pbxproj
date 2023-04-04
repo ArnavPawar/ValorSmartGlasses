@@ -12,6 +12,8 @@
 		921E8E3F296DB9C600827058 /* ActiveLookSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 921E8E3E296DB9C600827058 /* ActiveLookSDK */; };
 		926EB73829D9495700D5A20F /* LICENCE in Resources */ = {isa = PBXBuildFile; fileRef = 926EB73729D9495700D5A20F /* LICENCE */; };
 		926EB73A29DBA74700D5A20F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926EB73929DBA74700D5A20F /* User.swift */; };
+		926EB73C29DCA98400D5A20F /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926EB73B29DCA98400D5A20F /* LaunchView.swift */; };
+		926EB73E29DCAA3C00D5A20F /* vv.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 926EB73D29DCAA3C00D5A20F /* vv.jpg */; };
 		92801B442961091F00CD5441 /* CompassHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92801B432961091F00CD5441 /* CompassHeading.swift */; };
 		92906C7D296DDF8B0065FF5E /* Connections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92906C7C296DDF8B0065FF5E /* Connections.swift */; };
 		92CBF15A295D3747005CF6A4 /* SwifuiTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF159295D3747005CF6A4 /* SwifuiTestApp.swift */; };
@@ -29,6 +31,8 @@
 		7735B1BECD21BAE2F9E6EA19 /* Pods-SwifuiTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwifuiTest.debug.xcconfig"; path = "Target Support Files/Pods-SwifuiTest/Pods-SwifuiTest.debug.xcconfig"; sourceTree = "<group>"; };
 		926EB73729D9495700D5A20F /* LICENCE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
 		926EB73929DBA74700D5A20F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		926EB73B29DCA98400D5A20F /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		926EB73D29DCAA3C00D5A20F /* vv.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = vv.jpg; path = ../../../../Desktop/vv.jpg; sourceTree = "<group>"; };
 		92801B432961091F00CD5441 /* CompassHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassHeading.swift; sourceTree = "<group>"; };
 		92906C7B296DDF240065FF5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		92906C7C296DDF8B0065FF5E /* Connections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connections.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 				92CBF15F295D374A005CF6A4 /* Preview Content */,
 				92906C7C296DDF8B0065FF5E /* Connections.swift */,
 				926EB73929DBA74700D5A20F /* User.swift */,
+				926EB73B29DCA98400D5A20F /* LaunchView.swift */,
+				926EB73D29DCAA3C00D5A20F /* vv.jpg */,
 			);
 			path = SwifuiTest;
 			sourceTree = "<group>";
@@ -218,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				926EB73829D9495700D5A20F /* LICENCE in Resources */,
+				926EB73E29DCAA3C00D5A20F /* vv.jpg in Resources */,
 				92CBF161295D374A005CF6A4 /* Preview Assets.xcassets in Resources */,
 				92CBF15E295D374A005CF6A4 /* Assets.xcassets in Resources */,
 			);
@@ -297,6 +304,7 @@
 				926EB73A29DBA74700D5A20F /* User.swift in Sources */,
 				92CBF1AB2960F294005CF6A4 /* EditView.swift in Sources */,
 				92CBF15A295D3747005CF6A4 /* SwifuiTestApp.swift in Sources */,
+				926EB73C29DCA98400D5A20F /* LaunchView.swift in Sources */,
 				565B8F9C38D0F9C85E5B53EC /* EntityInfo-SwifuiTest.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

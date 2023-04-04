@@ -27,14 +27,12 @@ extension User: ObjectBox.EntityInspectable {
     fileprivate static func buildEntity(modelBuilder: ObjectBox.ModelBuilder) throws {
         let entityBuilder = try modelBuilder.entityBuilder(for: User.self, id: 1, uid: 4687130525637896704)
         try entityBuilder.addProperty(name: "id", type: PropertyType.long, flags: [.id], id: 1, uid: 8106370884158779392)
-        try entityBuilder.addProperty(name: "store", type: try Store.entityPropertyType, id: 10, uid: 9072959716666314752)
         try entityBuilder.addProperty(name: "firstName", type: PropertyType.string, id: 3, uid: 4054984470590511360)
         try entityBuilder.addProperty(name: "lastName", type: PropertyType.string, id: 4, uid: 8293440642595545088)
         try entityBuilder.addProperty(name: "password", type: PropertyType.string, id: 5, uid: 45610949015348224)
         try entityBuilder.addProperty(name: "policeID", type: PropertyType.long, id: 6, uid: 7469659137062754048)
         try entityBuilder.addProperty(name: "locX", type: PropertyType.float, id: 7, uid: 2669677264091848448)
         try entityBuilder.addProperty(name: "locY", type: PropertyType.float, id: 8, uid: 7940162628339250432)
-        try entityBuilder.addProperty(name: "curLocationL", type: MKCoordinateRegion?.entityPropertyType, id: 9, uid: 8223299998751645184)
 
         try entityBuilder.lastProperty(id: 10, uid: 9072959716666314752)
     }
@@ -47,12 +45,6 @@ extension User {
     ///
     ///     box.query { User.id == myId }
     internal static var id: Property<User, Id, Id> { return Property<User, Id, Id>(propertyId: 1, isPrimaryKey: true) }
-    /// Generated entity property information.
-    ///
-    /// You may want to use this in queries to specify fetch conditions, for example:
-    ///
-    ///     box.query { User.store > 1234 }
-    internal static var store: Property<User, try Store, Void> { return Property<User, try Store, Void>(propertyId: 10, isPrimaryKey: false) }
     /// Generated entity property information.
     ///
     /// You may want to use this in queries to specify fetch conditions, for example:
@@ -89,12 +81,6 @@ extension User {
     ///
     ///     box.query { User.locY > 1234 }
     internal static var locY: Property<User, Float, Void> { return Property<User, Float, Void>(propertyId: 8, isPrimaryKey: false) }
-    /// Generated entity property information.
-    ///
-    /// You may want to use this in queries to specify fetch conditions, for example:
-    ///
-    ///     box.query { User.curLocationL > 1234 }
-    internal static var curLocationL: Property<User, MKCoordinateRegion??, Void> { return Property<User, MKCoordinateRegion??, Void>(propertyId: 9, isPrimaryKey: false) }
 
     fileprivate func __setId(identifier: ObjectBox.Id) {
         self.id = Id(identifier)
@@ -109,14 +95,6 @@ extension ObjectBox.Property where E == User {
     ///     box.query { .id == myId }
 
     internal static var id: Property<User, Id, Id> { return Property<User, Id, Id>(propertyId: 1, isPrimaryKey: true) }
-
-    /// Generated entity property information.
-    ///
-    /// You may want to use this in queries to specify fetch conditions, for example:
-    ///
-    ///     box.query { .store > 1234 }
-
-    internal static var store: Property<User, try Store, Void> { return Property<User, try Store, Void>(propertyId: 10, isPrimaryKey: false) }
 
     /// Generated entity property information.
     ///
@@ -166,14 +144,6 @@ extension ObjectBox.Property where E == User {
 
     internal static var locY: Property<User, Float, Void> { return Property<User, Float, Void>(propertyId: 8, isPrimaryKey: false) }
 
-    /// Generated entity property information.
-    ///
-    /// You may want to use this in queries to specify fetch conditions, for example:
-    ///
-    ///     box.query { .curLocationL > 1234 }
-
-    internal static var curLocationL: Property<User, MKCoordinateRegion??, Void> { return Property<User, MKCoordinateRegion??, Void>(propertyId: 9, isPrimaryKey: false) }
-
 }
 
 
@@ -201,11 +171,9 @@ internal class UserBinding: ObjectBox.EntityBinding {
         let propertyOffset_password = propertyCollector.prepare(string: entity.password)
 
         propertyCollector.collect(id, at: 2 + 2 * 1)
-        propertyCollector.collect(entity.store, at: 2 + 2 * 10)
         propertyCollector.collect(entity.policeID, at: 2 + 2 * 6)
         propertyCollector.collect(entity.locX, at: 2 + 2 * 7)
         propertyCollector.collect(entity.locY, at: 2 + 2 * 8)
-        propertyCollector.collect(entity.curLocationL, at: 2 + 2 * 9)
         propertyCollector.collect(dataOffset: propertyOffset_firstName, at: 2 + 2 * 3)
         propertyCollector.collect(dataOffset: propertyOffset_lastName, at: 2 + 2 * 4)
         propertyCollector.collect(dataOffset: propertyOffset_password, at: 2 + 2 * 5)
@@ -215,14 +183,12 @@ internal class UserBinding: ObjectBox.EntityBinding {
         let entity = User()
 
         entity.id = entityReader.read(at: 2 + 2 * 1)
-        entity.store = entityReader.read(at: 2 + 2 * 10)
         entity.firstName = entityReader.read(at: 2 + 2 * 3)
         entity.lastName = entityReader.read(at: 2 + 2 * 4)
         entity.password = entityReader.read(at: 2 + 2 * 5)
         entity.policeID = entityReader.read(at: 2 + 2 * 6)
         entity.locX = entityReader.read(at: 2 + 2 * 7)
         entity.locY = entityReader.read(at: 2 + 2 * 8)
-        entity.curLocationL = entityReader.read(at: 2 + 2 * 9)
 
         return entity
     }
