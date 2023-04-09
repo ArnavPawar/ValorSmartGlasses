@@ -92,6 +92,7 @@ struct ContentView: View {
                             Button("Clear", action:Clear)
                             Button("Stop Timer", action: stopTimer)
                         }
+                        .background(Color.blue)
                         label: {
                             Image(systemName: "eyeglasses")
                                 .resizable()
@@ -102,7 +103,7 @@ struct ContentView: View {
                         
                         Image("vv.jpg")
                             .resizable()
-                            .aspectRatio(contentMode:.fit)
+                            .scaledToFit()
                             .frame(alignment: .center)
                         
                         Menu{
@@ -111,6 +112,7 @@ struct ContentView: View {
                             Button("Disconnect", action: Disconnect)
                             Button("Turn Off", action: TurnOff)
                         }
+                        .background(Color.blue)
                         label: {
                             Image(systemName: "gear")
                                 .resizable()
