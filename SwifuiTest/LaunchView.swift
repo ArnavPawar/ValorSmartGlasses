@@ -11,7 +11,7 @@ import SwiftUI
 struct LaunchView: View {
     var body: some View {
         VStack {
-            Image("vv")
+            Image("vv.jpg")
                 .resizable()
                 .scaledToFit()
                 .padding()

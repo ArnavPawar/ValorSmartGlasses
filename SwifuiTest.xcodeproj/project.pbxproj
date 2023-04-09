@@ -91,6 +91,7 @@
 				92906C7B296DDF240065FF5E /* Info.plist */,
 				92CBF159295D3747005CF6A4 /* SwifuiTestApp.swift */,
 				92CBF15B295D3747005CF6A4 /* ContentView.swift */,
+				926EB73D29DCAA3C00D5A20F /* vv.jpg */,
 				92801B432961091F00CD5441 /* CompassHeading.swift */,
 				92CBF1AA2960F293005CF6A4 /* EditView.swift */,
 				92CBF183295D420F005CF6A4 /* Location.swift */,
@@ -99,7 +100,6 @@
 				92906C7C296DDF8B0065FF5E /* Connections.swift */,
 				926EB73929DBA74700D5A20F /* User.swift */,
 				926EB73B29DCA98400D5A20F /* LaunchView.swift */,
-				926EB73D29DCAA3C00D5A20F /* vv.jpg */,
 			);
 			path = SwifuiTest;
 			sourceTree = "<group>";

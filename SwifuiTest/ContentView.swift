@@ -51,7 +51,7 @@ struct ContentView: View {
     //var activeLook: ActiveLookSDK
         
     var body: some View {
-        LaunchView()
+        //LaunchView()
         NavigationView{
             ZStack{
                 Map(coordinateRegion: $viewModel.region,showsUserLocation: true,annotationItems:locations){
@@ -60,12 +60,10 @@ struct ContentView: View {
                             Image(systemName: "mappin")
                                 .resizable()
                                 .padding(.bottom)
-                            //.foregroundColor(.red)
                                 .frame(width: 20, height: 60)
                                 .scaledToFit()
                                 .padding(.bottom)
                                 .foregroundColor(.red)
-                            
                             Text(location.name)
                                 .fixedSize()
                         }
@@ -75,18 +73,63 @@ struct ContentView: View {
                     }
                 }
                 .ignoresSafeArea()
-                
                 .accentColor(Color(.systemPink))
                 .onAppear{
                     viewModel.checkLocationAuthorization()
                     //add function call here
                 }
                 
+                VStack(alignment: .leading){
+                    HStack{
+                        Menu{
+                            Button("Connect Glasses", action: connectGlasses)
+                            Button("Map Only", action: sendDisplay)
+                            Button("Compass Only", action: returnDegree)
+                            Button("Both Map and Compass", action:both)
+                            Button("Zoom In", action: plus)
+                            Button("Zoom Out", action: minus)
+                            Button("Street Name", action: StreetNameWCompass)
+                            Button("Clear", action:Clear)
+                            Button("Stop Timer", action: stopTimer)
+                        }
+                        label: {
+                            Image(systemName: "eyeglasses")
+                                .resizable()
+                                .aspectRatio(contentMode:.fit)
+                                .frame(width:60,height:40)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Image("vv.jpg")
+                            .resizable()
+                            .aspectRatio(contentMode:.fit)
+                            .frame(alignment: .center)
+                        
+                        Menu{
+                            Button("Connect Glasses", action: connectGlasses)
+                            Button("Battery", action: battery)
+                            Button("Disconnect", action: Disconnect)
+                            Button("Turn Off", action: TurnOff)
+                        }
+                        label: {
+                            Image(systemName: "gear")
+                                .resizable()
+                                .aspectRatio(contentMode:.fit)
+                                .frame(width:60,height:40)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        }
+                        Spacer()
+                }
+                .padding()
+                    
+                
                 Circle()
                     .fill(.blue)
                     .opacity(0.3)
                     .frame(width:15,height:15)
-                VStack{
+                
+                VStack{//compass
                     Spacer()
                     Capsule()
                         .frame(width:5, height:50)
@@ -100,61 +143,8 @@ struct ContentView: View {
                     .statusBar(hidden:true)
                 }
                 Spacer()
-                VStack{
-                    Menu{
-                        Button("Connect Glasses", action: connectGlasses)
-                        Button("Map Only", action: sendDisplay)
-                        Button("Compass Only", action: returnDegree)
-                        Button("Both", action:both)
-                        Button("Zoom In", action: plus)
-                        Button("Zoom Out", action: minus)
-                        Button("Street Name", action: Clear)
-                        Button("Stop Timer", action: stopTimer)
-                    }
-                    label: {
-                        Image(systemName: "eyeglasses")
-                            .resizable()
-                            .aspectRatio(contentMode:.fit)
-                            .frame(width:60,height:40)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .center)
+                VStack{//CenterLocation & pin point buttons
                     Spacer()
-//                    Button(action: connectGlasses) {
-//                        Image(systemName: "eyeglasses")
-//                        .frame(width: 50, height:30)
-//                    }
-//                    .foregroundColor(.white)
-//                    .background(.black.opacity(0.5))
-//                    Button(action: sendDisplay) {
-//                        Image(systemName: "mappin.circle.fill")
-//                        .frame(width: 50, height:30)
-//                    }
-//                    Button(action: returnDegree){
-//                        Image(systemName: "location.north.circle")
-//                        .frame(width: 50, height:30)
-//                    }
-//                    Button(action: both){
-//                        Image(systemName: "person.2.circle.fill")
-//                        .frame(width: 50, height:30)
-//                    }
-//                    Button(action: stopTimer){
-//                        Image(systemName: "stop.circle")
-//                        .frame(width: 50, height:30)
-//                    }
-//                    Button(action: plus){
-//                        Image(systemName: "plus.app.fill")
-//                        .frame(width: 50, height:30)
-//                    }
-//                    Button(action: minus){
-//                        Image(systemName: "minus.square.fill")
-//                        .frame(width: 50, height:30)
-//                    }
-//                    Button(action: Clear){
-//                        Image(systemName: "clear.fill")
-//                        .frame(width: 50, height:30)
-//                    }
-                    
-                    
                     Spacer(minLength: -300)
                     HStack{
                         LocationButton(.currentLocation){
@@ -200,15 +190,12 @@ struct ContentView: View {
     }
     func Clear(){
         Glasses.clearMap()
+    }
+    func StreetNameWCompass(){
+        Glasses.clearMap()
         let compassDeg = Int(-1*self.compassHeading.degrees)
         
         Glasses.getAddressFromLocation(deg: compassDeg)
-        //Glasses.updateGlassesTextDisplay()
-        //viewModel.getAddressFromLocation(location: cLoc)
-        //Glasses.clearMap()
-    }
-    func disconnect(){
-        //Glasses.glassesConnected?.disconnect()
     }
     func sendDisplay(){
         stopTimer()
@@ -253,10 +240,19 @@ struct ContentView: View {
     func minus(){
         zoomForMap = zoomForMap + 0.001
     }
-    /*
-    func stopTry(){
-        Glasses.stopScanning()
-    }*/
+    func battery(){
+        Glasses.clearMap()
+        //Glasses.displayBat()
+    }
+    func Disconnect(){
+        Glasses.clearMap()
+        //Glasses.discon
+    }
+    func TurnOff(){
+        Glasses.clearMap()
+        //Glasses.discon
+        //Glasses.turnOf
+    }
 }
 
 
@@ -433,20 +429,23 @@ class MapScreen: UIViewController {
             let text = "\(direction)on \(currentAddress)"
             print(text)
             
-            if(text.count > 21){
-                if(text.count > 42){
-                    self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: "character overload")
-                }
-                else{
-                    let firsthalf=String(text.prefix(21))
-                    self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: firsthalf)
-                    self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
-                }
-            }
-            else{
-                self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
-            }
-            self.glassesConnected?.txt(x: 316, y: 128, rotation: .topLR, font: 2, color: 15, string: " SE on Sixth Ave12345")
+            self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
+
+            
+//            if(text.count > 21){
+//                if(text.count > 42){
+//                    self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: "character overload")
+//                }
+//                else{
+//                    let firsthalf=String(text.prefix(21))
+//                    self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: firsthalf)
+//                    self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
+//                }
+//            }
+//            else{
+//                self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
+//            }
+//            self.glassesConnected?.txt(x: 316, y: 128, rotation: .topLR, font: 2, color: 15, string: " SE on Sixth Ave12345")
             //self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
         }
     }
