@@ -92,19 +92,19 @@ struct ContentView: View {
                             Button("Clear", action:Clear)
                             Button("Stop Timer", action: stopTimer)
                         }
-                        .background(Color.blue)
                         label: {
                             Image(systemName: "eyeglasses")
                                 .resizable()
                                 .aspectRatio(contentMode:.fit)
                                 .frame(width:60,height:40)
                         }
+                        //.background(Color.gray)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
-                        Image("vv.jpg")
+                        Image("vv-lt")
                             .resizable()
                             .scaledToFit()
-                            .frame(alignment: .center)
+                            .frame(width:60, height:70, alignment: .center)
                         
                         Menu{
                             Button("Connect Glasses", action: connectGlasses)
@@ -112,13 +112,13 @@ struct ContentView: View {
                             Button("Disconnect", action: Disconnect)
                             Button("Turn Off", action: TurnOff)
                         }
-                        .background(Color.blue)
                         label: {
                             Image(systemName: "gear")
                                 .resizable()
                                 .aspectRatio(contentMode:.fit)
                                 .frame(width:60,height:40)
                         }
+                        //.background(Color.gray)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                         }
                         Spacer()

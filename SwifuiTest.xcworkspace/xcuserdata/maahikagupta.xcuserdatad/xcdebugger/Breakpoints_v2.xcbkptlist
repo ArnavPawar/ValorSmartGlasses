@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "598"
             endingLineNumber = "598"
-            landmarkName = "addMarkerImage(_:to:at:)"
-            landmarkType = "7">
+            landmarkName = "MapScreen"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,8 +32,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "595"
             endingLineNumber = "595"
-            landmarkName = "MapScreen"
-            landmarkType = "21">
+            landmarkName = "generateImageFromMap(zoom:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

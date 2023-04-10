@@ -13,7 +13,6 @@
 		926EB73829D9495700D5A20F /* LICENCE in Resources */ = {isa = PBXBuildFile; fileRef = 926EB73729D9495700D5A20F /* LICENCE */; };
 		926EB73A29DBA74700D5A20F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926EB73929DBA74700D5A20F /* User.swift */; };
 		926EB73C29DCA98400D5A20F /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926EB73B29DCA98400D5A20F /* LaunchView.swift */; };
-		926EB73E29DCAA3C00D5A20F /* vv.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 926EB73D29DCAA3C00D5A20F /* vv.jpg */; };
 		92801B442961091F00CD5441 /* CompassHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92801B432961091F00CD5441 /* CompassHeading.swift */; };
 		92906C7D296DDF8B0065FF5E /* Connections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92906C7C296DDF8B0065FF5E /* Connections.swift */; };
 		92CBF15A295D3747005CF6A4 /* SwifuiTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF159295D3747005CF6A4 /* SwifuiTestApp.swift */; };
@@ -32,7 +31,6 @@
 		926EB73729D9495700D5A20F /* LICENCE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
 		926EB73929DBA74700D5A20F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		926EB73B29DCA98400D5A20F /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
-		926EB73D29DCAA3C00D5A20F /* vv.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = vv.jpg; path = ../../../../Desktop/vv.jpg; sourceTree = "<group>"; };
 		92801B432961091F00CD5441 /* CompassHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassHeading.swift; sourceTree = "<group>"; };
 		92906C7B296DDF240065FF5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		92906C7C296DDF8B0065FF5E /* Connections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connections.swift; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 				92906C7B296DDF240065FF5E /* Info.plist */,
 				92CBF159295D3747005CF6A4 /* SwifuiTestApp.swift */,
 				92CBF15B295D3747005CF6A4 /* ContentView.swift */,
-				926EB73D29DCAA3C00D5A20F /* vv.jpg */,
 				92801B432961091F00CD5441 /* CompassHeading.swift */,
 				92CBF1AA2960F293005CF6A4 /* EditView.swift */,
 				92CBF183295D420F005CF6A4 /* Location.swift */,
@@ -224,7 +221,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				926EB73829D9495700D5A20F /* LICENCE in Resources */,
-				926EB73E29DCAA3C00D5A20F /* vv.jpg in Resources */,
 				92CBF161295D374A005CF6A4 /* Preview Assets.xcassets in Resources */,
 				92CBF15E295D374A005CF6A4 /* Assets.xcassets in Resources */,
 			);
