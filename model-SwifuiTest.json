@@ -43,14 +43,6 @@
           "id": "8:7940162628339250432",
           "name": "locY",
           "type": 7
-        },
-        {
-          "id": "9:8223299998751645184",
-          "name": "curLocationL"
-        },
-        {
-          "id": "10:9072959716666314752",
-          "name": "store"
         }
       ],
       "relations": []
@@ -65,7 +57,9 @@
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
-    4250429241998454528
+    4250429241998454528,
+    9072959716666314752,
+    8223299998751645184
   ],
   "retiredRelationUids": [],
   "version": 1

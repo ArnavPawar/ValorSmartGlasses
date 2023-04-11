@@ -14,10 +14,10 @@
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "585"
-            endingLineNumber = "585"
-            landmarkName = "addMarkerImage(_:to:at:)"
-            landmarkType = "7">
+            startingLineNumber = "612"
+            endingLineNumber = "612"
+            landmarkName = "MapScreen"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,10 +30,10 @@
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "582"
-            endingLineNumber = "582"
-            landmarkName = "MapScreen"
-            landmarkType = "21">
+            startingLineNumber = "609"
+            endingLineNumber = "609"
+            landmarkName = "generateImageFromMap(zoom:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,8 +46,8 @@
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "581"
-            endingLineNumber = "581"
+            startingLineNumber = "608"
+            endingLineNumber = "608"
             landmarkName = "generateImageFromMap(zoom:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "SwifuiTest/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "574"
-            endingLineNumber = "574"
+            startingLineNumber = "601"
+            endingLineNumber = "601"
             landmarkName = "generateImageFromMap(zoom:)"
             landmarkType = "7">
          </BreakpointContent>
