@@ -436,6 +436,7 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwifuiTest/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Valor Vision";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow To Track Location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -471,6 +472,7 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SwifuiTest/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Valor Vision";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = YES;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow To Track Location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

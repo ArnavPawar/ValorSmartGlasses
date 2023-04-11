@@ -219,7 +219,7 @@ struct ContentView: View {
     func both(){
         stopTimer()
         Glasses.clearMap()
-        self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
             print("repBof")
             let compassDeg = Int(-1*self.compassHeading.degrees)
             Glasses.oneTimer(deg: compassDeg)
@@ -243,17 +243,17 @@ struct ContentView: View {
         zoomForMap = zoomForMap + 0.001
     }
     func battery(){
-        Glasses.clearMap()
-        //Glasses.displayBat()
+        //Glasses.clearMap()
+        Glasses.getBatteryLevel()
     }
     func Disconnect(){
-        Glasses.clearMap()
-        //Glasses.discon
+        //Glasses.clearMap()
+        Glasses.discon()
     }
     func TurnOff(){
         Glasses.clearMap()
         //Glasses.discon
-        //Glasses.turnOf
+        Glasses.turnOf()
     }
 }
 
@@ -482,6 +482,19 @@ extension MapScreen: MKMapViewDelegate {
         generateImageFromMap(zoom: zoom)
         oneTimer(deg: deg)
     }
+    func discon(){
+        
+    }
+    func turnOf(){
+        self.glassesConnected?.power(on:false)
+    }
+    func getBatteryLevel() {
+        self.glassesConnected?.battery { batteryLevel in
+                let alert = UIAlertController(title: "Battery level", message: "(batteryLevel) %", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
+        }
     
     func generateImageFromMap(zoom: Double) {
         
