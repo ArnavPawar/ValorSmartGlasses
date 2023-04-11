@@ -189,6 +189,7 @@ struct ContentView: View {
     
     func connectGlasses(){
         Glasses.startScanning()
+        
     }
     func Clear(){
         Glasses.clearMap()

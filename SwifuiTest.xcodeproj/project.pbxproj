@@ -438,6 +438,7 @@
 				INFOPLIST_FILE = SwifuiTest/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Valor Vision";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow To Track Location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -474,6 +475,7 @@
 				INFOPLIST_FILE = SwifuiTest/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Valor Vision";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow To Track Location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
