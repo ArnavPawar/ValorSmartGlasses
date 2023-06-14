@@ -16,6 +16,7 @@
 			dependencies = (
 			);
 			name = ObjectBox;
+			productName = ObjectBox;
 		};
 /* End PBXAggregateTarget section */
 
@@ -99,14 +100,14 @@
 		1BDD460E75268C50DB6187AAA931EFFF /* FreeSpace.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FreeSpace.swift; path = Classes/Public/FreeSpace.swift; sourceTree = "<group>"; };
 		1F11A73C9548429510F344A18F062DEA /* FirmwareUpdater.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FirmwareUpdater.swift; path = Classes/Internal/GlassesUpdater/FirmwareUpdater.swift; sourceTree = "<group>"; };
 		1FC79D5A5B68FDA2A3DF95DD1ED8246D /* CommandID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CommandID.swift; path = Classes/Internal/CommandID.swift; sourceTree = "<group>"; };
-		206FA939A417B99D0B537AF61950F845 /* ObjectBox.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = ObjectBox.xcframework; sourceTree = "<group>"; };
+		206FA939A417B99D0B537AF61950F845 /* ObjectBox.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; path = ObjectBox.xcframework; sourceTree = "<group>"; };
 		2B3B1B6DE971A1602E13954837DDFBEF /* CBUUID+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CBUUID+ActiveLook.swift"; path = "Classes/Internal/CBUUID+ActiveLook.swift"; sourceTree = "<group>"; };
 		2DF339C6C7545E6ABF43BC3AF5F80BA3 /* FontData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontData.swift; path = Classes/Public/FontData.swift; sourceTree = "<group>"; };
 		2FF50BD9B547FCF9AA32F32EE7BDCB77 /* ActiveLookSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ActiveLookSDK-dummy.m"; sourceTree = "<group>"; };
 		33C44CA9CDC4B6D97EE9ACD16A7BA33C /* Pods-SwifuiTest-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwifuiTest-umbrella.h"; sourceTree = "<group>"; };
 		3490C06C94CA9BBFC4D14B9272223DE3 /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Classes/Internal/Debugging.swift; sourceTree = "<group>"; };
 		37E2BAC4D38BBF56CEC7921359D8C8DC /* Downloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Downloader.swift; path = Classes/Internal/GlassesUpdater/Downloader.swift; sourceTree = "<group>"; };
-		3B047035BBBA59B42BCA6294146587A6 /* ActiveLookSDK */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ActiveLookSDK; path = ActiveLookSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B047035BBBA59B42BCA6294146587A6 /* ActiveLookSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ActiveLookSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF697CAB4BD82786E41D5CA87E39FD7 /* NetworkMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkMonitor.swift; path = Classes/Internal/GlassesUpdater/NetworkMonitor.swift; sourceTree = "<group>"; };
 		3E9B600162F7E16D6D06268A4B1F2C27 /* Pods-SwifuiTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwifuiTest.debug.xcconfig"; sourceTree = "<group>"; };
 		44BFF07D04A20F81A49E8BAF6AC0D32B /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Classes/Public/Configuration.swift; sourceTree = "<group>"; };
@@ -135,7 +136,7 @@
 		91FCD7656B7D783076303E014FE76BC6 /* Firmware.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Firmware.swift; path = Classes/Internal/GlassesUpdater/Firmware.swift; sourceTree = "<group>"; };
 		930028D2B248D6065EFD9E5859E64A2B /* GlassesSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesSettings.swift; path = Classes/Public/GlassesSettings.swift; sourceTree = "<group>"; };
 		97F53252E67D85B78AE5F47876DCECA4 /* UpdateProgress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UpdateProgress.swift; path = Classes/Internal/GlassesUpdater/UpdateProgress.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A2420ACD4051F757E6A9E771BD1A9343 /* ImageInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageInfo.swift; path = Classes/Public/ImageInfo.swift; sourceTree = "<group>"; };
 		A393091A6F38BD295318490E160020D5 /* GlassesUpdaterURL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesUpdaterURL.swift; path = Classes/Internal/GlassesUpdater/GlassesUpdaterURL.swift; sourceTree = "<group>"; };
 		A3CB252B5C9383EE3ECED5148F2010D7 /* Pods-SwifuiTest-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwifuiTest-frameworks.sh"; sourceTree = "<group>"; };
@@ -207,7 +208,6 @@
 				87DBC866E0BD3D5256E2D36051A8609E /* Frameworks */,
 				8D2973F7C1ADBF359AB46306A233722B /* Support Files */,
 			);
-			name = ObjectBox;
 			path = ObjectBox;
 			sourceTree = "<group>";
 		};
@@ -262,7 +262,6 @@
 				D01B34A7DF9F7E2D275BADBAFDE012BF /* VersionChecker.swift */,
 				C5180EF3C9D4EF02AE5F40C764BDFCF2 /* Support Files */,
 			);
-			name = ActiveLookSDK;
 			path = ActiveLookSDK;
 			sourceTree = "<group>";
 		};
@@ -277,7 +276,7 @@
 		6DD5508B81E7A37C79B340416A5C82DF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3B047035BBBA59B42BCA6294146587A6 /* ActiveLookSDK */,
+				3B047035BBBA59B42BCA6294146587A6 /* ActiveLookSDK.framework */,
 				776B0A081CB17839B1B59190C6D2AF1F /* Pods-SwifuiTest */,
 			);
 			name = Products;
@@ -390,7 +389,7 @@
 			);
 			name = ActiveLookSDK;
 			productName = ActiveLookSDK;
-			productReference = 3B047035BBBA59B42BCA6294146587A6 /* ActiveLookSDK */;
+			productReference = 3B047035BBBA59B42BCA6294146587A6 /* ActiveLookSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C0544B7B95CC1E026963E445BCAD4ECC /* Pods-SwifuiTest */ = {
@@ -614,7 +613,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/ActiveLookSDK/ActiveLookSDK-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/ActiveLookSDK/ActiveLookSDK-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -812,7 +811,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/ActiveLookSDK/ActiveLookSDK-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/ActiveLookSDK/ActiveLookSDK-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
