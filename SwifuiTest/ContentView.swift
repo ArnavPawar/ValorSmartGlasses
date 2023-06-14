@@ -82,7 +82,7 @@ struct ContentView: View {
                 VStack(alignment: .leading){
                     HStack{
                         Menu{
-                            Button("Connect Glasses", action: connectGlasses)
+                            Button("Connect jjGlasses", action: connectGlasses)
                             Button("Map Only", action: sendDisplay)
                             Button("Compass Only", action: returnDegree)
                             Button("Both Map and Compass", action:both)
