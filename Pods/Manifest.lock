@@ -1,9 +1,9 @@
 PODS:
-  - ActiveLookSDK (4.3.0)
+  - ActiveLookSDK (4.4.2)
   - ObjectBox (1.8.1)
 
 DEPENDENCIES:
-  - ActiveLookSDK (from `https://github.com/ActiveLook/ios-sdk.git`, tag `v4.3.0`)
+  - ActiveLookSDK (from `https://github.com/ActiveLook/ios-sdk.git`, tag `v4.4.2`)
   - ObjectBox
 
 SPEC REPOS:
@@ -13,17 +13,17 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   ActiveLookSDK:
     :git: https://github.com/ActiveLook/ios-sdk.git
-    :tag: v4.3.0
+    :tag: v4.4.2
 
 CHECKOUT OPTIONS:
   ActiveLookSDK:
     :git: https://github.com/ActiveLook/ios-sdk.git
-    :tag: v4.3.0
+    :tag: v4.4.2
 
 SPEC CHECKSUMS:
-  ActiveLookSDK: be44ac550ba7e9ddacd2ccc837a020ca5e3ca3c8
+  ActiveLookSDK: 618e9d494a955ecda0014fa5449c0622c37ff859
   ObjectBox: a7900d5335218cd437cbc080b7ccc38a5211f7b4
 
-PODFILE CHECKSUM: 3cb7f4b907584dca86c5b7b363eabf67e7264fe5
+PODFILE CHECKSUM: cad235fcd2f087a74092e85184a67c2ae4a7e27f
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.12.1

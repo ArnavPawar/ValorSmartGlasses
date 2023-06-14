@@ -16,153 +16,188 @@
 			dependencies = (
 			);
 			name = ObjectBox;
-			productName = ObjectBox;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		06D41CDA458ADD0A5256625C17DD5A20 /* ActiveLookSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F06A9D1E48B9F8FE13AC4E197742A8 /* ActiveLookSDK.swift */; };
-		073B8969DBD30DA210812AAD749C7D07 /* Data+HexEncodedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BA64A197C7E2C05108AC20CF892FDF /* Data+HexEncodedString.swift */; };
-		09E164CC5CF0792B5CFBDE2CA56A3B35 /* FontData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF339C6C7545E6ABF43BC3AF5F80BA3 /* FontData.swift */; };
-		0B8E2E36697061C3388EB51C2B09BD4F /* CBUUID+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3B1B6DE971A1602E13954837DDFBEF /* CBUUID+ActiveLook.swift */; };
-		0EB9E2FA089F1E4397FC72DF9ABDA2F0 /* GlassesSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930028D2B248D6065EFD9E5859E64A2B /* GlassesSettings.swift */; };
-		106AEE616AC624C3D02D0917E2A21897 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C38C4A2144EAF9FC993F178AFCE7E /* ImageData.swift */; };
-		16064B93D5AEADB6AF13A44284366A29 /* GlassesUpdateParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185267D27BE7068B4FDDC123B370914 /* GlassesUpdateParameters.swift */; };
-		167A9FD69D4CAD5312EB8F6771EBBE7E /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3490C06C94CA9BBFC4D14B9272223DE3 /* Debugging.swift */; };
-		17030090DD6E46E07EA53924F1826599 /* ActiveLookTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF3A87C42C4737B98D92628E831397 /* ActiveLookTypes.swift */; };
-		18CAC587FA697DD1B8F3B85ACD7EA89B /* VersionChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01B34A7DF9F7E2D275BADBAFDE012BF /* VersionChecker.swift */; };
-		40271CD30BAABA30964B508A335C975B /* String+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F589E5E4849E0BC68DAC8D5D634DE /* String+ActiveLook.swift */; };
-		416B88E1E4805D1E9729806AAFC791D4 /* ConfigurationDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD00F7029BA050B3351470DF67DC152 /* ConfigurationDescription.swift */; };
-		4887D9054C2D8E3D0DB5124C338B875F /* FontInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E28273E035D76388993793A0CDD1D08 /* FontInfo.swift */; };
-		49E28A7973896539316760CB36BD183F /* UInt16+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59495F05E3B41B4570F9A3D3D5E67ABC /* UInt16+ActiveLook.swift */; };
+		0068B8DF126BF2B049D2C82F6FFE847A /* FontData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74E6221CD76A10943F3A36AAD6A096F /* FontData.swift */; };
+		00E780227108657639352B1837075536 /* Int16+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD0D9FC151A9A87CB8D23CC50DBA287 /* Int16+ActiveLook.swift */; };
+		069AA8C951CC00C3D9F43FA702CDAD5A /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9204883C2ECE87C6470FCC30BE09531F /* Downloader.swift */; };
+		0A524461D5D2947DD36A1ED9672AC09E /* DiscoveredGlasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1270B5B8783D2BBF75BD72AE31D33061 /* DiscoveredGlasses.swift */; };
+		0D940ED6BD4392FCF23CC68101CF8B3C /* GlassesInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5190D9ABAF71AC9294EB2423383077A2 /* GlassesInitializer.swift */; };
+		0FE973BAF97124B8253E0CBAFC13B5BC /* CBPeripheral+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB2BA387B13B39832B927319EB3B26 /* CBPeripheral+ActiveLook.swift */; };
+		11EACE27A1AA396F52EE3CFFD75622D3 /* Pixel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD66B0161B3E7F8A4C8402549752D70E /* Pixel.swift */; };
+		1416E579306C4941FD289A42566A829C /* ActiveLookSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 22B894338B3C735518D9BE5A46000D8C /* ActiveLookSDK-dummy.m */; };
+		16D059768DB9F8093E9E2B0344222FD2 /* UpdateProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B60292AFF0FF543FA10767A1AF7D71 /* UpdateProgress.swift */; };
+		174EE8E2889C26C97273D16E6967B11A /* heatshrink_common.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD04994CE6312AE13E251592EF0633F /* heatshrink_common.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		26B80CDEEF0FC587D5E2F25D1BBD0498 /* FreeSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4DB41C54F588AF704C5B2E7B9ECF94 /* FreeSpace.swift */; };
+		2776C2D48952B4794BFFDB3E8557220E /* GlassesUpdateParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D984104A66BDB7969FB51E33AEAF57A0 /* GlassesUpdateParameters.swift */; };
+		2D3F00E65C7F9EE89CC5E2BBA9E98111 /* Data+HexEncodedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3E6009FED279C4079EBE914F1363CC /* Data+HexEncodedString.swift */; };
+		30FA1DF056F0011387283F5830DCDC9A /* UIImage+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561E909C1398C219C1956773D464C81 /* UIImage+ActiveLook.swift */; };
+		3D95179E45A244A064FB6FBFB3A5F78C /* heatshrink_encoder.h in Headers */ = {isa = PBXBuildFile; fileRef = E3A31B18D1600F8FE2935ADA7332F9C1 /* heatshrink_encoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E2B5CBE27FEB0819497D037E9B4F35D /* ImageMDP05.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D26C13E193060D7AD2C73F2F5DD49D5 /* ImageMDP05.swift */; };
+		4501F5888086254C998952165A43F20E /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9879E146ED014A71569F45EDFD585A /* ImageInfo.swift */; };
+		45E31DC52A9AECD42CDC7848CB1DC848 /* Glasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153CFFC5F978C60617EA8A5501577BE6 /* Glasses.swift */; };
+		493D874BF04348A729E5835F0798D6C9 /* RNHeatshrinkEncoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D3F5341A9C9CBDD11970EA1EF46FED4 /* RNHeatshrinkEncoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A40F9C35DEF46AA3831D4209D04415D /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3035DE0EA7DD9D77F14C457F8D522305 /* Configuration.swift */; };
+		4B2EB14A215F1C7EBCD8EF02141D0280 /* ImgSaveFmt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9386CD0FDD031B9E8ADFA45BD0638C95 /* ImgSaveFmt.swift */; };
 		4C9EEB7110DD7E270089F84D8F47055A /* Pods-SwifuiTest-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 606D1213AE9BA8CC136F4DC22345E6DE /* Pods-SwifuiTest-dummy.m */; };
-		5804AEFE72739750FC86314CA9FEB850 /* ConfigurationElementsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7720B7D4746DCA06D7899A29C956DD4C /* ConfigurationElementsInfo.swift */; };
-		58D1683A6EE469439409F5E95AC35E2A /* SerializedGlasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FB0A51A960A6266742C5D11AF6F9D8 /* SerializedGlasses.swift */; };
-		5B5534C9B42F437958D26BF82866B33A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		5DF168AF7BAC0CE764D1A16494FB2B6C /* Int+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D2BA38C6A8A5D1BE30295268A738A7 /* Int+ActiveLook.swift */; };
-		5F3D5C4DC51BA7F62D36C706BA941D82 /* PageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F2DB4A733B2FA480D9C821A6E07E64 /* PageInfo.swift */; };
-		673385B2D623F6DA5278CEE3B5C5E3EB /* CBService+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = F275EC10E66CE94531086D8656C4F189 /* CBService+ActiveLook.swift */; };
-		67357A643298A7518466CD06E651238A /* GlassesUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB607A23FF1487520994BC7B55FDB621 /* GlassesUpdate.swift */; };
-		6802F65B289A45AC7978CBEB5351AC6F /* SensorParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E09ED80DB40922CE0111A84C2B1352 /* SensorParameters.swift */; };
-		74D63DB4A40CF68303D594727B853997 /* GlassesUpdaterURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A393091A6F38BD295318490E160020D5 /* GlassesUpdaterURL.swift */; };
-		82B758B2B28D955C85BFF957981F8BCA /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF697CAB4BD82786E41D5CA87E39FD7 /* NetworkMonitor.swift */; };
-		85CBEC614D8A59F73D78F74826A8AD81 /* Int8+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A5613C2B517D22E84CBD68A930BE9D /* Int8+ActiveLook.swift */; };
-		8945996123865C6E80999F1CB87E6B03 /* FreeSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD460E75268C50DB6187AAA931EFFF /* FreeSpace.swift */; };
-		8D2E8266B3A6370C0D6A2FF2B6671BCD /* Array+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C902EF657FA86795DAC4491DB31423F6 /* Array+ActiveLook.swift */; };
-		9BBBD6F2F73110B569C656C2E486B035 /* GaugeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB6584EF802C2DEBB68869969A599E /* GaugeInfo.swift */; };
-		A019C6415D352DC87D09FB4050DC57ED /* Firmware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FCD7656B7D783076303E014FE76BC6 /* Firmware.swift */; };
-		B87491842C4BE1F33AF94ED2311573BB /* DeviceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF6F0587A47EFC062DE201210AF007 /* DeviceInformation.swift */; };
-		B8BE6D2907E56CED630C27DF51A4841E /* FirmwareUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F11A73C9548429510F344A18F062DEA /* FirmwareUpdater.swift */; };
-		BFBA07AB266BD9FD837ABBBF7DD54FD1 /* Glasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17B4F3FEBD22FCD95BEB6FBAB2855D1 /* Glasses.swift */; };
-		C1305BFE651DA17E0DF0CCEA8A1141C6 /* ActiveLookSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FA247F2C3EE9D90882E4F88E601027CD /* ActiveLookSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C28C5571DAFAAFEB0989F5311093F785 /* DiscoveredGlasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5565BECD920693FAB385D39E87B1B2 /* DiscoveredGlasses.swift */; };
-		C47245B1FF0999D4F673EEADDB5CE1F1 /* ActiveLookSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF50BD9B547FCF9AA32F32EE7BDCB77 /* ActiveLookSDK-dummy.m */; };
+		5029F974FB38CDDBFC72F2224631D7BA /* Array+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82368C883D9FF7ADAB7966D005112D87 /* Array+ActiveLook.swift */; };
+		51BBFFF409DDE518A13248DE124C3238 /* GaugeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65ADE6DB1198C9620513288FB6948DA6 /* GaugeInfo.swift */; };
+		54CC4D5DA5BA997EA3F801C52E6F9DFA /* RNHeatshrinkDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 50772BC8543954D8B3075D9A38C39369 /* RNHeatshrinkDecoder.m */; };
+		586687CB554DE8334D7D9E8B3B4BF84D /* heatshrink-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C59F7B3353BB4033AC783FDF581FF75 /* heatshrink-Bridging-Header.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C69A074B987373053800E6945F2F5E4 /* RNHeatshrinkDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = B44D0A22B044AD0EC9542BC7AFA1384B /* RNHeatshrinkDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E4DBC91A91471A9805A645323B24715 /* GlassesUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEB2D1E61C9B7BF665D2B49D3313C78 /* GlassesUpdater.swift */; };
+		60836C754D5DD65FB0DA89AFCF9B0275 /* UInt32+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16209590D63B2EE8B48AF50C292B1420 /* UInt32+ActiveLook.swift */; };
+		627D1D922EF2E0286E034FF6EDDCA02B /* String+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43183126CEFFEC456414C07272EBDCFA /* String+ActiveLook.swift */; };
+		6674BFD96BCF9CA8448EF3A23BE134A2 /* CBCharacteristic+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AC5231A0A49F5D85021D88E70771B8 /* CBCharacteristic+ActiveLook.swift */; };
+		68AECECEAC246AB6EEE1C105483C3384 /* SensorParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5952191F6CC578DBF53D8B6716FB8A /* SensorParameters.swift */; };
+		69108567A3DE3DC96B0676BF76C56A70 /* ActiveLookSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EA345009B06A0E3D461E82AD46145 /* ActiveLookSDK.swift */; };
+		6BD3F7433D6FD1F84D3353A1D0F88E92 /* GlassesSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4C86A6045F8BADF0DCCE7AD26D2662 /* GlassesSettings.swift */; };
+		6DEA5917CF329563117D81CB8566F755 /* ActiveLookError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91879CF6036C698C9CE21FAC66F066FE /* ActiveLookError.swift */; };
+		76E588152DAD1117663ED7D98F2234F2 /* Firmware.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6866FE4B88A92D99E055803D86A4D0 /* Firmware.swift */; };
+		779B04086BF75A7D8F33424D6282F1ED /* heatshrink_encoder.c in Sources */ = {isa = PBXBuildFile; fileRef = AD3208672CB0BB6555655EA3CD0FB93D /* heatshrink_encoder.c */; };
+		7AF5C80E48D318150744D01987982BDD /* heatshrink_decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = ADC30BA48920403448B60AF167051FC7 /* heatshrink_decoder.c */; };
+		7D9103ACE0AA8F3B20940288338CF814 /* LayoutParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B803DCD47E982E2D9F3886CFB85E7E09 /* LayoutParameters.swift */; };
+		7F14E411D50EA36204D15D2948115C50 /* PageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC8FF019A7DFC5E933CAB65DCA1368B /* PageInfo.swift */; };
+		86C4A47D339BCA73242F806B9FA66276 /* heatshrink_decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = A039F797CE0DFCA8448DC6BB52C9531F /* heatshrink_decoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8D1E5CABC7C765BBB8BED5095B2A5FC1 /* CommandID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D61B90814079B95C6F7865BC4CC80D /* CommandID.swift */; };
+		97D852577A6A5A94F94B2D001B89A9CA /* ConfigurationDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DDF19F2629FE2BD59A5A733C0B784C /* ConfigurationDescription.swift */; };
+		9BC0864BCACCBB47660560597C8F8088 /* GlassesUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CCA75BB24769D42D75AD1A4B343F92 /* GlassesUpdate.swift */; };
+		A09D97AFBF9010BE09979A004046426B /* ImageData1bpp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ACF5F934B971231681F500EA465E11 /* ImageData1bpp.swift */; };
+		A1756D4B129006DE19DB63C7729646CF /* Int+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC9DAABD623C43FF66000279B972430 /* Int+ActiveLook.swift */; };
+		A2C1A72E8959B9F60CA02E6DBA866182 /* heatshrink_config.h in Headers */ = {isa = PBXBuildFile; fileRef = E972E4D400DF152B77F986D42C4E7E04 /* heatshrink_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A51C339E5885F97D691DC4956B6D168C /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F75C6427B73DC0D98D40483CB20E410 /* ImageData.swift */; };
+		B01185F9E99629ECF3310920687A2057 /* module.modulemap in Sources */ = {isa = PBXBuildFile; fileRef = 31BAF6FE7DB5D777762D82DA10E81D13 /* module.modulemap */; };
+		B247B1AAEA0D5A4EC23D454F972DD67E /* DeviceInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6323EBD475A1CF5D65963DEFA429B9C5 /* DeviceInformation.swift */; };
+		B40D9DF9D923179493878797ED4BE1AB /* ActiveLookTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27104994666F5BB4770496F5CC2C2E1 /* ActiveLookTypes.swift */; };
+		BEAC78F07861F5627EA19A37F47BB15F /* GlassesUpdaterURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7889752F3D9FBA391500698A60D4813 /* GlassesUpdaterURL.swift */; };
+		C02FA0F252CC35DCFFFC01148428FAE9 /* FontInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5319682697738754F68349340B4B05C6 /* FontInfo.swift */; };
+		C2552E5AA6D964B446A7E3EE6E486544 /* SerializedGlasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C31AEDC470431BD47BE9F1F833B901 /* SerializedGlasses.swift */; };
 		C69690403FC91FFDFB6857C2181FC4FA /* Pods-SwifuiTest-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 33C44CA9CDC4B6D97EE9ACD16A7BA33C /* Pods-SwifuiTest-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C86DB263ADC2FE0188A82F919BAE3EA5 /* LayoutParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAF5EDBD02ED7AC5A3A6D38C883252 /* LayoutParameters.swift */; };
-		CA3449BD7EA67280D4269B1A3E530A6C /* GlassesVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4BC4F58950F39524C669A1B3ED9C24 /* GlassesVersion.swift */; };
-		CA822DF1D79E59B79534173BF8D56C32 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2420ACD4051F757E6A9E771BD1A9343 /* ImageInfo.swift */; };
-		CB218A2FA9FD8FE839C03FDD3D679F35 /* CBCharacteristic+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DF99CA6FFB4E2020C5007D6D1579D2 /* CBCharacteristic+ActiveLook.swift */; };
-		D3EAFF3A1EAFAEE8964D178CC101EF3F /* CBPeripheral+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBA30AFD1ED1CBEE70F2923A7411A14 /* CBPeripheral+ActiveLook.swift */; };
-		D429BBA34425A3C290C6DBD194B3F04C /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E2BAC4D38BBF56CEC7921359D8C8DC /* Downloader.swift */; };
-		D77D07C96B919E7F83DFEE8B7AFBED52 /* Int16+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4802B468D784684EA6792716CDBBD /* Int16+ActiveLook.swift */; };
+		C871F1EEEF94043BA3CAB87CA1260A44 /* CBUUID+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8356D11BFB1F751201E2C19082115FCE /* CBUUID+ActiveLook.swift */; };
+		CF285AF5CF668744445B1D44AC4966CF /* RNHeatshrinkEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B809578E3B4E9D8066D805F87427C3 /* RNHeatshrinkEncoder.m */; };
+		D167353A3EB1563A3F7512F263526550 /* GlassesVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F7EE37D74FFCBFF68EBD4025BFEEC /* GlassesVersion.swift */; };
+		D2E8A94BC450628D95D450141293A105 /* ActiveLookSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EF4F00270CB8A1E6608FC3132F02FC32 /* ActiveLookSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D88A3DD2DB01FC5DE8B045322169B18B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		DA02BB48E41546BDC80103561900983F /* ActiveLookError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011BF6F0FD80E548D922DDC29FA40174 /* ActiveLookError.swift */; };
-		DB13C1624FF323890462350A69A5DCA1 /* UpdateProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F53252E67D85B78AE5F47876DCECA4 /* UpdateProgress.swift */; };
-		DC20D6844334E914D6FFB0E22AA195F6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BFF07D04A20F81A49E8BAF6AC0D32B /* Configuration.swift */; };
-		DD5320A486F0ED3FC0C376B384263D08 /* CommandID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC79D5A5B68FDA2A3DF95DD1ED8246D /* CommandID.swift */; };
-		E0699762BF9CB1EC0284F2DD1CCCC47F /* GlassesUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA243687F81E2A8A76E8D1584C343C7 /* GlassesUpdater.swift */; };
-		E9653C66B3D45E1E1E776557615E8A8B /* UInt32+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA0A6DEF26840D7387B64C3AB2278FF /* UInt32+ActiveLook.swift */; };
-		EEB3790861757E811896C3E9AF239F5D /* GlassesInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B319783E9BF0AB5A37EA49A2BCA63A7 /* GlassesInitializer.swift */; };
+		DA8287F3A35D774F1D1FF7FE6DA156B4 /* CBService+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AEB9030B7456307CCE2D012F3FD7B3 /* CBService+ActiveLook.swift */; };
+		DB3A75CF5BCF7873C85CEA1F11A4CA9A /* Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = E974438F6EAEAF2E0441634DB9E184F5 /* Debugging.swift */; };
+		DEAC30EBF00B42C963EFF585A078D04F /* VersionChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE98D7DC42C7D38B066A004096A1A3F /* VersionChecker.swift */; };
+		EB8FE206E076FD7E24F18ED1E6079F0C /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A8C5B042933C319B739B56205CDE15 /* NetworkMonitor.swift */; };
+		EE22E35171A6D7D7099555FED5DAA1D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		F5406DAC028BB66CABA821C23BFC4925 /* Int8+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FB32B638D3744704552556E5DEAAA4 /* Int8+ActiveLook.swift */; };
+		FDD5CF01E1C16363815A1E87995F1DA9 /* FirmwareUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99374EE3DC47D1179CE86DB8368ABDFD /* FirmwareUpdater.swift */; };
+		FDE50D2E2180D758663154BDC2876437 /* ConfigurationElementsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD0EB9278AFC49BE9ECFA9104E60C24 /* ConfigurationElementsInfo.swift */; };
+		FE2839E2BBC710EA55109329BBA072E3 /* UInt16+ActiveLook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83919EA167983DA80DEE60803F05C64 /* UInt16+ActiveLook.swift */; };
+		FEE3F1EB9471EFC32CBF18CA6BEA4277 /* ImageConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8528EB1E4D2E3B9B772877869A0B9BC /* ImageConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		AA4A9D938959374762F01AE8CE79A549 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 16BFDCFFE4954E0A5A9BDF9C411A1A9C;
-			remoteInfo = ActiveLookSDK;
-		};
-		D35334B37891BADF4F95BB319B118AB5 /* PBXContainerItemProxy */ = {
+		7C452C2F07EFFAA965F534B95C0DA05E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 436A7FC63B2E20A9EC3A674012E5976E;
 			remoteInfo = ObjectBox;
 		};
+		E140A406BD19D28106B106BDBA5A17C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 16BFDCFFE4954E0A5A9BDF9C411A1A9C;
+			remoteInfo = ActiveLookSDK;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		011BF6F0FD80E548D922DDC29FA40174 /* ActiveLookError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActiveLookError.swift; path = Classes/Public/ActiveLookError.swift; sourceTree = "<group>"; };
-		040F589E5E4849E0BC68DAC8D5D634DE /* String+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+ActiveLook.swift"; path = "Classes/Internal/String+ActiveLook.swift"; sourceTree = "<group>"; };
-		15AFFA466C41601FBEEF796ED4924A4C /* ActiveLookSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ActiveLookSDK-Info.plist"; sourceTree = "<group>"; };
-		19DF99CA6FFB4E2020C5007D6D1579D2 /* CBCharacteristic+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CBCharacteristic+ActiveLook.swift"; path = "Classes/Internal/CBCharacteristic+ActiveLook.swift"; sourceTree = "<group>"; };
-		1BDD460E75268C50DB6187AAA931EFFF /* FreeSpace.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FreeSpace.swift; path = Classes/Public/FreeSpace.swift; sourceTree = "<group>"; };
-		1F11A73C9548429510F344A18F062DEA /* FirmwareUpdater.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FirmwareUpdater.swift; path = Classes/Internal/GlassesUpdater/FirmwareUpdater.swift; sourceTree = "<group>"; };
-		1FC79D5A5B68FDA2A3DF95DD1ED8246D /* CommandID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CommandID.swift; path = Classes/Internal/CommandID.swift; sourceTree = "<group>"; };
-		206FA939A417B99D0B537AF61950F845 /* ObjectBox.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; path = ObjectBox.xcframework; sourceTree = "<group>"; };
-		2B3B1B6DE971A1602E13954837DDFBEF /* CBUUID+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CBUUID+ActiveLook.swift"; path = "Classes/Internal/CBUUID+ActiveLook.swift"; sourceTree = "<group>"; };
-		2DF339C6C7545E6ABF43BC3AF5F80BA3 /* FontData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontData.swift; path = Classes/Public/FontData.swift; sourceTree = "<group>"; };
-		2FF50BD9B547FCF9AA32F32EE7BDCB77 /* ActiveLookSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ActiveLookSDK-dummy.m"; sourceTree = "<group>"; };
+		0E9879E146ED014A71569F45EDFD585A /* ImageInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageInfo.swift; path = Sources/Classes/Public/ImageInfo.swift; sourceTree = "<group>"; };
+		1270B5B8783D2BBF75BD72AE31D33061 /* DiscoveredGlasses.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiscoveredGlasses.swift; path = Sources/Classes/Public/DiscoveredGlasses.swift; sourceTree = "<group>"; };
+		13B60292AFF0FF543FA10767A1AF7D71 /* UpdateProgress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UpdateProgress.swift; path = Sources/Classes/Internal/GlassesUpdater/UpdateProgress.swift; sourceTree = "<group>"; };
+		153CFFC5F978C60617EA8A5501577BE6 /* Glasses.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Glasses.swift; path = Sources/Classes/Public/Glasses.swift; sourceTree = "<group>"; };
+		16209590D63B2EE8B48AF50C292B1420 /* UInt32+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt32+ActiveLook.swift"; path = "Sources/Classes/Internal/UInt32+ActiveLook.swift"; sourceTree = "<group>"; };
+		1BC9DAABD623C43FF66000279B972430 /* Int+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Int+ActiveLook.swift"; path = "Sources/Classes/Internal/Int+ActiveLook.swift"; sourceTree = "<group>"; };
+		1D5952191F6CC578DBF53D8B6716FB8A /* SensorParameters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SensorParameters.swift; path = Sources/Classes/Public/SensorParameters.swift; sourceTree = "<group>"; };
+		1DD0EB9278AFC49BE9ECFA9104E60C24 /* ConfigurationElementsInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConfigurationElementsInfo.swift; path = Sources/Classes/Public/ConfigurationElementsInfo.swift; sourceTree = "<group>"; };
+		22B894338B3C735518D9BE5A46000D8C /* ActiveLookSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ActiveLookSDK-dummy.m"; sourceTree = "<group>"; };
+		27D61B90814079B95C6F7865BC4CC80D /* CommandID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CommandID.swift; path = Sources/Classes/Internal/CommandID.swift; sourceTree = "<group>"; };
+		2BD0D9FC151A9A87CB8D23CC50DBA287 /* Int16+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Int16+ActiveLook.swift"; path = "Sources/Classes/Internal/Int16+ActiveLook.swift"; sourceTree = "<group>"; };
+		2CDB2BA387B13B39832B927319EB3B26 /* CBPeripheral+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CBPeripheral+ActiveLook.swift"; path = "Sources/Classes/Internal/CBPeripheral+ActiveLook.swift"; sourceTree = "<group>"; };
+		2D1B5C2454A103F2BE77A22C59BB5B3E /* ObjectBox-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "ObjectBox-xcframeworks.sh"; sourceTree = "<group>"; };
+		3035DE0EA7DD9D77F14C457F8D522305 /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Classes/Public/Configuration.swift; sourceTree = "<group>"; };
+		31BAF6FE7DB5D777762D82DA10E81D13 /* module.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = module.modulemap; path = Sources/Heatshrink/include/module.modulemap; sourceTree = "<group>"; };
 		33C44CA9CDC4B6D97EE9ACD16A7BA33C /* Pods-SwifuiTest-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwifuiTest-umbrella.h"; sourceTree = "<group>"; };
-		3490C06C94CA9BBFC4D14B9272223DE3 /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Classes/Internal/Debugging.swift; sourceTree = "<group>"; };
-		37E2BAC4D38BBF56CEC7921359D8C8DC /* Downloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Downloader.swift; path = Classes/Internal/GlassesUpdater/Downloader.swift; sourceTree = "<group>"; };
-		3B047035BBBA59B42BCA6294146587A6 /* ActiveLookSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ActiveLookSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3CF697CAB4BD82786E41D5CA87E39FD7 /* NetworkMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkMonitor.swift; path = Classes/Internal/GlassesUpdater/NetworkMonitor.swift; sourceTree = "<group>"; };
+		3B047035BBBA59B42BCA6294146587A6 /* ActiveLookSDK */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ActiveLookSDK; path = ActiveLookSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E9B600162F7E16D6D06268A4B1F2C27 /* Pods-SwifuiTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwifuiTest.debug.xcconfig"; sourceTree = "<group>"; };
-		44BFF07D04A20F81A49E8BAF6AC0D32B /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Classes/Public/Configuration.swift; sourceTree = "<group>"; };
-		47FAF5EDBD02ED7AC5A3A6D38C883252 /* LayoutParameters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutParameters.swift; path = Classes/Public/LayoutParameters.swift; sourceTree = "<group>"; };
-		49E09ED80DB40922CE0111A84C2B1352 /* SensorParameters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SensorParameters.swift; path = Classes/Public/SensorParameters.swift; sourceTree = "<group>"; };
-		4BA243687F81E2A8A76E8D1584C343C7 /* GlassesUpdater.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesUpdater.swift; path = Classes/Internal/GlassesUpdater/GlassesUpdater.swift; sourceTree = "<group>"; };
-		4CA0A6DEF26840D7387B64C3AB2278FF /* UInt32+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt32+ActiveLook.swift"; path = "Classes/Internal/UInt32+ActiveLook.swift"; sourceTree = "<group>"; };
-		4D5565BECD920693FAB385D39E87B1B2 /* DiscoveredGlasses.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DiscoveredGlasses.swift; path = Classes/Public/DiscoveredGlasses.swift; sourceTree = "<group>"; };
-		59495F05E3B41B4570F9A3D3D5E67ABC /* UInt16+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt16+ActiveLook.swift"; path = "Classes/Internal/UInt16+ActiveLook.swift"; sourceTree = "<group>"; };
+		429F0A43412598BE8E7493D72CDD38C5 /* ObjectBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ObjectBox.debug.xcconfig; sourceTree = "<group>"; };
+		42C4953BEB7728BC39B93D8577B3B7E1 /* ObjectBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ObjectBox.release.xcconfig; sourceTree = "<group>"; };
+		42CCA75BB24769D42D75AD1A4B343F92 /* GlassesUpdate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesUpdate.swift; path = Sources/Classes/Public/GlassesUpdate.swift; sourceTree = "<group>"; };
+		43183126CEFFEC456414C07272EBDCFA /* String+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+ActiveLook.swift"; path = "Sources/Classes/Internal/String+ActiveLook.swift"; sourceTree = "<group>"; };
+		43AC5231A0A49F5D85021D88E70771B8 /* CBCharacteristic+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CBCharacteristic+ActiveLook.swift"; path = "Sources/Classes/Internal/CBCharacteristic+ActiveLook.swift"; sourceTree = "<group>"; };
+		4A4DB41C54F588AF704C5B2E7B9ECF94 /* FreeSpace.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FreeSpace.swift; path = Sources/Classes/Public/FreeSpace.swift; sourceTree = "<group>"; };
+		4D26C13E193060D7AD2C73F2F5DD49D5 /* ImageMDP05.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageMDP05.swift; path = Sources/Classes/Internal/ImageMDP05.swift; sourceTree = "<group>"; };
+		4DEB2D1E61C9B7BF665D2B49D3313C78 /* GlassesUpdater.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesUpdater.swift; path = Sources/Classes/Internal/GlassesUpdater/GlassesUpdater.swift; sourceTree = "<group>"; };
+		50772BC8543954D8B3075D9A38C39369 /* RNHeatshrinkDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNHeatshrinkDecoder.m; path = Sources/Heatshrink/RNHeatshrinkDecoder.m; sourceTree = "<group>"; };
+		50B809578E3B4E9D8066D805F87427C3 /* RNHeatshrinkEncoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNHeatshrinkEncoder.m; path = Sources/Heatshrink/RNHeatshrinkEncoder.m; sourceTree = "<group>"; };
+		5190D9ABAF71AC9294EB2423383077A2 /* GlassesInitializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesInitializer.swift; path = Sources/Classes/Internal/GlassesInitializer.swift; sourceTree = "<group>"; };
+		5319682697738754F68349340B4B05C6 /* FontInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontInfo.swift; path = Sources/Classes/Public/FontInfo.swift; sourceTree = "<group>"; };
+		57AEB9030B7456307CCE2D012F3FD7B3 /* CBService+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CBService+ActiveLook.swift"; path = "Sources/Classes/Internal/CBService+ActiveLook.swift"; sourceTree = "<group>"; };
 		5DCEA34AADF2FCDF4D2B39C0B77E8591 /* Pods-SwifuiTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwifuiTest.release.xcconfig"; sourceTree = "<group>"; };
 		606D1213AE9BA8CC136F4DC22345E6DE /* Pods-SwifuiTest-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwifuiTest-dummy.m"; sourceTree = "<group>"; };
+		6323EBD475A1CF5D65963DEFA429B9C5 /* DeviceInformation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DeviceInformation.swift; path = Sources/Classes/Public/DeviceInformation.swift; sourceTree = "<group>"; };
+		64C31AEDC470431BD47BE9F1F833B901 /* SerializedGlasses.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SerializedGlasses.swift; path = Sources/Classes/Internal/SerializedGlasses.swift; sourceTree = "<group>"; };
+		65ADE6DB1198C9620513288FB6948DA6 /* GaugeInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GaugeInfo.swift; path = Sources/Classes/Public/GaugeInfo.swift; sourceTree = "<group>"; };
+		72ACF5F934B971231681F500EA465E11 /* ImageData1bpp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageData1bpp.swift; path = Sources/Classes/Public/ImageData1bpp.swift; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		73FB0A51A960A6266742C5D11AF6F9D8 /* SerializedGlasses.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SerializedGlasses.swift; path = Classes/Internal/SerializedGlasses.swift; sourceTree = "<group>"; };
-		74F2DB4A733B2FA480D9C821A6E07E64 /* PageInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageInfo.swift; path = Classes/Public/PageInfo.swift; sourceTree = "<group>"; };
-		76101D84F32FB0F16CE273AD4977A2AF /* ActiveLookSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ActiveLookSDK.debug.xcconfig; sourceTree = "<group>"; };
-		7720B7D4746DCA06D7899A29C956DD4C /* ConfigurationElementsInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConfigurationElementsInfo.swift; path = Classes/Public/ConfigurationElementsInfo.swift; sourceTree = "<group>"; };
+		73A8C5B042933C319B739B56205CDE15 /* NetworkMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkMonitor.swift; path = Sources/Classes/Internal/GlassesUpdater/NetworkMonitor.swift; sourceTree = "<group>"; };
+		764EA345009B06A0E3D461E82AD46145 /* ActiveLookSDK.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActiveLookSDK.swift; path = Sources/Classes/Public/ActiveLookSDK.swift; sourceTree = "<group>"; };
 		776B0A081CB17839B1B59190C6D2AF1F /* Pods-SwifuiTest */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-SwifuiTest"; path = Pods_SwifuiTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7785574AADCC94D174792FF6CEEC46D8 /* Pods-SwifuiTest.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SwifuiTest.modulemap"; sourceTree = "<group>"; };
 		78029F5A80D937F235542F7B8416075C /* Pods-SwifuiTest-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwifuiTest-acknowledgements.markdown"; sourceTree = "<group>"; };
-		79EF6F0587A47EFC062DE201210AF007 /* DeviceInformation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DeviceInformation.swift; path = Classes/Public/DeviceInformation.swift; sourceTree = "<group>"; };
-		7B319783E9BF0AB5A37EA49A2BCA63A7 /* GlassesInitializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesInitializer.swift; path = Classes/Internal/GlassesInitializer.swift; sourceTree = "<group>"; };
-		7D7DDE0FA10B9337B2686874621BF165 /* ActiveLookSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ActiveLookSDK.modulemap; sourceTree = "<group>"; };
-		80BA64A197C7E2C05108AC20CF892FDF /* Data+HexEncodedString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+HexEncodedString.swift"; path = "Classes/Internal/Data+HexEncodedString.swift"; sourceTree = "<group>"; };
-		8185267D27BE7068B4FDDC123B370914 /* GlassesUpdateParameters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesUpdateParameters.swift; path = Classes/Internal/GlassesUpdater/GlassesUpdateParameters.swift; sourceTree = "<group>"; };
-		8E28273E035D76388993793A0CDD1D08 /* FontInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontInfo.swift; path = Classes/Public/FontInfo.swift; sourceTree = "<group>"; };
-		91FCD7656B7D783076303E014FE76BC6 /* Firmware.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Firmware.swift; path = Classes/Internal/GlassesUpdater/Firmware.swift; sourceTree = "<group>"; };
-		930028D2B248D6065EFD9E5859E64A2B /* GlassesSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesSettings.swift; path = Classes/Public/GlassesSettings.swift; sourceTree = "<group>"; };
-		97F53252E67D85B78AE5F47876DCECA4 /* UpdateProgress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UpdateProgress.swift; path = Classes/Internal/GlassesUpdater/UpdateProgress.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A2420ACD4051F757E6A9E771BD1A9343 /* ImageInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageInfo.swift; path = Classes/Public/ImageInfo.swift; sourceTree = "<group>"; };
-		A393091A6F38BD295318490E160020D5 /* GlassesUpdaterURL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesUpdaterURL.swift; path = Classes/Internal/GlassesUpdater/GlassesUpdaterURL.swift; sourceTree = "<group>"; };
+		7C59F7B3353BB4033AC783FDF581FF75 /* heatshrink-Bridging-Header.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "heatshrink-Bridging-Header.h"; path = "Sources/Heatshrink/include/heatshrink-Bridging-Header.h"; sourceTree = "<group>"; };
+		7F75C6427B73DC0D98D40483CB20E410 /* ImageData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageData.swift; path = Sources/Classes/Public/ImageData.swift; sourceTree = "<group>"; };
+		82368C883D9FF7ADAB7966D005112D87 /* Array+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Array+ActiveLook.swift"; path = "Sources/Classes/Internal/Array+ActiveLook.swift"; sourceTree = "<group>"; };
+		8356D11BFB1F751201E2C19082115FCE /* CBUUID+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CBUUID+ActiveLook.swift"; path = "Sources/Classes/Internal/CBUUID+ActiveLook.swift"; sourceTree = "<group>"; };
+		8978F1A67A8FC0AF503D2E16CAC5FD97 /* ActiveLookSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ActiveLookSDK-Info.plist"; sourceTree = "<group>"; };
+		8D3F5341A9C9CBDD11970EA1EF46FED4 /* RNHeatshrinkEncoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RNHeatshrinkEncoder.h; path = Sources/Heatshrink/include/RNHeatshrinkEncoder.h; sourceTree = "<group>"; };
+		8FD04994CE6312AE13E251592EF0633F /* heatshrink_common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = heatshrink_common.h; path = Sources/Heatshrink/include/heatshrink_common.h; sourceTree = "<group>"; };
+		91879CF6036C698C9CE21FAC66F066FE /* ActiveLookError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActiveLookError.swift; path = Sources/Classes/Public/ActiveLookError.swift; sourceTree = "<group>"; };
+		9204883C2ECE87C6470FCC30BE09531F /* Downloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Downloader.swift; path = Sources/Classes/Internal/GlassesUpdater/Downloader.swift; sourceTree = "<group>"; };
+		9386CD0FDD031B9E8ADFA45BD0638C95 /* ImgSaveFmt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImgSaveFmt.swift; path = Sources/Classes/Public/ImgSaveFmt.swift; sourceTree = "<group>"; };
+		9561E909C1398C219C1956773D464C81 /* UIImage+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+ActiveLook.swift"; path = "Sources/Classes/Internal/UIImage+ActiveLook.swift"; sourceTree = "<group>"; };
+		96FB32B638D3744704552556E5DEAAA4 /* Int8+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Int8+ActiveLook.swift"; path = "Sources/Classes/Internal/Int8+ActiveLook.swift"; sourceTree = "<group>"; };
+		99374EE3DC47D1179CE86DB8368ABDFD /* FirmwareUpdater.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FirmwareUpdater.swift; path = Sources/Classes/Internal/GlassesUpdater/FirmwareUpdater.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A039F797CE0DFCA8448DC6BB52C9531F /* heatshrink_decoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = heatshrink_decoder.h; path = Sources/Heatshrink/include/heatshrink_decoder.h; sourceTree = "<group>"; };
+		A1DDF19F2629FE2BD59A5A733C0B784C /* ConfigurationDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConfigurationDescription.swift; path = Sources/Classes/Public/ConfigurationDescription.swift; sourceTree = "<group>"; };
 		A3CB252B5C9383EE3ECED5148F2010D7 /* Pods-SwifuiTest-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwifuiTest-frameworks.sh"; sourceTree = "<group>"; };
-		A4D2215496198C8BBF9B5080F173B3A4 /* ObjectBox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ObjectBox.debug.xcconfig; sourceTree = "<group>"; };
-		AF1C38C4A2144EAF9FC993F178AFCE7E /* ImageData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageData.swift; path = Classes/Public/ImageData.swift; sourceTree = "<group>"; };
-		BACB6584EF802C2DEBB68869969A599E /* GaugeInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GaugeInfo.swift; path = Classes/Public/GaugeInfo.swift; sourceTree = "<group>"; };
-		C3D2BA38C6A8A5D1BE30295268A738A7 /* Int+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Int+ActiveLook.swift"; path = "Classes/Internal/Int+ActiveLook.swift"; sourceTree = "<group>"; };
+		AB6F7EE37D74FFCBFF68EBD4025BFEEC /* GlassesVersion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesVersion.swift; path = Sources/Classes/Public/GlassesVersion.swift; sourceTree = "<group>"; };
+		ACE98D7DC42C7D38B066A004096A1A3F /* VersionChecker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VersionChecker.swift; path = Sources/Classes/Internal/GlassesUpdater/VersionChecker.swift; sourceTree = "<group>"; };
+		AD3208672CB0BB6555655EA3CD0FB93D /* heatshrink_encoder.c */ = {isa = PBXFileReference; includeInIndex = 1; name = heatshrink_encoder.c; path = Sources/Heatshrink/heatshrink_encoder.c; sourceTree = "<group>"; };
+		AD66B0161B3E7F8A4C8402549752D70E /* Pixel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Pixel.swift; path = Sources/Classes/Internal/Pixel.swift; sourceTree = "<group>"; };
+		ADC30BA48920403448B60AF167051FC7 /* heatshrink_decoder.c */ = {isa = PBXFileReference; includeInIndex = 1; name = heatshrink_decoder.c; path = Sources/Heatshrink/heatshrink_decoder.c; sourceTree = "<group>"; };
+		AF4C86A6045F8BADF0DCCE7AD26D2662 /* GlassesSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesSettings.swift; path = Sources/Classes/Public/GlassesSettings.swift; sourceTree = "<group>"; };
+		B44D0A22B044AD0EC9542BC7AFA1384B /* RNHeatshrinkDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RNHeatshrinkDecoder.h; path = Sources/Heatshrink/include/RNHeatshrinkDecoder.h; sourceTree = "<group>"; };
+		B63A743997861BF2140A1B8E42BED5E8 /* ActiveLookSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ActiveLookSDK.debug.xcconfig; sourceTree = "<group>"; };
+		B74E6221CD76A10943F3A36AAD6A096F /* FontData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontData.swift; path = Sources/Classes/Public/FontData.swift; sourceTree = "<group>"; };
+		B7889752F3D9FBA391500698A60D4813 /* GlassesUpdaterURL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesUpdaterURL.swift; path = Sources/Classes/Internal/GlassesUpdater/GlassesUpdaterURL.swift; sourceTree = "<group>"; };
+		B803DCD47E982E2D9F3886CFB85E7E09 /* LayoutParameters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayoutParameters.swift; path = Sources/Classes/Public/LayoutParameters.swift; sourceTree = "<group>"; };
+		B83919EA167983DA80DEE60803F05C64 /* UInt16+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt16+ActiveLook.swift"; path = "Sources/Classes/Internal/UInt16+ActiveLook.swift"; sourceTree = "<group>"; };
+		B8528EB1E4D2E3B9B772877869A0B9BC /* ImageConverter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageConverter.swift; path = Sources/Classes/Internal/ImageConverter.swift; sourceTree = "<group>"; };
+		BA12FC1556613EE559A276C578DBE613 /* ActiveLookSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ActiveLookSDK.release.xcconfig; sourceTree = "<group>"; };
 		C6C3AB9B384F466330EEB17A2D5C3C04 /* Pods-SwifuiTest-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwifuiTest-acknowledgements.plist"; sourceTree = "<group>"; };
-		C81A8FBBA6A135E413FB840433B246F4 /* ActiveLookSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActiveLookSDK-prefix.pch"; sourceTree = "<group>"; };
-		C902EF657FA86795DAC4491DB31423F6 /* Array+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Array+ActiveLook.swift"; path = "Classes/Internal/Array+ActiveLook.swift"; sourceTree = "<group>"; };
-		D01B34A7DF9F7E2D275BADBAFDE012BF /* VersionChecker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VersionChecker.swift; path = Classes/Internal/GlassesUpdater/VersionChecker.swift; sourceTree = "<group>"; };
-		D17B4F3FEBD22FCD95BEB6FBAB2855D1 /* Glasses.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Glasses.swift; path = Classes/Public/Glasses.swift; sourceTree = "<group>"; };
-		D6234C56F2C67B4DD1D73712E5FB1435 /* ObjectBox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ObjectBox.release.xcconfig; sourceTree = "<group>"; };
-		D76063BF8B2AA9AB19143D6120DD96FE /* ObjectBox-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "ObjectBox-xcframeworks.sh"; sourceTree = "<group>"; };
-		D9A5613C2B517D22E84CBD68A930BE9D /* Int8+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Int8+ActiveLook.swift"; path = "Classes/Internal/Int8+ActiveLook.swift"; sourceTree = "<group>"; };
+		CAC8FF019A7DFC5E933CAB65DCA1368B /* PageInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageInfo.swift; path = Sources/Classes/Public/PageInfo.swift; sourceTree = "<group>"; };
+		CF6866FE4B88A92D99E055803D86A4D0 /* Firmware.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Firmware.swift; path = Sources/Classes/Internal/GlassesUpdater/Firmware.swift; sourceTree = "<group>"; };
+		D984104A66BDB7969FB51E33AEAF57A0 /* GlassesUpdateParameters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesUpdateParameters.swift; path = Sources/Classes/Internal/GlassesUpdater/GlassesUpdateParameters.swift; sourceTree = "<group>"; };
 		DD15179E57DCEBDCA43050F8D571C686 /* Pods-SwifuiTest-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwifuiTest-Info.plist"; sourceTree = "<group>"; };
-		E00C9EE7F7DEAE5E2C8B2188EBE697D8 /* ActiveLookSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ActiveLookSDK.release.xcconfig; sourceTree = "<group>"; };
-		ED4BC4F58950F39524C669A1B3ED9C24 /* GlassesVersion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesVersion.swift; path = Classes/Public/GlassesVersion.swift; sourceTree = "<group>"; };
-		EEBA30AFD1ED1CBEE70F2923A7411A14 /* CBPeripheral+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CBPeripheral+ActiveLook.swift"; path = "Classes/Internal/CBPeripheral+ActiveLook.swift"; sourceTree = "<group>"; };
-		F275EC10E66CE94531086D8656C4F189 /* CBService+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CBService+ActiveLook.swift"; path = "Classes/Internal/CBService+ActiveLook.swift"; sourceTree = "<group>"; };
-		F5F06A9D1E48B9F8FE13AC4E197742A8 /* ActiveLookSDK.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActiveLookSDK.swift; path = Classes/Public/ActiveLookSDK.swift; sourceTree = "<group>"; };
-		F9BF3A87C42C4737B98D92628E831397 /* ActiveLookTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActiveLookTypes.swift; path = Classes/Public/ActiveLookTypes.swift; sourceTree = "<group>"; };
-		FA247F2C3EE9D90882E4F88E601027CD /* ActiveLookSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActiveLookSDK-umbrella.h"; sourceTree = "<group>"; };
-		FAE4802B468D784684EA6792716CDBBD /* Int16+ActiveLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Int16+ActiveLook.swift"; path = "Classes/Internal/Int16+ActiveLook.swift"; sourceTree = "<group>"; };
-		FB607A23FF1487520994BC7B55FDB621 /* GlassesUpdate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlassesUpdate.swift; path = Classes/Public/GlassesUpdate.swift; sourceTree = "<group>"; };
-		FFD00F7029BA050B3351470DF67DC152 /* ConfigurationDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConfigurationDescription.swift; path = Classes/Public/ConfigurationDescription.swift; sourceTree = "<group>"; };
+		E0B74FDDDDF1FE3E9C4BBC27BCC6509D /* ActiveLookSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActiveLookSDK-prefix.pch"; sourceTree = "<group>"; };
+		E3A31B18D1600F8FE2935ADA7332F9C1 /* heatshrink_encoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = heatshrink_encoder.h; path = Sources/Heatshrink/include/heatshrink_encoder.h; sourceTree = "<group>"; };
+		E972E4D400DF152B77F986D42C4E7E04 /* heatshrink_config.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = heatshrink_config.h; path = Sources/Heatshrink/include/heatshrink_config.h; sourceTree = "<group>"; };
+		E974438F6EAEAF2E0441634DB9E184F5 /* Debugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debugging.swift; path = Sources/Classes/Internal/Debugging.swift; sourceTree = "<group>"; };
+		EF4F00270CB8A1E6608FC3132F02FC32 /* ActiveLookSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActiveLookSDK-umbrella.h"; sourceTree = "<group>"; };
+		F14C26D0218FF552906446F9880288E7 /* ObjectBox.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = ObjectBox.xcframework; sourceTree = "<group>"; };
+		F27104994666F5BB4770496F5CC2C2E1 /* ActiveLookTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActiveLookTypes.swift; path = Sources/Classes/Public/ActiveLookTypes.swift; sourceTree = "<group>"; };
+		F2C554A4DA1EE48D49910F00B9878346 /* ActiveLookSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ActiveLookSDK.modulemap; sourceTree = "<group>"; };
+		FB3E6009FED279C4079EBE914F1363CC /* Data+HexEncodedString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+HexEncodedString.swift"; path = "Sources/Classes/Internal/Data+HexEncodedString.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,17 +209,90 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5CCE6BB31415AA10DE4035C3DBB0B88C /* Frameworks */ = {
+		6746DDF4C63F9B79C06108241F58B6DC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B5534C9B42F437958D26BF82866B33A /* Foundation.framework in Frameworks */,
+				EE22E35171A6D7D7099555FED5DAA1D6 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00BD10A5C1F78CA815CC21C17079104C /* ActiveLookSDK */ = {
+			isa = PBXGroup;
+			children = (
+				91879CF6036C698C9CE21FAC66F066FE /* ActiveLookError.swift */,
+				764EA345009B06A0E3D461E82AD46145 /* ActiveLookSDK.swift */,
+				F27104994666F5BB4770496F5CC2C2E1 /* ActiveLookTypes.swift */,
+				82368C883D9FF7ADAB7966D005112D87 /* Array+ActiveLook.swift */,
+				43AC5231A0A49F5D85021D88E70771B8 /* CBCharacteristic+ActiveLook.swift */,
+				2CDB2BA387B13B39832B927319EB3B26 /* CBPeripheral+ActiveLook.swift */,
+				57AEB9030B7456307CCE2D012F3FD7B3 /* CBService+ActiveLook.swift */,
+				8356D11BFB1F751201E2C19082115FCE /* CBUUID+ActiveLook.swift */,
+				27D61B90814079B95C6F7865BC4CC80D /* CommandID.swift */,
+				3035DE0EA7DD9D77F14C457F8D522305 /* Configuration.swift */,
+				A1DDF19F2629FE2BD59A5A733C0B784C /* ConfigurationDescription.swift */,
+				1DD0EB9278AFC49BE9ECFA9104E60C24 /* ConfigurationElementsInfo.swift */,
+				FB3E6009FED279C4079EBE914F1363CC /* Data+HexEncodedString.swift */,
+				E974438F6EAEAF2E0441634DB9E184F5 /* Debugging.swift */,
+				6323EBD475A1CF5D65963DEFA429B9C5 /* DeviceInformation.swift */,
+				1270B5B8783D2BBF75BD72AE31D33061 /* DiscoveredGlasses.swift */,
+				9204883C2ECE87C6470FCC30BE09531F /* Downloader.swift */,
+				CF6866FE4B88A92D99E055803D86A4D0 /* Firmware.swift */,
+				99374EE3DC47D1179CE86DB8368ABDFD /* FirmwareUpdater.swift */,
+				B74E6221CD76A10943F3A36AAD6A096F /* FontData.swift */,
+				5319682697738754F68349340B4B05C6 /* FontInfo.swift */,
+				4A4DB41C54F588AF704C5B2E7B9ECF94 /* FreeSpace.swift */,
+				65ADE6DB1198C9620513288FB6948DA6 /* GaugeInfo.swift */,
+				153CFFC5F978C60617EA8A5501577BE6 /* Glasses.swift */,
+				5190D9ABAF71AC9294EB2423383077A2 /* GlassesInitializer.swift */,
+				AF4C86A6045F8BADF0DCCE7AD26D2662 /* GlassesSettings.swift */,
+				42CCA75BB24769D42D75AD1A4B343F92 /* GlassesUpdate.swift */,
+				D984104A66BDB7969FB51E33AEAF57A0 /* GlassesUpdateParameters.swift */,
+				4DEB2D1E61C9B7BF665D2B49D3313C78 /* GlassesUpdater.swift */,
+				B7889752F3D9FBA391500698A60D4813 /* GlassesUpdaterURL.swift */,
+				AB6F7EE37D74FFCBFF68EBD4025BFEEC /* GlassesVersion.swift */,
+				7C59F7B3353BB4033AC783FDF581FF75 /* heatshrink-Bridging-Header.h */,
+				8FD04994CE6312AE13E251592EF0633F /* heatshrink_common.h */,
+				E972E4D400DF152B77F986D42C4E7E04 /* heatshrink_config.h */,
+				ADC30BA48920403448B60AF167051FC7 /* heatshrink_decoder.c */,
+				A039F797CE0DFCA8448DC6BB52C9531F /* heatshrink_decoder.h */,
+				AD3208672CB0BB6555655EA3CD0FB93D /* heatshrink_encoder.c */,
+				E3A31B18D1600F8FE2935ADA7332F9C1 /* heatshrink_encoder.h */,
+				B8528EB1E4D2E3B9B772877869A0B9BC /* ImageConverter.swift */,
+				7F75C6427B73DC0D98D40483CB20E410 /* ImageData.swift */,
+				72ACF5F934B971231681F500EA465E11 /* ImageData1bpp.swift */,
+				0E9879E146ED014A71569F45EDFD585A /* ImageInfo.swift */,
+				4D26C13E193060D7AD2C73F2F5DD49D5 /* ImageMDP05.swift */,
+				9386CD0FDD031B9E8ADFA45BD0638C95 /* ImgSaveFmt.swift */,
+				1BC9DAABD623C43FF66000279B972430 /* Int+ActiveLook.swift */,
+				2BD0D9FC151A9A87CB8D23CC50DBA287 /* Int16+ActiveLook.swift */,
+				96FB32B638D3744704552556E5DEAAA4 /* Int8+ActiveLook.swift */,
+				B803DCD47E982E2D9F3886CFB85E7E09 /* LayoutParameters.swift */,
+				31BAF6FE7DB5D777762D82DA10E81D13 /* module.modulemap */,
+				73A8C5B042933C319B739B56205CDE15 /* NetworkMonitor.swift */,
+				CAC8FF019A7DFC5E933CAB65DCA1368B /* PageInfo.swift */,
+				AD66B0161B3E7F8A4C8402549752D70E /* Pixel.swift */,
+				B44D0A22B044AD0EC9542BC7AFA1384B /* RNHeatshrinkDecoder.h */,
+				50772BC8543954D8B3075D9A38C39369 /* RNHeatshrinkDecoder.m */,
+				8D3F5341A9C9CBDD11970EA1EF46FED4 /* RNHeatshrinkEncoder.h */,
+				50B809578E3B4E9D8066D805F87427C3 /* RNHeatshrinkEncoder.m */,
+				1D5952191F6CC578DBF53D8B6716FB8A /* SensorParameters.swift */,
+				64C31AEDC470431BD47BE9F1F833B901 /* SerializedGlasses.swift */,
+				43183126CEFFEC456414C07272EBDCFA /* String+ActiveLook.swift */,
+				9561E909C1398C219C1956773D464C81 /* UIImage+ActiveLook.swift */,
+				B83919EA167983DA80DEE60803F05C64 /* UInt16+ActiveLook.swift */,
+				16209590D63B2EE8B48AF50C292B1420 /* UInt32+ActiveLook.swift */,
+				13B60292AFF0FF543FA10767A1AF7D71 /* UpdateProgress.swift */,
+				ACE98D7DC42C7D38B066A004096A1A3F /* VersionChecker.swift */,
+				2319F18A9BA576F7650EA417F17E15D4 /* Support Files */,
+			);
+			name = ActiveLookSDK;
+			path = ActiveLookSDK;
+			sourceTree = "<group>";
+		};
 		02FED5A736FDD20D3F763BF68BF4C475 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,76 +301,19 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		3660D97A34F5106C0FBF8F5E9957B818 /* Pods */ = {
+		2319F18A9BA576F7650EA417F17E15D4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				437CFC42640031C910B39681C47165A7 /* ActiveLookSDK */,
-				3868C4A2686B30ECC9F3E0E4A5892EE2 /* ObjectBox */,
+				F2C554A4DA1EE48D49910F00B9878346 /* ActiveLookSDK.modulemap */,
+				22B894338B3C735518D9BE5A46000D8C /* ActiveLookSDK-dummy.m */,
+				8978F1A67A8FC0AF503D2E16CAC5FD97 /* ActiveLookSDK-Info.plist */,
+				E0B74FDDDDF1FE3E9C4BBC27BCC6509D /* ActiveLookSDK-prefix.pch */,
+				EF4F00270CB8A1E6608FC3132F02FC32 /* ActiveLookSDK-umbrella.h */,
+				B63A743997861BF2140A1B8E42BED5E8 /* ActiveLookSDK.debug.xcconfig */,
+				BA12FC1556613EE559A276C578DBE613 /* ActiveLookSDK.release.xcconfig */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		3868C4A2686B30ECC9F3E0E4A5892EE2 /* ObjectBox */ = {
-			isa = PBXGroup;
-			children = (
-				87DBC866E0BD3D5256E2D36051A8609E /* Frameworks */,
-				8D2973F7C1ADBF359AB46306A233722B /* Support Files */,
-			);
-			path = ObjectBox;
-			sourceTree = "<group>";
-		};
-		437CFC42640031C910B39681C47165A7 /* ActiveLookSDK */ = {
-			isa = PBXGroup;
-			children = (
-				011BF6F0FD80E548D922DDC29FA40174 /* ActiveLookError.swift */,
-				F5F06A9D1E48B9F8FE13AC4E197742A8 /* ActiveLookSDK.swift */,
-				F9BF3A87C42C4737B98D92628E831397 /* ActiveLookTypes.swift */,
-				C902EF657FA86795DAC4491DB31423F6 /* Array+ActiveLook.swift */,
-				19DF99CA6FFB4E2020C5007D6D1579D2 /* CBCharacteristic+ActiveLook.swift */,
-				EEBA30AFD1ED1CBEE70F2923A7411A14 /* CBPeripheral+ActiveLook.swift */,
-				F275EC10E66CE94531086D8656C4F189 /* CBService+ActiveLook.swift */,
-				2B3B1B6DE971A1602E13954837DDFBEF /* CBUUID+ActiveLook.swift */,
-				1FC79D5A5B68FDA2A3DF95DD1ED8246D /* CommandID.swift */,
-				44BFF07D04A20F81A49E8BAF6AC0D32B /* Configuration.swift */,
-				FFD00F7029BA050B3351470DF67DC152 /* ConfigurationDescription.swift */,
-				7720B7D4746DCA06D7899A29C956DD4C /* ConfigurationElementsInfo.swift */,
-				80BA64A197C7E2C05108AC20CF892FDF /* Data+HexEncodedString.swift */,
-				3490C06C94CA9BBFC4D14B9272223DE3 /* Debugging.swift */,
-				79EF6F0587A47EFC062DE201210AF007 /* DeviceInformation.swift */,
-				4D5565BECD920693FAB385D39E87B1B2 /* DiscoveredGlasses.swift */,
-				37E2BAC4D38BBF56CEC7921359D8C8DC /* Downloader.swift */,
-				91FCD7656B7D783076303E014FE76BC6 /* Firmware.swift */,
-				1F11A73C9548429510F344A18F062DEA /* FirmwareUpdater.swift */,
-				2DF339C6C7545E6ABF43BC3AF5F80BA3 /* FontData.swift */,
-				8E28273E035D76388993793A0CDD1D08 /* FontInfo.swift */,
-				1BDD460E75268C50DB6187AAA931EFFF /* FreeSpace.swift */,
-				BACB6584EF802C2DEBB68869969A599E /* GaugeInfo.swift */,
-				D17B4F3FEBD22FCD95BEB6FBAB2855D1 /* Glasses.swift */,
-				7B319783E9BF0AB5A37EA49A2BCA63A7 /* GlassesInitializer.swift */,
-				930028D2B248D6065EFD9E5859E64A2B /* GlassesSettings.swift */,
-				FB607A23FF1487520994BC7B55FDB621 /* GlassesUpdate.swift */,
-				8185267D27BE7068B4FDDC123B370914 /* GlassesUpdateParameters.swift */,
-				4BA243687F81E2A8A76E8D1584C343C7 /* GlassesUpdater.swift */,
-				A393091A6F38BD295318490E160020D5 /* GlassesUpdaterURL.swift */,
-				ED4BC4F58950F39524C669A1B3ED9C24 /* GlassesVersion.swift */,
-				AF1C38C4A2144EAF9FC993F178AFCE7E /* ImageData.swift */,
-				A2420ACD4051F757E6A9E771BD1A9343 /* ImageInfo.swift */,
-				C3D2BA38C6A8A5D1BE30295268A738A7 /* Int+ActiveLook.swift */,
-				FAE4802B468D784684EA6792716CDBBD /* Int16+ActiveLook.swift */,
-				D9A5613C2B517D22E84CBD68A930BE9D /* Int8+ActiveLook.swift */,
-				47FAF5EDBD02ED7AC5A3A6D38C883252 /* LayoutParameters.swift */,
-				3CF697CAB4BD82786E41D5CA87E39FD7 /* NetworkMonitor.swift */,
-				74F2DB4A733B2FA480D9C821A6E07E64 /* PageInfo.swift */,
-				49E09ED80DB40922CE0111A84C2B1352 /* SensorParameters.swift */,
-				73FB0A51A960A6266742C5D11AF6F9D8 /* SerializedGlasses.swift */,
-				040F589E5E4849E0BC68DAC8D5D634DE /* String+ActiveLook.swift */,
-				59495F05E3B41B4570F9A3D3D5E67ABC /* UInt16+ActiveLook.swift */,
-				4CA0A6DEF26840D7387B64C3AB2278FF /* UInt32+ActiveLook.swift */,
-				97F53252E67D85B78AE5F47876DCECA4 /* UpdateProgress.swift */,
-				D01B34A7DF9F7E2D275BADBAFDE012BF /* VersionChecker.swift */,
-				C5180EF3C9D4EF02AE5F40C764BDFCF2 /* Support Files */,
-			);
-			path = ActiveLookSDK;
+			name = "Support Files";
+			path = "../Target Support Files/ActiveLookSDK";
 			sourceTree = "<group>";
 		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
@@ -276,44 +327,48 @@
 		6DD5508B81E7A37C79B340416A5C82DF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3B047035BBBA59B42BCA6294146587A6 /* ActiveLookSDK.framework */,
+				3B047035BBBA59B42BCA6294146587A6 /* ActiveLookSDK */,
 				776B0A081CB17839B1B59190C6D2AF1F /* Pods-SwifuiTest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		87DBC866E0BD3D5256E2D36051A8609E /* Frameworks */ = {
+		6DF14211A796C0B05B7D0FF786E915C3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				206FA939A417B99D0B537AF61950F845 /* ObjectBox.xcframework */,
+				00BD10A5C1F78CA815CC21C17079104C /* ActiveLookSDK */,
+				6E5336AC284CEC227D3ACB84EBE28F46 /* ObjectBox */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6E5336AC284CEC227D3ACB84EBE28F46 /* ObjectBox */ = {
+			isa = PBXGroup;
+			children = (
+				7423DAB172FCA948AF640740455F4D8C /* Frameworks */,
+				A93AF4F90A6BA055427F4875775DC75F /* Support Files */,
+			);
+			name = ObjectBox;
+			path = ObjectBox;
+			sourceTree = "<group>";
+		};
+		7423DAB172FCA948AF640740455F4D8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F14C26D0218FF552906446F9880288E7 /* ObjectBox.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8D2973F7C1ADBF359AB46306A233722B /* Support Files */ = {
+		A93AF4F90A6BA055427F4875775DC75F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				D76063BF8B2AA9AB19143D6120DD96FE /* ObjectBox-xcframeworks.sh */,
-				A4D2215496198C8BBF9B5080F173B3A4 /* ObjectBox.debug.xcconfig */,
-				D6234C56F2C67B4DD1D73712E5FB1435 /* ObjectBox.release.xcconfig */,
+				2D1B5C2454A103F2BE77A22C59BB5B3E /* ObjectBox-xcframeworks.sh */,
+				429F0A43412598BE8E7493D72CDD38C5 /* ObjectBox.debug.xcconfig */,
+				42C4953BEB7728BC39B93D8577B3B7E1 /* ObjectBox.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/ObjectBox";
-			sourceTree = "<group>";
-		};
-		C5180EF3C9D4EF02AE5F40C764BDFCF2 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7D7DDE0FA10B9337B2686874621BF165 /* ActiveLookSDK.modulemap */,
-				2FF50BD9B547FCF9AA32F32EE7BDCB77 /* ActiveLookSDK-dummy.m */,
-				15AFFA466C41601FBEEF796ED4924A4C /* ActiveLookSDK-Info.plist */,
-				C81A8FBBA6A135E413FB840433B246F4 /* ActiveLookSDK-prefix.pch */,
-				FA247F2C3EE9D90882E4F88E601027CD /* ActiveLookSDK-umbrella.h */,
-				76101D84F32FB0F16CE273AD4977A2AF /* ActiveLookSDK.debug.xcconfig */,
-				E00C9EE7F7DEAE5E2C8B2188EBE697D8 /* ActiveLookSDK.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/ActiveLookSDK";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -321,7 +376,7 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				3660D97A34F5106C0FBF8F5E9957B818 /* Pods */,
+				6DF14211A796C0B05B7D0FF786E915C3 /* Pods */,
 				6DD5508B81E7A37C79B340416A5C82DF /* Products */,
 				02FED5A736FDD20D3F763BF68BF4C475 /* Targets Support Files */,
 			);
@@ -355,14 +410,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		87001D5C8CA4A90024C43A57A9F6F01C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C1305BFE651DA17E0DF0CCEA8A1141C6 /* ActiveLookSDK-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8DA7EAD2B4CD1A118760ABB25460AE4C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,17 +418,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D43E3D318115ED7597F4CAEE0E8A2585 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2E8A94BC450628D95D450141293A105 /* ActiveLookSDK-umbrella.h in Headers */,
+				586687CB554DE8334D7D9E8B3B4BF84D /* heatshrink-Bridging-Header.h in Headers */,
+				174EE8E2889C26C97273D16E6967B11A /* heatshrink_common.h in Headers */,
+				A2C1A72E8959B9F60CA02E6DBA866182 /* heatshrink_config.h in Headers */,
+				86C4A47D339BCA73242F806B9FA66276 /* heatshrink_decoder.h in Headers */,
+				3D95179E45A244A064FB6FBFB3A5F78C /* heatshrink_encoder.h in Headers */,
+				5C69A074B987373053800E6945F2F5E4 /* RNHeatshrinkDecoder.h in Headers */,
+				493D874BF04348A729E5835F0798D6C9 /* RNHeatshrinkEncoder.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		16BFDCFFE4954E0A5A9BDF9C411A1A9C /* ActiveLookSDK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B60BA8F34DF2FB7C1D90DF4F5C7E0F45 /* Build configuration list for PBXNativeTarget "ActiveLookSDK" */;
+			buildConfigurationList = D74D251C25832C7C16C5FE667C326CB3 /* Build configuration list for PBXNativeTarget "ActiveLookSDK" */;
 			buildPhases = (
-				87001D5C8CA4A90024C43A57A9F6F01C /* Headers */,
-				1056054083B9DF3E51100C706120DC0F /* Sources */,
-				5CCE6BB31415AA10DE4035C3DBB0B88C /* Frameworks */,
-				9B277FD9B2492A0CD300FE9364CE45E1 /* Resources */,
+				D43E3D318115ED7597F4CAEE0E8A2585 /* Headers */,
+				6F771555259D0D0882A8DC5D373DD77E /* Sources */,
+				6746DDF4C63F9B79C06108241F58B6DC /* Frameworks */,
+				23E7A764AC75616108C8BCB2549B808D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -389,7 +451,7 @@
 			);
 			name = ActiveLookSDK;
 			productName = ActiveLookSDK;
-			productReference = 3B047035BBBA59B42BCA6294146587A6 /* ActiveLookSDK.framework */;
+			productReference = 3B047035BBBA59B42BCA6294146587A6 /* ActiveLookSDK */;
 			productType = "com.apple.product-type.framework";
 		};
 		C0544B7B95CC1E026963E445BCAD4ECC /* Pods-SwifuiTest */ = {
@@ -404,8 +466,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				7914DCCC53F86369B7FFC900E56E9E7A /* PBXTargetDependency */,
-				2E3CFFB4656F6D45C7822E6B13E1A177 /* PBXTargetDependency */,
+				26F49596FB67B59741962EE6B132E482 /* PBXTargetDependency */,
+				5CE147407156E8B08BED48A577C079BE /* PBXTargetDependency */,
 			);
 			name = "Pods-SwifuiTest";
 			productName = Pods_SwifuiTest;
@@ -442,14 +504,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7B32DDFFCD4939586BFA4A13BDF5382E /* Resources */ = {
+		23E7A764AC75616108C8BCB2549B808D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B277FD9B2492A0CD300FE9364CE45E1 /* Resources */ = {
+		7B32DDFFCD4939586BFA4A13BDF5382E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -479,57 +541,68 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1056054083B9DF3E51100C706120DC0F /* Sources */ = {
+		6F771555259D0D0882A8DC5D373DD77E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA02BB48E41546BDC80103561900983F /* ActiveLookError.swift in Sources */,
-				06D41CDA458ADD0A5256625C17DD5A20 /* ActiveLookSDK.swift in Sources */,
-				C47245B1FF0999D4F673EEADDB5CE1F1 /* ActiveLookSDK-dummy.m in Sources */,
-				17030090DD6E46E07EA53924F1826599 /* ActiveLookTypes.swift in Sources */,
-				8D2E8266B3A6370C0D6A2FF2B6671BCD /* Array+ActiveLook.swift in Sources */,
-				CB218A2FA9FD8FE839C03FDD3D679F35 /* CBCharacteristic+ActiveLook.swift in Sources */,
-				D3EAFF3A1EAFAEE8964D178CC101EF3F /* CBPeripheral+ActiveLook.swift in Sources */,
-				673385B2D623F6DA5278CEE3B5C5E3EB /* CBService+ActiveLook.swift in Sources */,
-				0B8E2E36697061C3388EB51C2B09BD4F /* CBUUID+ActiveLook.swift in Sources */,
-				DD5320A486F0ED3FC0C376B384263D08 /* CommandID.swift in Sources */,
-				DC20D6844334E914D6FFB0E22AA195F6 /* Configuration.swift in Sources */,
-				416B88E1E4805D1E9729806AAFC791D4 /* ConfigurationDescription.swift in Sources */,
-				5804AEFE72739750FC86314CA9FEB850 /* ConfigurationElementsInfo.swift in Sources */,
-				073B8969DBD30DA210812AAD749C7D07 /* Data+HexEncodedString.swift in Sources */,
-				167A9FD69D4CAD5312EB8F6771EBBE7E /* Debugging.swift in Sources */,
-				B87491842C4BE1F33AF94ED2311573BB /* DeviceInformation.swift in Sources */,
-				C28C5571DAFAAFEB0989F5311093F785 /* DiscoveredGlasses.swift in Sources */,
-				D429BBA34425A3C290C6DBD194B3F04C /* Downloader.swift in Sources */,
-				A019C6415D352DC87D09FB4050DC57ED /* Firmware.swift in Sources */,
-				B8BE6D2907E56CED630C27DF51A4841E /* FirmwareUpdater.swift in Sources */,
-				09E164CC5CF0792B5CFBDE2CA56A3B35 /* FontData.swift in Sources */,
-				4887D9054C2D8E3D0DB5124C338B875F /* FontInfo.swift in Sources */,
-				8945996123865C6E80999F1CB87E6B03 /* FreeSpace.swift in Sources */,
-				9BBBD6F2F73110B569C656C2E486B035 /* GaugeInfo.swift in Sources */,
-				BFBA07AB266BD9FD837ABBBF7DD54FD1 /* Glasses.swift in Sources */,
-				EEB3790861757E811896C3E9AF239F5D /* GlassesInitializer.swift in Sources */,
-				0EB9E2FA089F1E4397FC72DF9ABDA2F0 /* GlassesSettings.swift in Sources */,
-				67357A643298A7518466CD06E651238A /* GlassesUpdate.swift in Sources */,
-				16064B93D5AEADB6AF13A44284366A29 /* GlassesUpdateParameters.swift in Sources */,
-				E0699762BF9CB1EC0284F2DD1CCCC47F /* GlassesUpdater.swift in Sources */,
-				74D63DB4A40CF68303D594727B853997 /* GlassesUpdaterURL.swift in Sources */,
-				CA3449BD7EA67280D4269B1A3E530A6C /* GlassesVersion.swift in Sources */,
-				106AEE616AC624C3D02D0917E2A21897 /* ImageData.swift in Sources */,
-				CA822DF1D79E59B79534173BF8D56C32 /* ImageInfo.swift in Sources */,
-				5DF168AF7BAC0CE764D1A16494FB2B6C /* Int+ActiveLook.swift in Sources */,
-				D77D07C96B919E7F83DFEE8B7AFBED52 /* Int16+ActiveLook.swift in Sources */,
-				85CBEC614D8A59F73D78F74826A8AD81 /* Int8+ActiveLook.swift in Sources */,
-				C86DB263ADC2FE0188A82F919BAE3EA5 /* LayoutParameters.swift in Sources */,
-				82B758B2B28D955C85BFF957981F8BCA /* NetworkMonitor.swift in Sources */,
-				5F3D5C4DC51BA7F62D36C706BA941D82 /* PageInfo.swift in Sources */,
-				6802F65B289A45AC7978CBEB5351AC6F /* SensorParameters.swift in Sources */,
-				58D1683A6EE469439409F5E95AC35E2A /* SerializedGlasses.swift in Sources */,
-				40271CD30BAABA30964B508A335C975B /* String+ActiveLook.swift in Sources */,
-				49E28A7973896539316760CB36BD183F /* UInt16+ActiveLook.swift in Sources */,
-				E9653C66B3D45E1E1E776557615E8A8B /* UInt32+ActiveLook.swift in Sources */,
-				DB13C1624FF323890462350A69A5DCA1 /* UpdateProgress.swift in Sources */,
-				18CAC587FA697DD1B8F3B85ACD7EA89B /* VersionChecker.swift in Sources */,
+				6DEA5917CF329563117D81CB8566F755 /* ActiveLookError.swift in Sources */,
+				69108567A3DE3DC96B0676BF76C56A70 /* ActiveLookSDK.swift in Sources */,
+				1416E579306C4941FD289A42566A829C /* ActiveLookSDK-dummy.m in Sources */,
+				B40D9DF9D923179493878797ED4BE1AB /* ActiveLookTypes.swift in Sources */,
+				5029F974FB38CDDBFC72F2224631D7BA /* Array+ActiveLook.swift in Sources */,
+				6674BFD96BCF9CA8448EF3A23BE134A2 /* CBCharacteristic+ActiveLook.swift in Sources */,
+				0FE973BAF97124B8253E0CBAFC13B5BC /* CBPeripheral+ActiveLook.swift in Sources */,
+				DA8287F3A35D774F1D1FF7FE6DA156B4 /* CBService+ActiveLook.swift in Sources */,
+				C871F1EEEF94043BA3CAB87CA1260A44 /* CBUUID+ActiveLook.swift in Sources */,
+				8D1E5CABC7C765BBB8BED5095B2A5FC1 /* CommandID.swift in Sources */,
+				4A40F9C35DEF46AA3831D4209D04415D /* Configuration.swift in Sources */,
+				97D852577A6A5A94F94B2D001B89A9CA /* ConfigurationDescription.swift in Sources */,
+				FDE50D2E2180D758663154BDC2876437 /* ConfigurationElementsInfo.swift in Sources */,
+				2D3F00E65C7F9EE89CC5E2BBA9E98111 /* Data+HexEncodedString.swift in Sources */,
+				DB3A75CF5BCF7873C85CEA1F11A4CA9A /* Debugging.swift in Sources */,
+				B247B1AAEA0D5A4EC23D454F972DD67E /* DeviceInformation.swift in Sources */,
+				0A524461D5D2947DD36A1ED9672AC09E /* DiscoveredGlasses.swift in Sources */,
+				069AA8C951CC00C3D9F43FA702CDAD5A /* Downloader.swift in Sources */,
+				76E588152DAD1117663ED7D98F2234F2 /* Firmware.swift in Sources */,
+				FDD5CF01E1C16363815A1E87995F1DA9 /* FirmwareUpdater.swift in Sources */,
+				0068B8DF126BF2B049D2C82F6FFE847A /* FontData.swift in Sources */,
+				C02FA0F252CC35DCFFFC01148428FAE9 /* FontInfo.swift in Sources */,
+				26B80CDEEF0FC587D5E2F25D1BBD0498 /* FreeSpace.swift in Sources */,
+				51BBFFF409DDE518A13248DE124C3238 /* GaugeInfo.swift in Sources */,
+				45E31DC52A9AECD42CDC7848CB1DC848 /* Glasses.swift in Sources */,
+				0D940ED6BD4392FCF23CC68101CF8B3C /* GlassesInitializer.swift in Sources */,
+				6BD3F7433D6FD1F84D3353A1D0F88E92 /* GlassesSettings.swift in Sources */,
+				9BC0864BCACCBB47660560597C8F8088 /* GlassesUpdate.swift in Sources */,
+				2776C2D48952B4794BFFDB3E8557220E /* GlassesUpdateParameters.swift in Sources */,
+				5E4DBC91A91471A9805A645323B24715 /* GlassesUpdater.swift in Sources */,
+				BEAC78F07861F5627EA19A37F47BB15F /* GlassesUpdaterURL.swift in Sources */,
+				D167353A3EB1563A3F7512F263526550 /* GlassesVersion.swift in Sources */,
+				7AF5C80E48D318150744D01987982BDD /* heatshrink_decoder.c in Sources */,
+				779B04086BF75A7D8F33424D6282F1ED /* heatshrink_encoder.c in Sources */,
+				FEE3F1EB9471EFC32CBF18CA6BEA4277 /* ImageConverter.swift in Sources */,
+				A51C339E5885F97D691DC4956B6D168C /* ImageData.swift in Sources */,
+				A09D97AFBF9010BE09979A004046426B /* ImageData1bpp.swift in Sources */,
+				4501F5888086254C998952165A43F20E /* ImageInfo.swift in Sources */,
+				3E2B5CBE27FEB0819497D037E9B4F35D /* ImageMDP05.swift in Sources */,
+				4B2EB14A215F1C7EBCD8EF02141D0280 /* ImgSaveFmt.swift in Sources */,
+				A1756D4B129006DE19DB63C7729646CF /* Int+ActiveLook.swift in Sources */,
+				00E780227108657639352B1837075536 /* Int16+ActiveLook.swift in Sources */,
+				F5406DAC028BB66CABA821C23BFC4925 /* Int8+ActiveLook.swift in Sources */,
+				7D9103ACE0AA8F3B20940288338CF814 /* LayoutParameters.swift in Sources */,
+				B01185F9E99629ECF3310920687A2057 /* module.modulemap in Sources */,
+				EB8FE206E076FD7E24F18ED1E6079F0C /* NetworkMonitor.swift in Sources */,
+				7F14E411D50EA36204D15D2948115C50 /* PageInfo.swift in Sources */,
+				11EACE27A1AA396F52EE3CFFD75622D3 /* Pixel.swift in Sources */,
+				54CC4D5DA5BA997EA3F801C52E6F9DFA /* RNHeatshrinkDecoder.m in Sources */,
+				CF285AF5CF668744445B1D44AC4966CF /* RNHeatshrinkEncoder.m in Sources */,
+				68AECECEAC246AB6EEE1C105483C3384 /* SensorParameters.swift in Sources */,
+				C2552E5AA6D964B446A7E3EE6E486544 /* SerializedGlasses.swift in Sources */,
+				627D1D922EF2E0286E034FF6EDDCA02B /* String+ActiveLook.swift in Sources */,
+				30FA1DF056F0011387283F5830DCDC9A /* UIImage+ActiveLook.swift in Sources */,
+				FE2839E2BBC710EA55109329BBA072E3 /* UInt16+ActiveLook.swift in Sources */,
+				60836C754D5DD65FB0DA89AFCF9B0275 /* UInt32+ActiveLook.swift in Sources */,
+				16D059768DB9F8093E9E2B0344222FD2 /* UpdateProgress.swift in Sources */,
+				DEAC30EBF00B42C963EFF585A078D04F /* VersionChecker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,17 +617,17 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2E3CFFB4656F6D45C7822E6B13E1A177 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ObjectBox;
-			target = 436A7FC63B2E20A9EC3A674012E5976E /* ObjectBox */;
-			targetProxy = D35334B37891BADF4F95BB319B118AB5 /* PBXContainerItemProxy */;
-		};
-		7914DCCC53F86369B7FFC900E56E9E7A /* PBXTargetDependency */ = {
+		26F49596FB67B59741962EE6B132E482 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ActiveLookSDK;
 			target = 16BFDCFFE4954E0A5A9BDF9C411A1A9C /* ActiveLookSDK */;
-			targetProxy = AA4A9D938959374762F01AE8CE79A549 /* PBXContainerItemProxy */;
+			targetProxy = E140A406BD19D28106B106BDBA5A17C9 /* PBXContainerItemProxy */;
+		};
+		5CE147407156E8B08BED48A577C079BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ObjectBox;
+			target = 436A7FC63B2E20A9EC3A674012E5976E /* ObjectBox */;
+			targetProxy = 7C452C2F07EFFAA965F534B95C0DA05E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -597,9 +670,27 @@
 			};
 			name = Release;
 		};
-		106450CAC4C551830B1A351371757CE7 /* Debug */ = {
+		3378F5DF986949E728D85D699BB026E9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76101D84F32FB0F16CE273AD4977A2AF /* ActiveLookSDK.debug.xcconfig */;
+			baseConfigurationReference = 42C4953BEB7728BC39B93D8577B3B7E1 /* ObjectBox.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5CE279CAF94675637F5B6ECAAA28DC29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B63A743997861BF2140A1B8E42BED5E8 /* ActiveLookSDK.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -613,7 +704,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/ActiveLookSDK/ActiveLookSDK-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/ActiveLookSDK/ActiveLookSDK-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -632,27 +723,9 @@
 			};
 			name = Debug;
 		};
-		3378F5DF986949E728D85D699BB026E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6234C56F2C67B4DD1D73712E5FB1435 /* ObjectBox.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		8C158B727733F2B9B0E50AE31E507781 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4D2215496198C8BBF9B5080F173B3A4 /* ObjectBox.debug.xcconfig */;
+			baseConfigurationReference = 429F0A43412598BE8E7493D72CDD38C5 /* ObjectBox.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -795,42 +868,6 @@
 			};
 			name = Release;
 		};
-		C0368AD040F0F82574B1EDF9A23DDA6D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E00C9EE7F7DEAE5E2C8B2188EBE697D8 /* ActiveLookSDK.release.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ActiveLookSDK/ActiveLookSDK-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ActiveLookSDK/ActiveLookSDK-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/ActiveLookSDK/ActiveLookSDK.modulemap";
-				PRODUCT_MODULE_NAME = ActiveLookSDK;
-				PRODUCT_NAME = ActiveLookSDK;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		DFF79ECAFB56087C1A3F05743527079C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E9B600162F7E16D6D06268A4B1F2C27 /* Pods-SwifuiTest.debug.xcconfig */;
@@ -868,6 +905,42 @@
 			};
 			name = Debug;
 		};
+		E073003CDBB684CE83CE7E55F8B364EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA12FC1556613EE559A276C578DBE613 /* ActiveLookSDK.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ActiveLookSDK/ActiveLookSDK-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ActiveLookSDK/ActiveLookSDK-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ActiveLookSDK/ActiveLookSDK.modulemap";
+				PRODUCT_MODULE_NAME = ActiveLookSDK;
+				PRODUCT_NAME = ActiveLookSDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -880,11 +953,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B60BA8F34DF2FB7C1D90DF4F5C7E0F45 /* Build configuration list for PBXNativeTarget "ActiveLookSDK" */ = {
+		D74D251C25832C7C16C5FE667C326CB3 /* Build configuration list for PBXNativeTarget "ActiveLookSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				106450CAC4C551830B1A351371757CE7 /* Debug */,
-				C0368AD040F0F82574B1EDF9A23DDA6D /* Release */,
+				5CE279CAF94675637F5B6ECAAA28DC29 /* Debug */,
+				E073003CDBB684CE83CE7E55F8B364EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
