@@ -5,35 +5,6 @@ import CoreLocationUI
 import MapKit
 import ActiveLookSDK
 
-
-struct TestView: View{
-    @ObservedObject var compassHeading = CompassHeading()
-
-    var textView1: some View {
-            Text("Hello, SwiftUI")
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .clipShape(Capsule())
-        }
-    var body: some View {
-            ZStack {
-                VStack(spacing: 100) {
-                    textView
-                }
-            }
-        }
-    var textView: some View{
-        ZStack{
-            ForEach(Marker.markers(), id:\.self) {marker in
-                CompassMarkerView(marker: marker, compassDegrees: self.compassHeading.degrees)
-            }
-        }
-        .frame(width: 150, height: 150)
-        .rotationEffect(Angle(degrees: self.compassHeading.degrees))
-        .statusBar(hidden:true)    }
-}
-
 struct ContentView: View {
     @ObservedObject var compassHeading = CompassHeading()
     @StateObject public var viewModel = ContentViewModel()
@@ -45,10 +16,7 @@ struct ContentView: View {
     @SwiftUI.State var timer: Timer?
     @SwiftUI.State var timer1: Timer?
     
-    @SwiftUI.State var zoomForMap: Double = 0.002
-    //var zoomForMap = 0.002
-    //let geoFence = SwiftUIPolygonGeofence
-    //var activeLook: ActiveLookSDK
+    @SwiftUI.State var zoomForMap: Double = 0.00
         
     var body: some View {
         //LaunchView()
@@ -68,7 +36,7 @@ struct ContentView: View {
                                 .fixedSize()
                         }
                         .onTapGesture {
-                            selectedPlace = location
+                            //selectedPlace = location
                         }
                     }
                 }
@@ -82,13 +50,13 @@ struct ContentView: View {
                 VStack(alignment: .leading){
                     HStack{
                         Menu{
-                            Button("Connect jjGlasses", action: connectGlasses)
+                            Button("Connect Glasses", action: connectGlasses)
                             Button("Map Only", action: sendDisplay)
-                            Button("Compass Only", action: returnDegree)
-                            Button("Both Map and Compass", action:both)
+                            Button("Pace Only", action: returnPace)
+                            Button("Both Map and Compass", action: both)
                             Button("Zoom In", action: plus)
                             Button("Zoom Out", action: minus)
-                            Button("Street Name", action: StreetNameWCompass)
+                            ///Button("Street Name", action: StreetNameWCompass)
                             Button("Clear", action:Clear)
                             Button("Stop Timer", action: stopTimer)
                         }
@@ -131,19 +99,19 @@ struct ContentView: View {
                     .opacity(0.3)
                     .frame(width:15,height:15)
                 
-                VStack{//compass
-                    Spacer()
-                    Capsule()
-                        .frame(width:5, height:50)
-                    ZStack{
-                        ForEach(Marker.markers(), id:\.self) {marker in
-                            CompassMarkerView(marker: marker, compassDegrees: self.compassHeading.degrees)
-                        }
-                    }
-                    .frame(width: 150, height: 150)
-                    .rotationEffect(Angle(degrees: self.compassHeading.degrees))
-                    .statusBar(hidden:true)
-                }
+//                VStack{//compass
+//                    Spacer()
+//                    Capsule()
+//                        .frame(width:5, height:50)
+//                    ZStack{
+//                        ForEach(Marker.markers(), id:\.self) {marker in
+//                            CompassMarkerView(marker: marker, compassDegrees: self.compassHeading.degrees)
+//                        }
+//                    }
+//                    .frame(width: 150, height: 150)
+//                    .rotationEffect(Angle(degrees: self.compassHeading.degrees))
+//                    .statusBar(hidden:true)
+//                }
                 Spacer()
                 VStack{//CenterLocation & pin point buttons
                     Spacer()
@@ -175,13 +143,13 @@ struct ContentView: View {
                     }
                 }
             }
-            .sheet(item: $selectedPlace){ place in
-                EditView(location: place){ newLocation in
-                    if let index = locations.firstIndex(of: place){
-                        locations[index] = newLocation
-                    }
-                }
-            }
+//            .sheet(item: $selectedPlace){ place in
+//                EditView(location: place){ newLocation in
+//                    if let index = locations.firstIndex(of: place){
+//                        locations[index] = newLocation
+//                    }
+//                }
+//            }
         }
     }
     
@@ -194,12 +162,12 @@ struct ContentView: View {
     func Clear(){
         Glasses.clearMap()
     }
-    func StreetNameWCompass(){
-        Glasses.clearMap()
-        let compassDeg = Int(-1*self.compassHeading.degrees)
-        
-        Glasses.getAddressFromLocation(deg: compassDeg)
-    }
+//    func StreetNameWCompass(){
+//        Glasses.clearMap()
+//        let compassDeg = Int(-1*self.compassHeading.degrees)
+//
+//        Glasses.getAddressFromLocation(deg: compassDeg)
+//    }
     func sendDisplay(){
         stopTimer()
         Glasses.clearMap()
@@ -208,7 +176,7 @@ struct ContentView: View {
             Glasses.threeTimer(zoom: zoomForMap)
         }
     }
-    func returnDegree(){
+    func returnPace(){
         stopTimer()
         Glasses.clearMap()
         self.timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { _ in
@@ -412,17 +380,6 @@ class MapScreen: UIViewController {
         //locationManager.delegate = self
         //goButton.layer.cornerRadius = goButton.frame.size.height/2
     }
-    /*func updateGlassesTextDisplay() {
-        print("HELLO")
-        geoCoder.reverseGeocodeLocation(locationManager.location!) { placemarks, error in
-            guard let placemark = placemarks?.first,
-                  let street = placemark.thoroughfare,
-                  let direction = self.locationManager.heading?.direction else { return }
-            let text = "(direction) on (street)"
-            print(text)
-            self.glassesConnected?.txt(x: 102, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
-        }
-    }*/
     
     func getAddressFromLocation(deg: Int) {
         CLGeocoder().reverseGeocodeLocation(locationManager.location!) { placemarks, error in
@@ -434,22 +391,6 @@ class MapScreen: UIViewController {
             
             self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
 
-            
-//            if(text.count > 21){
-//                if(text.count > 42){
-//                    self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: "character overload")
-//                }
-//                else{
-//                    let firsthalf=String(text.prefix(21))
-//                    self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: firsthalf)
-//                    self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
-//                }
-//            }
-//            else{
-//                self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
-//            }
-//            self.glassesConnected?.txt(x: 316, y: 128, rotation: .topLR, font: 2, color: 15, string: " SE on Sixth Ave12345")
-            //self.glassesConnected?.txt(x: 310, y: 128, rotation: .topLR, font: 2, color: 15, string: text)
         }
     }
 }
@@ -502,7 +443,7 @@ extension MapScreen: MKMapViewDelegate {
         var imageWithMarker: UIImage?
         
         let mapSnapshotterOptions = MKMapSnapshotter.Options()
-        mapSnapshotterOptions.size = CGSize(width: 140, height: 140)
+        mapSnapshotterOptions.size = CGSize(width: 90, height: 90)
         mapSnapshotterOptions.region = MKCoordinateRegion(center:locationManager.location!.coordinate,span:MKCoordinateSpan(latitudeDelta: zoom, longitudeDelta: zoom))
         mapSnapshotterOptions.mapType = .mutedStandard
         mapSnapshotterOptions.showsBuildings = true
@@ -620,7 +561,7 @@ extension MapScreen: MKMapViewDelegate {
             return nil
         }
 
-        let imageSize = CGSize(width: 140, height: 140)
+        let imageSize = CGSize(width: 90, height: 90)
         UIGraphicsBeginImageContextWithOptions(imageSize, false, 0.0)
         guard let context = UIGraphicsGetCurrentContext() else {
             print("Failed to get image context")
@@ -634,7 +575,7 @@ extension MapScreen: MKMapViewDelegate {
         
         let markerSize = CGSize(width: 10, height: 10)
         //let markerOrigin = CGPoint(x: point.x - markerSize.width / 2, y: point.y - markerSize.height / 2)
-        let markerOrigin = CGPoint(x: (140/2)-5 , y: (140/2)-5 )
+        let markerOrigin = CGPoint(x: (90/2)-5 , y: (90/2)-5 )
         let markerRect = CGRect(origin: markerOrigin, size: markerSize)
 
         markerImage.draw(in: markerRect)
@@ -671,75 +612,75 @@ extension CLHeading {
     }
 }
 
-struct Marker : Hashable{
-    let degrees: Double
-    let label: String
-    
-    init(degrees: Double, label: String="") {
-        self.degrees = degrees
-        self.label = label
-    }
-    
-    public func getDegree() -> Double{
-        return self.degrees
-    }
-    
-    func degreeText() -> String{
-        return String(format: "%.0f", self.degrees)
-        
-    }
-    
-    static func markers()-> [Marker]{
-        return [
-            Marker(degrees: 0, label: "S"),
-            Marker(degrees: 30),
-            Marker(degrees: 60),
-            Marker(degrees: 90, label: "W"),
-            Marker(degrees: 120),
-            Marker(degrees: 150),
-            Marker(degrees: 180, label: "N"),
-            Marker(degrees: 210),
-            Marker(degrees: 240),
-            Marker(degrees: 270, label: "E"),
-            Marker(degrees: 300),
-            Marker(degrees: 330)
-        ]
-    }
-}
+//struct Marker : Hashable{
+//    let degrees: Double
+//    let label: String
+//
+//    init(degrees: Double, label: String="") {
+//        self.degrees = degrees
+//        self.label = label
+//    }
+//
+//    public func getDegree() -> Double{
+//        return self.degrees
+//    }
+//
+//    func degreeText() -> String{
+//        return String(format: "%.0f", self.degrees)
+//
+//    }
+//
+//    static func markers()-> [Marker]{
+//        return [
+//            Marker(degrees: 0, label: "S"),
+//            Marker(degrees: 30),
+//            Marker(degrees: 60),
+//            Marker(degrees: 90, label: "W"),
+//            Marker(degrees: 120),
+//            Marker(degrees: 150),
+//            Marker(degrees: 180, label: "N"),
+//            Marker(degrees: 210),
+//            Marker(degrees: 240),
+//            Marker(degrees: 270, label: "E"),
+//            Marker(degrees: 300),
+//            Marker(degrees: 330)
+//        ]
+//    }
+//}
 
-struct CompassMarkerView : View{
-    let marker: Marker
-    let compassDegrees: Double
-    
-    var body: some View{
-        VStack{
-            Text(marker.degreeText())
-                .fontWeight(.light)
-                .rotationEffect(self.textAngle())
-            Capsule()
-                .frame(width:1,height:10)
-                //.frame(width: self.capsuleWidth(),height: self.capsuleHeight())
-                .padding(.bottom,50)
-            Text(marker.label)
-                .fontWeight(.bold)
-                .rotationEffect(self.textAngle())
-                .padding(.bottom,50)
-        }
-        .fixedSize()
-        .rotationEffect(Angle(degrees: marker.degrees))
-    }
-    private func capsuleWidth() -> CGFloat{
-        return self.marker.degrees == 0 ? 7 : 3
-    }
-    private func capsuleHeight() -> CGFloat {
-        return self.marker.degrees == 0 ? 45 : 30
-    }
-    private func capsuleColor() -> Color{
-        return self.marker.degrees == 0 ? .red : .gray
-    }
-    private func textAngle() -> Angle{
-        return Angle(degrees: -self.compassDegrees - self.marker.degrees)
-    }
-}
+//struct CompassMarkerView : View{
+//    let marker: Marker
+//    let compassDegrees: Double
+//
+//    var body: some View{
+//        VStack{
+//            Text(marker.degreeText())
+//                .fontWeight(.light)
+//                .rotationEffect(self.textAngle())
+//            Capsule()
+//                .frame(width:1,height:10)
+//                //.frame(width: self.capsuleWidth(),height: self.capsuleHeight())
+//                .padding(.bottom,50)
+//            Text(marker.label)
+//                .fontWeight(.bold)
+//                .rotationEffect(self.textAngle())
+//                .padding(.bottom,50)
+//        }
+//        .fixedSize()
+//        .rotationEffect(Angle(degrees: marker.degrees))
+//    }
+//    private func capsuleWidth() -> CGFloat{
+//        return self.marker.degrees == 0 ? 7 : 3
+//    }
+//    private func capsuleHeight() -> CGFloat {
+//        return self.marker.degrees == 0 ? 45 : 30
+//    }
+//    private func capsuleColor() -> Color{
+//        return self.marker.degrees == 0 ? .red : .gray
+//    }
+//    private func textAngle() -> Angle{
+//        return Angle(degrees: -self.compassDegrees - self.marker.degrees)
+//    }
+//}
 
 

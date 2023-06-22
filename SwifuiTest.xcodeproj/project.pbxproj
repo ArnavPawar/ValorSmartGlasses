@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		475D7F412A42343F002A3FB4 /* ValorWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D7F402A42343F002A3FB4 /* ValorWatch.swift */; };
 		565B8F9C38D0F9C85E5B53EC /* EntityInfo-SwifuiTest.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1BC55992DB5C6FA103661A /* EntityInfo-SwifuiTest.generated.swift */; };
 		67F2C072757F10B84C903FA0 /* Pods_SwifuiTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE995D829312E5F65AA80B1C /* Pods_SwifuiTest.framework */; };
 		921E8E3F296DB9C600827058 /* ActiveLookSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 921E8E3E296DB9C600827058 /* ActiveLookSDK */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		1F1BC55992DB5C6FA103661A /* EntityInfo-SwifuiTest.generated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "EntityInfo-SwifuiTest.generated.swift"; sourceTree = "<group>"; };
+		475D7F402A42343F002A3FB4 /* ValorWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValorWatch.swift; sourceTree = "<group>"; };
 		68363B07E0B3551487410048 /* Pods-SwifuiTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwifuiTest.release.xcconfig"; path = "Target Support Files/Pods-SwifuiTest/Pods-SwifuiTest.release.xcconfig"; sourceTree = "<group>"; };
 		7735B1BECD21BAE2F9E6EA19 /* Pods-SwifuiTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwifuiTest.debug.xcconfig"; path = "Target Support Files/Pods-SwifuiTest/Pods-SwifuiTest.debug.xcconfig"; sourceTree = "<group>"; };
 		926EB73729D9495700D5A20F /* LICENCE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				92906C7C296DDF8B0065FF5E /* Connections.swift */,
 				926EB73929DBA74700D5A20F /* User.swift */,
 				926EB73B29DCA98400D5A20F /* LaunchView.swift */,
+				475D7F402A42343F002A3FB4 /* ValorWatch.swift */,
 			);
 			path = SwifuiTest;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				475D7F412A42343F002A3FB4 /* ValorWatch.swift in Sources */,
 				92801B442961091F00CD5441 /* CompassHeading.swift in Sources */,
 				92906C7D296DDF8B0065FF5E /* Connections.swift in Sources */,
 				92CBF15C295D3747005CF6A4 /* ContentView.swift in Sources */,
